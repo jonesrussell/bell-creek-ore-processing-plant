@@ -1,0 +1,11 @@
+node_modules
+.npm-debug.log
+tmp
+
+dist
+.tmp
+test/bower_components/
+
+.ftppass
+app/videos/**
+*.swp

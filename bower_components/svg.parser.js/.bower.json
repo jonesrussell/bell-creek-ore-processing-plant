@@ -1,0 +1,16 @@
+{
+  "name": "svg.parser.js",
+  "homepage": "https://github.com/wout/svg.parser.js",
+  "version": "0.1.0",
+  "main": "svg.parser.js",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.0",
+    "commit": "a92d9556f13f12dcd4d3e9fc641e3c331645363d"
+  },
+  "_source": "https://github.com/wout/svg.parser.js.git",
+  "_target": "~0.1.0",
+  "_originalSource": "https://github.com/wout/svg.parser.js.git",
+  "_direct": true
+}

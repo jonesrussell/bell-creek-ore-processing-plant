@@ -1,0 +1,12 @@
+{
+  "name": "bell-creek-mill",
+  "private": true,
+  "dependencies": {
+    "svg.js": "~1.0.1",
+    "modernizr": "~2.8.3",
+    "classie": "~1.0.1",
+    "q": "https://github.com/kriskowal/q.git#1.0.1",
+    "svg.parser.js": "https://github.com/wout/svg.parser.js.git#~0.1.0",
+    "svg.import.js": "https://github.com/wout/svg.import.js.git#~1.0.1"
+  }
+}

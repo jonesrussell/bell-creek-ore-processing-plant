@@ -1,0 +1,103 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Lake Shore Gold Corp. - Bell Creek Ore Processing Plant</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/mill.css">
+    <link rel="stylesheet" href="styles/overlay.css">
+    <!-- endbuild -->
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <script src="bower_components/svg.js/dist/svg.js"></script>
+    <script src="bower_components/classie/classie.js"></script>
+    <script src="bower_components/q/q.js"></script>
+    <script src="bower_components/svg.parser.js/svg.parser.js"></script>
+    <script src="bower_components/svg.import.js/svg.import.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script>
+
+    <!-- build:js scripts/animation.js -->
+    <script src="scripts/svgjs-anim.js"></script>
+    <script src="scripts/preload.js"></script>
+    <script src="scripts/overlay.js"></script>
+    <script src="scripts/animation.js"></script>
+    <script src="scripts/position-scale.js"></script>
+    <script src="scripts/layer.js"></script>
+    <script src="scripts/step.js"></script>
+    <script src="scripts/bullets.js"></script>
+    <script src="scripts/heading.js"></script>
+    <script src="scripts/slurry.js"></script>
+    <script src="scripts/grinding-slurry.js"></script>
+    <script src="scripts/truck.js"></script>
+    <script src="scripts/tree.js"></script>
+    <script src="scripts/sag-mill.js"></script>
+    <script src="scripts/rock-breaker.js"></script>
+    <script src="scripts/jaw-crusher.js"></script>
+    <script src="scripts/stir-stick.js"></script>
+    <script src="scripts/zoom.js"></script>
+    <script src="scripts/heat.js"></script>
+    <script src="scripts/receiving.js"></script>
+    <script src="scripts/crushing.js"></script>
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/grinding.js"></script>
+    <script src="scripts/extraction.js"></script>
+    <script src="scripts/electrowinning.js"></script>
+    <script src="scripts/refining.js"></script>
+    <script src="scripts/wistia.js"></script>
+    <!-- endbuild -->
+
+    <script type="text/javascript">
+        window.addEventListener('load', function() { 
+            if (classie.has(document.getElementsByTagName('html')[0], 'svg')) {
+                mill = new SVGjsAnim();
+                mill.preload();
+                mill.init();
+            }
+        }, false);
+        </script>
+    </head>
+    <body>
+        <div id="no-svg">
+            Uh oh, your browser does not support modern technologies. Visit <a href="http://whatbrowser.org/" target="_blank">http://whatbrowser.org/</a> to learn more.
+        </div>
+
+        <header class="page">
+            <img id="logo" src="images/logo.png">
+            <h1><a href="http://lsgold.com" target="_blank">Lake Shore Gold Corp.</a></h1>
+            <h2>Bell Creek Ore Processing Plant</h2>
+        </header>
+
+        <div class="container">
+            <div id="shepherd-connector-1"></div>
+            <div id="drawing">
+                <img src="images/loading.svg" id="anim-loading">
+            </div>
+            <p style="display:none;"><button id="trigger-overlay" type="button">Open Overlay</button></p>
+        </div><!-- /container -->
+
+        <div class="overlay overlay-door">
+            <button type="button" class="overlay-close">Close</button>
+            <div class="video-container">
+                <div id="wistia_wy0jb1fb5d" class="wistia_embed video video-receiving"></div>
+                <div id="wistia_3nnwthrq6m" class="wistia_embed video video-crushing"></div>
+                <div id="wistia_snve0g1j7h" class="wistia_embed video video-storage"></div>
+                <div id="wistia_c8zdqadrm5" class="wistia_embed video video-grinding"></div>
+                <div id="wistia_aktom82zan" class="wistia_embed video video-extraction"></div>
+                <div id="wistia_zlgqw4faj4" class="wistia_embed video video-electrowinning"></div>
+                <div id="wistia_ovdskmla9a" class="wistia_embed video video-refining"></div>
+            </div>
+        </div>
+
+    </body>
+</html>
