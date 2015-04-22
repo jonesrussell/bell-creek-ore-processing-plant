@@ -236,8 +236,6 @@ SVGjsAnim.prototype.setupLayers = function()
 };
 
 SVGjsAnim.prototype.scaled = function(n, scale) {
-    var foo = n * scale;
-    console.log(foo);
     return (scale < 1) ? n + (n * this.sceneResizePercent) : n - (n * this.sceneResizePercent);
 };
 

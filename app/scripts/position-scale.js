@@ -11,8 +11,8 @@ SVGjsAnim.prototype.positionAndScale = function()
     // @TODO This is unnecessary, use the SVG viewbox properly
     // ^ can't remember what this means
     this.windowW = this.getWindowWidth();
-    this.aspectRatio = this.calcAspectRatio(this.windowW, this.windowH);
     this.windowH = this.getWindowHeight();
+    this.aspectRatio = this.calcAspectRatio(this.windowW, this.windowH);
     this.origSceneW = 3676;
     this.origSceneH = 1256;
     this.sceneW = this.windowW;
@@ -76,8 +76,8 @@ SVGjsAnim.prototype.scaleY = function(y)
     return this.scaleX(y);
 };
 
-SVGjsAnim.prototype.calcAspectRatio = function(width, height) {
-    var ratio = width / height;
+SVGjsAnim.prototype.calcAspectRatio = function(w, h) {
+    var ratio = w / h;
     return (Math.abs(ratio - 4 / 3) < Math.abs(ratio - 16 / 9)) ? '4:3' : '16:9';
 };
 

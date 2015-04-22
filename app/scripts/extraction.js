@@ -8,8 +8,6 @@ SVGjsAnim.prototype.setupExtraction = function()
     var y = 500;
     var w = 800;
     var h = 650;
-    console.log('x: ' + x);
-    console.log('y: ' + y);
 
     this.wistiaObjs.extraction = this.wistiaEmbed('aktom82zan');
     var heading = this.draw.heading('EXTRACTION', this.wistiaObjs.extraction)
@@ -84,23 +82,18 @@ SVGjsAnim.prototype.setupExtraction = function()
     stirSticks.add(this.draw.stirStick(this.stir3X, 0).spin());
     step.content(stirSticks);
 
-    var stepToScale = 3;
-    var stepToX = -6700;
-    var stepToY = -1350;
-    if (this.aspectRatio === '4:3') {
-        stepToScale = 3.4;
-        stepToX = -8000;
-        stepToY = -1450;
-    }
+    var stepToScale = 3
+      , stepToX = -6700
+      , stepToY = -1950;
     var zoom = this.draw.zoom({
-            width: w,
-            height: h,
-            id: 'extraction',
-            scale: stepToScale,
-            zx: stepToX,
-            zy: stepToY
-        })
-        .video(450, 40);
+      width: w
+      , height: h
+      , id: 'extraction'
+      , scale: stepToScale
+      , zx: stepToX
+      , zy: stepToY
+    })
+    .video(450, 40);
     step.setZoom(zoom);
 
     return step;

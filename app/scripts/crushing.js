@@ -8,12 +8,10 @@ SVGjsAnim.prototype.setupCrushing = function()
     var y = 0;
     var w = 500;
     var h = 540;
-    console.log('x: ' + x);
-    console.log('y: ' + y);
 
     this.wistiaObjs.crushing = this.wistiaEmbed('3nnwthrq6m');
     var heading = this.draw.heading('CRUSHING', this.wistiaObjs.crushing)
-        .move(110, 80);
+        .move(120, 60);
     this.headings.crusher = this.draw.set().add(heading);
 
     var step = this.steps.crusher = this.draw.step('crusher')
@@ -71,23 +69,18 @@ SVGjsAnim.prototype.setupCrushing = function()
     step.content(this.jawCrusher);
 
     // Zoom-in
-    var stepToCrushingScale = 4;
-    var stepToCrushingX = -3800;
-    var stepToCrushingY = 0;
-    if (this.aspectRatio === '4:3') {
-        stepToCrushingScale = 5;
-        stepToCrushingX = this.scaleX(-5400);
-        stepToCrushingY = this.scaleY(250);
-    }
+    var stepToScale = 4
+      , stepToX = -3750
+      , stepToY = -350;
     var zoom = this.draw.zoom({
-            width: w,
-            height: h,
-            id: 'crusher',
-            scale: stepToCrushingScale,
-            zx: stepToCrushingX,
-            zy: stepToCrushingY
-        })
-        .video(360, 93);
+      width: w
+      , height: h
+      , id: 'crusher'
+      , scale: stepToScale
+      , zx: stepToX
+      , zy: stepToY
+    })
+    .video(360, 93);
     step.setZoom(zoom);
 
     return step;

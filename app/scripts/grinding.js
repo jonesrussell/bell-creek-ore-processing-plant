@@ -8,8 +8,6 @@ SVGjsAnim.prototype.setupGrinding = function()
     var y = 0;
     var w = 1000;
     var h = 600;
-    console.log('grindingX: ' + x);
-    console.log('grindingY: ' + y);
 
     // Heading
     this.wistiaObjs.grinding = this.wistiaEmbed('c8zdqadrm5');
@@ -23,12 +21,6 @@ SVGjsAnim.prototype.setupGrinding = function()
         .data({ id: 'step-sag-mill' })
         .setScene(this.scene)
         .setHeading(heading);
-
-// Debug
-/*    var debugRect = this.draw.rect(w, h)
-        .stroke('#f9203c')
-        .fill('none');
-    step.add(debugRect);*/
 
     step.content(this.draw.sagMill());
 
@@ -86,24 +78,18 @@ SVGjsAnim.prototype.setupGrinding = function()
     );
 
     // Zoom-in
-    var stepToScale = 3.9;
-    var stepToX = -7500;
-    var stepToY = 50;
-    if (this.aspectRatio === '4:3') {
-        stepToScale = 4.7;
-        stepToX = -9700;
-        stepToY = 200;
-    }
-
+    var stepToScale = 3.9
+      , stepToX = -7500
+      , stepToY = -275;
     var zoom = this.draw.zoom({
-            width: w,
-            height: h,
-            id: 'sag-mill',
-            scale: stepToScale,
-            zx: stepToX,
-            zy: stepToY
-        })
-        .video(200, 75);
+      width: w
+      , height: h
+      , id: 'sag-mill'
+      , scale: stepToScale
+      , zx: stepToX
+      , zy: stepToY
+    })
+    .video(200, 75);
     step.setZoom(zoom);
 
     step._content.move(12, -30);

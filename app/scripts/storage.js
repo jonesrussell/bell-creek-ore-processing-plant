@@ -9,8 +9,6 @@ SVGjsAnim.prototype.setupStorage = function()
     var y = 0;
     var storageW = 470;
     var storageH = 530;
-    console.log('storageX: ' + x);
-    console.log('storageY: ' + y);
 
     this.wistiaObjs.storage = this.wistiaEmbed('snve0g1j7h');
     // Heading
@@ -49,23 +47,18 @@ SVGjsAnim.prototype.setupStorage = function()
     this.bullets['ore-storage-dome'] = bulletsGroup;
     step.content(bulletsGroup);
 
-    var stepToScale = 4.2;
-    var stepToX = -6200;
-    var stepToY = -270;
-    if (this.aspectRatio === '4:3') {
-        stepToScale = 5.2;
-        stepToX = -8000;
-        stepToY = -250;
-    }
+    var stepToScale = 4.2
+      , stepToX = -6050
+      , stepToY = -630;
     var zoom = this.draw.zoom({
-            width: storageW,
-            height: storageH,
-            id: 'ore-storage-dome',
-            scale: stepToScale,
-            zx: stepToX,
-            zy: stepToY
-        })
-        .video(320, 130);
+      width: storageW
+      , height: storageH
+      , id: 'ore-storage-dome'
+      , scale: stepToScale
+      , zx: stepToX
+      , zy: stepToY
+    })
+    .video(320, 130);
     step.setZoom(zoom);
 
     return step;

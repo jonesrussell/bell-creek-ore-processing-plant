@@ -113,24 +113,20 @@ SVGjsAnim.prototype.setupRefining = function()
             .scale(0.805)
     );
 
-    var stepToScale = 2.6;
-    var stepToX = -600;
-    var stepToY = -1130;
-    if (this.aspectRatio === '4:3') {
-        stepToScale = 2.8;
-        stepToX = -640;
-        stepToY = -1170;
-    }
+    var stepToScale = 2.6
+      , stepToX = -550
+      , stepToY = -1670;
     var zoom = this.draw.zoom({
-            width: w,
-            height: h,
-            id: 'refinery',
-            scale: stepToScale,
-            zx: stepToX,
-            zy: stepToY
-        })
-        .video(439, 35);
+      width: w
+      , height: h
+      , id: 'refinery'
+      , scale: stepToScale
+      , zx: stepToX
+      , zy: stepToY
+    })
+    .video(439, 35);
     step.setZoom(zoom);
+    zoom.zoomIn();
 
     step._content.scale(0.79);
     step._content.move(138, -87);

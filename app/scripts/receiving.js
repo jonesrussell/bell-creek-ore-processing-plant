@@ -74,25 +74,18 @@ SVGjsAnim.prototype.setupReceiving = function()
     );
 
     // Zoom-in
-    var stepToScale = 4;
-    var stepToX = -2000;
-    var stepToY = 50;
-    //@TODO create isAspectRatio()
-    if (this.aspectRatio === '4:3') {
-        stepToScale = 5;
-        stepToX = -2500;
-        stepToY = 150;
-    }
-
+    var stepToScale = 4
+      , stepToX = -1500
+      , stepToY = -330;
     var zoom = this.draw.zoom({
-            width: w,
-            height: h,
-            id: 'receiving',
-            scale: stepToScale,
-            zx: stepToX,
-            zy: stepToY
-        })
-        .video(605, 63);
+      width: w
+      , height: h
+      , id: 'receiving'
+      , scale: stepToScale
+      , zx: stepToX
+      , zy: stepToY
+    })
+    .video(605, 63);
     step.setZoom(zoom);
 
     //@TODO create moveContent()

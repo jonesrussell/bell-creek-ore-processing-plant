@@ -101,13 +101,9 @@ SVG.extend(SVG.Zoom, {
     zoomOut: function() {
         mill.currentStep = 0;
         this.zoomed = false;
-//        this.stepX = 0;
-//        this.stepY = mill.skyHeight;
-//        this.stepScale = this.sceneScale;
         this.zoomer.removeClass('zoom-out')
             .addClass('zoom-in');
         this.hideVideo();
-        //this.stepTo();
         this.toggleExtras();
         mill.resetCamera();
         return this;
@@ -131,11 +127,12 @@ SVG.extend(SVG.Zoom, {
         }
     },
     stepTo: function() {
-        mill.scene.animate(1250)
-            .scale(mill.calcScale(this.stepScale))
-            .move(mill.scaleX(this.stepX), mill.scaleY(this.stepY));
-
-        return this;
+      mill.scene
+        .animate(1250)
+        .scale(mill.calcScale(this.stepScale))
+        .dx(mill.scaleX(this.stepX))
+        .dy(mill.scaleY(this.stepY));
+      return this;
     }
 });
 

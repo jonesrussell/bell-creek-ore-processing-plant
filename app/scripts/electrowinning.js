@@ -8,12 +8,10 @@ SVGjsAnim.prototype.setupElectrowinning = function()
     var y = 530;
     var w = 880;
     var h = 820;
-/*    console.log('x: ' + x);
-    console.log('y: ' + y);*/
 
     this.wistiaObjs.electrowinning = this.wistiaEmbed('zlgqw4faj4');
     var heading = this.draw.heading('ELECTROWINNING', this.wistiaObjs.electrowinning)
-        .move(510, 0);
+        .move(510, -30);
     this.headings.electrowinning = this.draw.set().add(heading);
 
     var step = this.draw.step('electrowinning')
@@ -93,23 +91,18 @@ SVGjsAnim.prototype.setupElectrowinning = function()
     );
 
     // Zoom-in
-    var stepToScale = 3;
-    var stepToX = -3800;
-    var stepToY = -1510;
-    if (this.aspectRatio === '4:3') {
-        stepToScale = 3.5;
-        stepToX = -4950;
-        stepToY = -1700;
-    }
+    var stepToScale = 3
+      , stepToX = -3900
+      , stepToY = -2050;
     var zoom = this.draw.zoom({
-            width: w,
-            height: h,
-            id: 'electrowinning',
-            scale: stepToScale,
-            zx: stepToX,
-            zy: stepToY
-        })
-        .video(760, 12);
+      width: w
+      , height: h
+      , id: 'electrowinning'
+      , scale: stepToScale
+      , zx: stepToX
+      , zy: stepToY
+    })
+    .video(760, 12);
     step.setZoom(zoom);
 
     return step;
