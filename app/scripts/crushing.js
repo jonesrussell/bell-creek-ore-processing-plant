@@ -64,28 +64,28 @@ SVGjsAnim.prototype.setupCrushing = function()
     this.bullets.crusher = bulletsGroup;
     step.content(bulletsGroup);
 
-    // Jaw Crusher 
+    // Jaw Crusher
     this.jawCrusherX = 279.5;
     this.jawCrusherY = 433;
     this.jawCrusher = this.draw.jawCrusher();
     step.content(this.jawCrusher);
 
     // Zoom-in
-    this.stepToCrushingScale = 4;
-    this.stepToCrushingX = this.scaleX(-3800);
-    this.stepToCrushingY = this.scaleY(0);
+    var stepToCrushingScale = 4;
+    var stepToCrushingX = -3800;
+    var stepToCrushingY = 0;
     if (this.aspectRatio === '4:3') {
-        this.stepToCrushingScale = 5;
-        this.stepToCrushingX = this.scaleX(-5400);
-        this.stepToCrushingY = this.scaleY(250);
+        stepToCrushingScale = 5;
+        stepToCrushingX = this.scaleX(-5400);
+        stepToCrushingY = this.scaleY(250);
     }
     var zoom = this.draw.zoom({
             width: w,
             height: h,
             id: 'crusher',
-            scale: this.stepToCrushingScale,
-            zx: this.stepToCrushingX,
-            zy: this.stepToCrushingY
+            scale: stepToCrushingScale,
+            zx: stepToCrushingX,
+            zy: stepToCrushingY
         })
         .video(360, 93);
     step.setZoom(zoom);

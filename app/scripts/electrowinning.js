@@ -93,21 +93,21 @@ SVGjsAnim.prototype.setupElectrowinning = function()
     );
 
     // Zoom-in
-    this.stepToScale = 3;
-    this.stepToX = this.scaleX(-3800);
-    this.stepToY = this.scaleY(-1510);
+    var stepToScale = 3;
+    var stepToX = -3800;
+    var stepToY = -1510;
     if (this.aspectRatio === '4:3') {
-        this.stepToScale = 3.5;
-        this.stepToX = this.scaleX(-4950);
-        this.stepToY = this.scaleY(-1700);
+        stepToScale = 3.5;
+        stepToX = -4950;
+        stepToY = -1700;
     }
     var zoom = this.draw.zoom({
             width: w,
             height: h,
             id: 'electrowinning',
-            scale: this.stepToScale,
-            zx: this.stepToX,
-            zy: this.stepToY
+            scale: stepToScale,
+            zx: stepToX,
+            zy: stepToY
         })
         .video(760, 12);
     step.setZoom(zoom);

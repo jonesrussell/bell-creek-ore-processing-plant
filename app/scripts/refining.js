@@ -65,7 +65,7 @@ SVGjsAnim.prototype.setupRefining = function()
     );
 
     this.smeltedX = 427;
-    this.smeltedY = 450; 
+    this.smeltedY = 450;
     step.content(
         this.draw.image('images/refinery/smelted.svg', 6, 67)
             .move(this.smeltedX, this.smeltedY)
@@ -113,21 +113,21 @@ SVGjsAnim.prototype.setupRefining = function()
             .scale(0.805)
     );
 
-    this.stepToScale = 2.6;
-    this.stepToX = this.scaleX(-600);
-    this.stepToY = this.scaleY(-1130);
+    var stepToScale = 2.6;
+    var stepToX = -600;
+    var stepToY = -1130;
     if (this.aspectRatio === '4:3') {
-        this.stepToScale = 2.8;
-        this.stepToX = this.scaleX(-640);
-        this.stepToY = this.scaleY(-1170);
+        stepToScale = 2.8;
+        stepToX = -640;
+        stepToY = -1170;
     }
     var zoom = this.draw.zoom({
             width: w,
             height: h,
             id: 'refinery',
-            scale: this.stepToScale,
-            zx: this.stepToX,
-            zy: this.stepToY
+            scale: stepToScale,
+            zx: stepToX,
+            zy: stepToY
         })
         .video(439, 35);
     step.setZoom(zoom);

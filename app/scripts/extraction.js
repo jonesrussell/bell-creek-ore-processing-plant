@@ -53,7 +53,7 @@ SVGjsAnim.prototype.setupExtraction = function()
     bulletsGroup.add(
         this.draw.bullets([
             '3 TANKS ADD\nOXYGEN TO SLURRY',
-            'LIME ADDED TO\nMAINTAIN ~11pH' 
+            'LIME ADDED TO\nMAINTAIN ~11pH'
         ], 150).move(617, 105)
     );
 
@@ -84,21 +84,21 @@ SVGjsAnim.prototype.setupExtraction = function()
     stirSticks.add(this.draw.stirStick(this.stir3X, 0).spin());
     step.content(stirSticks);
 
-    this.stepToScale = 3;
-    this.stepToX = this.scaleX(-6700);
-    this.stepToY = this.scaleY(-1350);
+    var stepToScale = 3;
+    var stepToX = -6700;
+    var stepToY = -1350;
     if (this.aspectRatio === '4:3') {
-        this.stepToScale = 3.4;
-        this.stepToX = this.scaleX(-8000);
-        this.stepToY = this.scaleY(-1450);
+        stepToScale = 3.4;
+        stepToX = -8000;
+        stepToY = -1450;
     }
     var zoom = this.draw.zoom({
             width: w,
             height: h,
             id: 'extraction',
-            scale: this.stepToScale,
-            zx: this.stepToX,
-            zy: this.stepToY
+            scale: stepToScale,
+            zx: stepToX,
+            zy: stepToY
         })
         .video(450, 40);
     step.setZoom(zoom);

@@ -32,7 +32,7 @@ SVGjsAnim.prototype.setupReceiving = function()
             .setDumpAt(415, truckY);
     step.content(this.dumpTruck);
 
-    // Rock Breaker 
+    // Rock Breaker
     this.rockBreakerScale = 0.8;
     this.rockBreakerX = 555;
     this.rockBreakerY = 285;
@@ -74,28 +74,28 @@ SVGjsAnim.prototype.setupReceiving = function()
     );
 
     // Zoom-in
-    this.stepToScale = 4;
-    this.stepToX = this.scaleX(-2000);
-    this.stepToY = this.scaleY(50);
+    var stepToScale = 4;
+    var stepToX = -2000;
+    var stepToY = 50;
     //@TODO create isAspectRatio()
     if (this.aspectRatio === '4:3') {
-        this.stepToScale = 5;
-        this.stepToX = this.scaleX(-2500);
-        this.stepToY = this.scaleY(150);
+        stepToScale = 5;
+        stepToX = -2500;
+        stepToY = 150;
     }
 
     var zoom = this.draw.zoom({
             width: w,
             height: h,
             id: 'receiving',
-            scale: this.stepToScale,
-            zx: this.stepToX,
-            zy: this.stepToY
+            scale: stepToScale,
+            zx: stepToX,
+            zy: stepToY
         })
         .video(605, 63);
     step.setZoom(zoom);
 
-    //@TODO create moveContent() 
+    //@TODO create moveContent()
     step._content.move(119.5, -20);
     return step;
 };

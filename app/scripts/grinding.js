@@ -86,22 +86,22 @@ SVGjsAnim.prototype.setupGrinding = function()
     );
 
     // Zoom-in
-    this.stepToScale = 3.9;
-    this.stepToX = this.scaleX(-7500);
-    this.stepToY = this.scaleY(50);
+    var stepToScale = 3.9;
+    var stepToX = -7500;
+    var stepToY = 50;
     if (this.aspectRatio === '4:3') {
-        this.stepToScale = 4.7;
-        this.stepToX = this.scaleX(-9700);
-        this.stepToY = this.scaleY(200);
+        stepToScale = 4.7;
+        stepToX = -9700;
+        stepToY = 200;
     }
 
     var zoom = this.draw.zoom({
             width: w,
             height: h,
             id: 'sag-mill',
-            scale: this.stepToScale,
-            zx: this.stepToX,
-            zy: this.stepToY
+            scale: stepToScale,
+            zx: stepToX,
+            zy: stepToY
         })
         .video(200, 75);
     step.setZoom(zoom);
