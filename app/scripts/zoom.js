@@ -4,7 +4,7 @@
 ;(function(){
 
 // hack for zoom icons in IE
-window.addEventListener('load', function() { 
+window.addEventListener('load', function() {
     var ua = window.navigator.userAgent;
     var ie = ((ua.indexOf('MSIE ') > -1) || (ua.indexOf('Trident/') > -1)) ? true : false;
     if ( ie ) {
@@ -133,7 +133,7 @@ SVG.extend(SVG.Zoom, {
     stepTo: function() {
         mill.scene.animate(1250)
             .scale(mill.calcScale(this.stepScale))
-            .move(this.stepX, this.stepY);
+            .move(mill.scaleX(this.stepX), mill.scaleY(this.stepY));
 
         return this;
     }

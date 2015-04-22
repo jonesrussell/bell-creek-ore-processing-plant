@@ -1,5 +1,4 @@
 'use strict';
-/*global mill */
 
 /*****************
  * Ore Animation *

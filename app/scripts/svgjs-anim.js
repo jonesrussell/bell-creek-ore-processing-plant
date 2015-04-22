@@ -10,16 +10,14 @@
 */
 function SVGjsAnim()
 {
-    this.positionAndScale();
-
     this.draw = SVG('drawing')
-        .size(this.sceneW, this.sceneH)
         .fixSubPixelOffset();
 
     this.scene = this.draw.group()
-        .move(0, this.skyHeight)
-        .scale(this.sceneScale)
         .attr({ id: 'scene' });
+
+    this.positionAndScale();
+    this.resize();
 
     this.zooms = this.draw.set();
 }
@@ -49,7 +47,8 @@ SVGjsAnim.prototype.init = function() {
 
 SVGjsAnim.prototype.resetCamera = function() {
     var x = -120 * this.sceneScale;
-    this.scene.animate(1250)
+    this.scene
+        .animate(1250)
         .scale(this.sceneScale + (this.sceneScale * 0.08))
         .move(x, this.defaultY);
 };
@@ -195,7 +194,7 @@ SVGjsAnim.prototype.setupLayers = function()
     var groundExtension = this.draw.group()
         .move(0, 1060)
         .add(
-            this.draw.rect(this.origSceneW, 2000)
+            this.draw.rect(this.origSceneW, 4000)
                 .attr({
                     fill: '#4e6a47',
                     id: 'ground'
@@ -207,7 +206,7 @@ SVGjsAnim.prototype.setupLayers = function()
             'circuit-slurry': circuitSlurry
         },
         w,
-        h 
+        h + 4000
     )
         .move(0, 585)
         .moveInner(0, -485);
@@ -243,7 +242,7 @@ SVGjsAnim.prototype.scaled = function(n, scale) {
 };
 
 SVGjsAnim.prototype.unscaled = function(n) {
-    return n * (1+this.sceneResizePercent); 
+    return n * (1+this.sceneResizePercent);
 };
 
 SVGjsAnim.prototype.start = function()
@@ -279,7 +278,7 @@ SVGjsAnim.prototype.setupConveyors = function()
     conveyors.add(this.drawBigConveyorWheel(1216, 447.5));
     conveyors.add(this.drawBigConveyorWheel(1661, 333));
 
-    // Ore Storage Dome 
+    // Ore Storage Dome
     conveyors.add(this.drawSmallConveyorWheel(1554, 452.5));
     conveyors.add(this.drawSmallConveyorWheel(1615, 452.5));
     conveyors.add(this.drawSmallConveyorWheel(1643, 452.5));
@@ -289,7 +288,7 @@ SVGjsAnim.prototype.setupConveyors = function()
 
     conveyors.add(this.drawBigConveyorWheel(1558, 496.5));
     conveyors.add(this.drawBigConveyorWheel(1995, 345.5));
-    
+
     // Mill
     conveyors.add(this.drawSmallConveyorWheel(1976, 386.5));
     conveyors.add(this.drawSmallConveyorWheel(2036, 386.5));
@@ -456,7 +455,7 @@ SVGjsAnim.prototype.buildOre = function(s, x, y)
  * s - size of ore (medium1, medium2, small1, etc...
  * x - x coordinate of ore
  * y - y coordinate of ore
- * loop 
+ * loop
  **/
 SVGjsAnim.prototype.oreToCrusherAnim = function(scene, s, x, y, loop)
 {
@@ -480,7 +479,7 @@ SVGjsAnim.prototype.oreToCrusherAnim = function(scene, s, x, y, loop)
  * s - size of ore (medium1, medium2, small1, etc...
  * x - x coordinate of ore
  * y - y coordinate of ore
- * loop 
+ * loop
  **/
 SVGjsAnim.prototype.oreToStorageDomeAnim = function(scene, s, x, y, loop)
 {
@@ -503,7 +502,7 @@ SVGjsAnim.prototype.oreToStorageDomeAnim = function(scene, s, x, y, loop)
  * s - size of ore (medium1, medium2, small1, etc...
  * x - x coordinate of ore
  * y - y coordinate of ore
- * loop 
+ * loop
  **/
 SVGjsAnim.prototype.oreToSAGMillAnim = function(scene, s, x, y, loop)
 {

@@ -1,7 +1,10 @@
 'use strict';
 /*global SVGjsAnim, mill */
 
-//$(window).resize(function(){location.reload();});
+window.onresize = function() {
+    mill.positionAndScale();
+    mill.resize();
+};
 
 SVGjsAnim.prototype.positionAndScale = function()
 {
@@ -28,14 +31,13 @@ SVGjsAnim.prototype.positionAndScale = function()
     console.log('svgHeight: ' + this.svgHeight);
 };
 
-SVGjsAnim.prototype.setDrawingHeight = function(height) {
-    this.drawing = document.getElementById('drawing');
-    this.drawing.setAttribute('style', 'height:'+height+'px');
-    this.drawing.style.height = height + 'px';
-};
-
-SVGjsAnim.prototype.setDrawingHeightFull = function() {
-    document.getElementById('drawing').style.height = mill.windowH + 'px';
+SVGjsAnim.prototype.resize = function() {
+  this.draw
+    .size(this.sceneW, this.sceneH);
+  this.scene
+    .move(0, this.skyHeight)
+    .size(this.sceneW, this.sceneH)
+    .scale(this.sceneScale);
 };
 
 SVGjsAnim.prototype.getWindowHeight = function() {

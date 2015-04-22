@@ -49,21 +49,21 @@ SVGjsAnim.prototype.setupStorage = function()
     this.bullets['ore-storage-dome'] = bulletsGroup;
     step.content(bulletsGroup);
 
-    this.stepToScale = 4.2;
-    this.stepToX = this.scaleX(-6200);
-    this.stepToY = this.scaleY(-270);
+    var stepToScale = 4.2;
+    var stepToX = -6200;
+    var stepToY = -270;
     if (this.aspectRatio === '4:3') {
-        this.stepToScale = 5.2;
-        this.stepToX = this.scaleX(-8000);
-        this.stepToY = this.scaleY(-250);
+        stepToScale = 5.2;
+        stepToX = -8000;
+        stepToY = -250;
     }
     var zoom = this.draw.zoom({
             width: storageW,
             height: storageH,
             id: 'ore-storage-dome',
-            scale: this.stepToScale,
-            zx: this.stepToX,
-            zy: this.stepToY
+            scale: stepToScale,
+            zx: stepToX,
+            zy: stepToY
         })
         .video(320, 130);
     step.setZoom(zoom);
