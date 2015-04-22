@@ -2,7 +2,7 @@ node_modules
 .npm-debug.log
 tmp
 
-dist
+/dist
 .tmp
 test/bower_components/
 
