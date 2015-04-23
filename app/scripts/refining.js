@@ -17,8 +17,8 @@ SVGjsAnim.prototype.setupRefining = function()
     this.carbonY = 900;
 
     this.wistiaObjs.refining = this.wistiaEmbed('ovdskmla9a');
-    var headingX = 190;
-    var headingY = 20;
+    var headingX = 200;
+    var headingY = -20;
     var heading = this.draw.heading('REFINING', this.wistiaObjs.refining)
         .move(headingX, headingY);
     this.headings.refinery = this.draw.set().add(heading);
@@ -114,9 +114,12 @@ SVGjsAnim.prototype.setupRefining = function()
     );
 
     var stepToScale = 2.6
-      , stepToX = -550
-      , stepToY = -1670;
-    var zoom = this.draw.zoom({
+      , stepToX = -500
+      , stepToY = -1200;
+    if (this.isAspectRatio('4:3')) {
+      stepToY = -1100;
+    }
+     var zoom = this.draw.zoom({
       width: w
       , height: h
       , id: 'refinery'
@@ -126,6 +129,7 @@ SVGjsAnim.prototype.setupRefining = function()
     })
     .video(439, 35);
     step.setZoom(zoom);
+    zoom.zoomIn();
 
     step._content.scale(0.79);
     step._content.move(138, -87);

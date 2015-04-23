@@ -70,8 +70,11 @@ SVGjsAnim.prototype.setupCrushing = function()
 
     // Zoom-in
     var stepToScale = 4
-      , stepToX = -3750
-      , stepToY = -350;
+      , stepToX = -3870
+      , stepToY = 80;
+    if (this.isAspectRatio('4:3')) {
+      stepToY = 250;
+    }
     var zoom = this.draw.zoom({
       width: w
       , height: h

@@ -48,9 +48,12 @@ SVGjsAnim.prototype.setupStorage = function()
     step.content(bulletsGroup);
 
     var stepToScale = 4.2
-      , stepToX = -6050
-      , stepToY = -630;
-    var zoom = this.draw.zoom({
+      , stepToX = -6160
+      , stepToY = -200;
+    if (this.isAspectRatio('4:3')) {
+      stepToY = 30;
+    }
+     var zoom = this.draw.zoom({
       width: storageW
       , height: storageH
       , id: 'ore-storage-dome'

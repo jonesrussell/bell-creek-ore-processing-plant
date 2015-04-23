@@ -92,9 +92,12 @@ SVGjsAnim.prototype.setupElectrowinning = function()
 
     // Zoom-in
     var stepToScale = 3
-      , stepToX = -3900
-      , stepToY = -2050;
-    var zoom = this.draw.zoom({
+      , stepToX = -4000
+      , stepToY = -1650;
+    if (this.isAspectRatio('4:3')) {
+      stepToY = -1450;
+    }
+     var zoom = this.draw.zoom({
       width: w
       , height: h
       , id: 'electrowinning'

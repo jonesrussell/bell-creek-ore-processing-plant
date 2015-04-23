@@ -75,8 +75,11 @@ SVGjsAnim.prototype.setupReceiving = function()
 
     // Zoom-in
     var stepToScale = 4
-      , stepToX = -1500
-      , stepToY = -330;
+      , stepToX = -1620
+      , stepToY = 100;
+    if (this.isAspectRatio('4:3')) {
+      stepToY = 250;
+    }
     var zoom = this.draw.zoom({
       width: w
       , height: h

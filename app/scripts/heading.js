@@ -12,20 +12,20 @@ SVG.Heading = SVG.invent({
             var text = this.doc().text(headingText)
                 .attr({ fill: '#fff' })
                 .font({ family: 'Oswald', size: 28 })
-                .move(15, 25);
+                .move(15, 23);
             this.add(text);
 
             var videoGroup = this.doc().group()
                 .addClass('clickable');
 
             var icon = this.doc().image('images/video.svg', 24, 17)
-                .move(250, 25);
+                .move(250, 27);
             videoGroup.add(icon);
- 
+
             var videoTxt = this.doc().text('VIDEO')
                 .attr({ fill: '#ddd' })
                 .font({ family: 'Oswald', size: 18 })
-                .move(285, 28);
+                .move(285, 27);
             videoGroup.add(videoTxt);
 
             this.add(videoGroup);

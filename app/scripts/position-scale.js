@@ -11,40 +11,50 @@ SVGjsAnim.prototype.positionAndScale = function()
   this.transform = {
     x: 0
     , y: 0
-    , scale: 1
+    , scale: 0
+    , width: 0
+    , height: 0
+    , defaultX: 0
+    , defaultY: 0
+    , defaultScale: 0
+    , defaultWidth: 0
+    , defaultHeight: 0
   };
 
-  // @TODO This is unnecessary, use the SVG viewbox properly
-  // ^ can't remember what this means
+  // Browser
   this.windowW = this.getWindowWidth();
   this.windowH = this.getWindowHeight();
   this.aspectRatio = this.calcAspectRatio(this.windowW, this.windowH);
+
+  // Scene
   this.origSceneW = 3676;
   this.origSceneH = 1256;
-  this.sceneW = this.windowW;
-  this.sceneResizePercent = this.calcResizePercent(this.origSceneW, this.sceneW);
-  this.transform.scale = 1 - this.sceneResizePercent;
-  this.sceneH = this.windowH;
-  this.svgHeight = this.origSceneH * this.transform.scale;
-  this.remainingHeight = this.sceneH - this.svgHeight;
-  this.skyHeight = (this.remainingHeight / 3) * 1.5;
-  this.groundStart = this.skyHeight + this.svgHeight - 1;
+  this.transform.width = this.transform.defaultWidth = this.windowW;
+  this.transform.height = this.transform.defaultHeight = this.windowH;
+  var sceneResizePercent = this.calcResizePercent(this.origSceneW, this.transform.width);
+  this.transform.scale = 1 - sceneResizePercent;
+
+  var svgHeight = this.origSceneH * this.transform.scale;
+  var remainingHeight = this.transform.height - svgHeight;
+  this.transform.y = this.transform.defaultY = (remainingHeight / 3) * 1.5;
+  this.groundStart = this.transform.y + svgHeight - 1;
 
   console.log('Aspect Ratio: ' + this.aspectRatio);
   console.log('Resolution: ' + this.windowW + 'x' + this.windowH);
-  console.log('sceneH: ' + this.sceneH);
-  console.log('skyHeight: ' + this.skyHeight);
-  console.log('svgHeight: ' + this.svgHeight);
+  console.log('scene h: ' + this.transform.height);
+  console.log('scene y: ' + this.transform.y);
+  console.log('svgHeight: ' + svgHeight);
+  console.log(this.x() + ':' + this.y());
 };
 
 SVGjsAnim.prototype.x = function(x) {
-  x = x || 0;
+  x = x || false;
   if (x) this.transform.x = x;
   else return this.transform.x;
 };
 
 SVGjsAnim.prototype.y = function(y) {
-  y = y || 0;
+  y = y || false;
   if (y) this.transform.y = y;
   else return this.transform.y;
 };
@@ -52,28 +62,24 @@ SVGjsAnim.prototype.y = function(y) {
 SVGjsAnim.prototype.resetCamera = function() {
   var x = -120 * this.transform.scale;
   this.scene
-  .animate(1250)
-  .scale(this.transform.scale + (this.transform.scale * 0.08))
-  .move(x, this.defaultY);
-};
-
-SVGjsAnim.prototype.scaled = function(n, scale) {
-  return (scale < 1) ? n + (n * this.sceneResizePercent) : n - (n * this.sceneResizePercent);
-};
-
-SVGjsAnim.prototype.unscaled = function(n) {
-  return n * (1+this.sceneResizePercent);
+    .animate(1250)
+    .scale(this.transform.scale + (this.transform.scale * 0.08))
+    //.move(x, this.transform.defaultY);
+    .move(x, this.transform.y);
 };
 
 SVGjsAnim.prototype.resize = function() {
   this.draw
-  .size(this.sceneW, this.sceneH);
+    .size(this.transform.width, this.transform.height);
   this.scene
-  .move(0, this.skyHeight)
-  .size(this.sceneW, this.sceneH)
-  .scale(this.transform.scale);
+    .move(this.transform.x, this.transform.y)
+    .size(this.transform.width, this.transform.height)
+    .scale(this.transform.scale);
 };
 
+/***********
+ * Helpers *
+ ***********/
 SVGjsAnim.prototype.getWindowHeight = function() {
   var viewportHeight;
   if (document.compatMode === 'BackCompat') {
@@ -103,6 +109,10 @@ SVGjsAnim.prototype.calcScale = function(n)
 SVGjsAnim.prototype.calcAspectRatio = function(w, h) {
   var ratio = w / h;
   return (Math.abs(ratio - 4 / 3) < Math.abs(ratio - 16 / 9)) ? '4:3' : '16:9';
+};
+
+SVGjsAnim.prototype.isAspectRatio = function(n) {
+  return (this.aspectRatio === n) ? true : false;
 };
 
 SVGjsAnim.prototype.calcResizePercent = function(n, n2) {

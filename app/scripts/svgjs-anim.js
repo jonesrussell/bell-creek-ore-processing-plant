@@ -46,8 +46,8 @@ SVGjsAnim.prototype.init = function() {
 };
 
 SVGjsAnim.prototype.build = function() {
-    this.defaultX = this.scene.x();
-    this.defaultY = this.scene.y();
+    this.transform.defaultX = this.scene.x();
+    this.transform.defaultY = this.scene.y();
     this.resetCamera();
     this.setupLayers();
 

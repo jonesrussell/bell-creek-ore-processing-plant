@@ -79,8 +79,11 @@ SVGjsAnim.prototype.setupGrinding = function()
 
     // Zoom-in
     var stepToScale = 3.9
-      , stepToX = -7500
-      , stepToY = -275;
+      , stepToX = -7550
+      , stepToY = 50;
+    if (this.isAspectRatio('4:3')) {
+      stepToY = 240;
+    }
     var zoom = this.draw.zoom({
       width: w
       , height: h

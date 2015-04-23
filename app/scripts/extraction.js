@@ -84,8 +84,11 @@ SVGjsAnim.prototype.setupExtraction = function()
 
     var stepToScale = 3
       , stepToX = -6700
-      , stepToY = -1950;
-    var zoom = this.draw.zoom({
+      , stepToY = -1600;
+    if (this.isAspectRatio('4:3')) {
+      stepToY = -1400;
+    }
+     var zoom = this.draw.zoom({
       width: w
       , height: h
       , id: 'extraction'
@@ -98,5 +101,4 @@ SVGjsAnim.prototype.setupExtraction = function()
 
     return step;
 };
-
 

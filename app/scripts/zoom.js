@@ -127,11 +127,14 @@ SVG.extend(SVG.Zoom, {
         }
     },
     stepTo: function() {
+      var x = mill.calcScale(this.stepX);
+      var y = mill.calcScale(this.stepY);
+      console.log(mill.x() + ':' + mill.y());
       mill.scene
         .animate(1250)
         .scale(mill.calcScale(this.stepScale))
-        .dx(mill.calcScale(this.stepX))
-        .dy(mill.calcScale(this.stepY));
+        .x(x)
+        .y(y);
       return this;
     }
 });
