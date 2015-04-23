@@ -130,8 +130,8 @@ SVG.extend(SVG.Zoom, {
       mill.scene
         .animate(1250)
         .scale(mill.calcScale(this.stepScale))
-        .dx(mill.scaleX(this.stepX))
-        .dy(mill.scaleY(this.stepY));
+        .dx(mill.calcScale(this.stepX))
+        .dy(mill.calcScale(this.stepY));
       return this;
     }
 });

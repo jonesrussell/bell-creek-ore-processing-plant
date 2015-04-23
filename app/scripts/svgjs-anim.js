@@ -45,14 +45,6 @@ SVGjsAnim.prototype.init = function() {
     }
 };
 
-SVGjsAnim.prototype.resetCamera = function() {
-    var x = -120 * this.sceneScale;
-    this.scene
-        .animate(1250)
-        .scale(this.sceneScale + (this.sceneScale * 0.08))
-        .move(x, this.defaultY);
-};
-
 SVGjsAnim.prototype.build = function() {
     this.defaultX = this.scene.x();
     this.defaultY = this.scene.y();
@@ -233,14 +225,6 @@ SVGjsAnim.prototype.setupLayers = function()
 //        .after(function(){ this.remove(); });
 
    return this;
-};
-
-SVGjsAnim.prototype.scaled = function(n, scale) {
-    return (scale < 1) ? n + (n * this.sceneResizePercent) : n - (n * this.sceneResizePercent);
-};
-
-SVGjsAnim.prototype.unscaled = function(n) {
-    return n * (1+this.sceneResizePercent);
 };
 
 SVGjsAnim.prototype.start = function()
