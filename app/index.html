@@ -63,7 +63,7 @@
     <script type="text/javascript">
         window.addEventListener('load', function() {
             if (classie.has(document.getElementsByTagName('html')[0], 'svg')) {
-                mill = new SVGjsAnim();
+                mill = new SVGjsAnim('drawing');
                 mill.preload();
                 mill.init();
             }

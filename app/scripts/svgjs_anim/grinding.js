@@ -99,3 +99,8 @@ SVGjsAnim.prototype.setupGrinding = function()
     return step;
 };
 
+SVGjsAnim.prototype.cycloneGo = function()
+{
+    SVG.get('cyclone').animate(2500, '-', 0).rotate(360).loop();
+};
+
