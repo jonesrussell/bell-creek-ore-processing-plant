@@ -49,14 +49,14 @@ SVGjsAnim.prototype.positionAndScale = function()
 
 SVGjsAnim.prototype.x = function(x) {
   x = x || false;
-  if (x) this.transform.x = x;
-  else return this.transform.x;
+  if (x) { this.transform.x = x; }
+  else { return this.transform.x; }
 };
 
 SVGjsAnim.prototype.y = function(y) {
   y = y || false;
-  if (y) this.transform.y = y;
-  else return this.transform.y;
+  if (y) { this.transform.y = y; }
+  else { return this.transform.y; }
 };
 
 SVGjsAnim.prototype.resetCamera = function() {
