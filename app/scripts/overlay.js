@@ -1,3 +1,6 @@
+// Wonderful video overlay lifted from:
+// https://github.com/codrops/FullscreenOverlayStyles
+
 'use strict';
 /*global classie, mill, Modernizr */
 
@@ -13,7 +16,7 @@ window.addEventListener('load', function() {
                 }
                 classie.remove( overlay, 'close' );
 
-                // @TODO move this elsewhere 
+                // @TODO move this elsewhere
 //                var activeVideo = document.querySelectorAll('.video-container .active')[0];
                 var activeVideo = mill.activeVideo;
 //                console.log(activeVideo);
