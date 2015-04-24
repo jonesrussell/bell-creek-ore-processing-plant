@@ -49,7 +49,7 @@ SVGjsAnim.prototype.setupStorage = function()
 
     var stepToScale = 4.2
       , stepToX = -6160
-      , stepToY = -200;
+      , stepToY = -250;
     if (this.isAspectRatio('4:3')) {
       stepToY = 30;
     }

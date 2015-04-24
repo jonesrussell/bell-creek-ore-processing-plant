@@ -1,5 +1,5 @@
 'use strict';
-/*global SVGjsAnim */
+/*global SVGjsAnim, SVG */
 
 SVGjsAnim.prototype.setupGrinding = function()
 {

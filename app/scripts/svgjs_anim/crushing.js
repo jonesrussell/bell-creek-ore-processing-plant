@@ -71,7 +71,7 @@ SVGjsAnim.prototype.setupCrushing = function()
     // Zoom-in
     var stepToScale = 4
       , stepToX = -3870
-      , stepToY = 80;
+      , stepToY = 0;
     if (this.isAspectRatio('4:3')) {
       stepToY = 250;
     }
