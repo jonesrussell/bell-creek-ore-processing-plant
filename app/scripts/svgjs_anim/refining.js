@@ -127,7 +127,7 @@ SVGjsAnim.prototype.setupRefining = function()
       , zx: stepToX
       , zy: stepToY
     })
-    .video(439, 35);
+    .video(439, 5);
     step.setZoom(zoom);
 
     step._content.scale(0.79);

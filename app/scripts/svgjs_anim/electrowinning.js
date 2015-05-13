@@ -105,7 +105,7 @@ SVGjsAnim.prototype.setupElectrowinning = function()
       , zx: stepToX
       , zy: stepToY
     })
-    .video(760, 12);
+    .video(760, -15);
     step.setZoom(zoom);
 
     return step;
