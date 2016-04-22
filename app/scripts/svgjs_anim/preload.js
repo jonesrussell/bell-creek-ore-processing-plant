@@ -2,8 +2,6 @@
 /*global SVGjsAnim, mill */
 
 SVGjsAnim.prototype.images = [
-    'images/arrow_left.svg',
-    'images/arrow_right.svg',
     'images/circuit-ore-equipment.svg',
     'images/circuit-ore.svg',
     'images/circuit-slurry-equipment.svg',
@@ -17,12 +15,10 @@ SVGjsAnim.prototype.images = [
     'images/jaw_crusher/crusher_left.svg',
     'images/jaw_crusher/crusher_right.svg',
     'images/loading.svg',
-    'images/ore/ore_large.svg',
     'images/ore/ore_medium_1.svg',
     'images/ore/ore_medium_2.svg',
     'images/ore/ore_pile_1.svg',
     'images/ore/ore_pile_2.svg',
-    'images/ore/ore_pile_3.svg',
     'images/ore/ore_small_1.svg',
     'images/ore/ore_small_2.svg',
     'images/ore/ore_small_3.svg',
@@ -35,7 +31,6 @@ SVGjsAnim.prototype.images = [
     'images/rock_breaker/rock_breaker_arm.svg',
     'images/rock_breaker/rock_breaker_bit.svg',
     'images/rock_breaker/rock_breaker_circle.svg',
-    'images/slurry.svg',
     'images/solution.svg',
     'images/tree.svg',
     'images/treescape.svg',
