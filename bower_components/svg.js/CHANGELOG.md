@@ -1,4 +1,21 @@
-# 1.0.0 (?/09/2014)
+# 1.1.1 (03/3/2016)
+
+- backport fix for pathSpec (see #462)
+
+# 1.1.0 (25/5/2015)
+
+- fixed file permission
+- fixed event-handling
+- added namespaced events
+- fixed removing root and nested SVGs [thanks @zachrbrown]
+- fix: animating rotation takes rotation-center into accound
+- added: use-element now can point to an external file
+
+# 1.0.1 (06/09/2014)
+
+- added UMD support
+
+# 1.0.0 (05/09/2014)
 
 - fixed event module
 - removed `mouseenter` and `mouseleave` events because they are not supported by IE
