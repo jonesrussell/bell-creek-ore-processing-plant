@@ -38,13 +38,6 @@ SVGjsAnim.prototype.positionAndScale = function()
   var remainingHeight = this.transform.height - svgHeight;
   this.transform.y = this.transform.defaultY = (remainingHeight / 3) * 1.5;
   this.groundStart = this.transform.y + svgHeight - 1;
-
-  console.log('Aspect Ratio: ' + this.aspectRatio);
-  console.log('Resolution: ' + this.windowW + 'x' + this.windowH);
-  console.log('scene h: ' + this.transform.height);
-  console.log('scene y: ' + this.transform.y);
-  console.log('svgHeight: ' + svgHeight);
-  console.log(this.x() + ':' + this.y());
 };
 
 SVGjsAnim.prototype.x = function(x) {

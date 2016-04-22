@@ -19,7 +19,6 @@ window.addEventListener('load', function() {
                 // @TODO move this elsewhere
 //                var activeVideo = document.querySelectorAll('.video-container .active')[0];
                 var activeVideo = mill.activeVideo;
-//                console.log(activeVideo);
                 if (typeof activeVideo !== 'undefined') {
                     activeVideo.pause();
 //                    activeVideo.currentTime = 0;

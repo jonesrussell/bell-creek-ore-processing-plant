@@ -34,7 +34,6 @@ OreAnimation.prototype.animate = function()
     }
 
     var oreAnim = this;
-//    console.log(path);
     this.obj.animate(path.t, '-', 0)
         .move(path.x, path.y)
         .after(function(){
