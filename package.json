@@ -1,5 +1,8 @@
 {
   "name": "bell-creek-mill",
+  "scripts": {
+	  "start": "grunt serve"
+  },
   "devDependencies": {
     "apache-server-configs": "^2.7.1",
     "grunt": "^0.4.5",
