@@ -1,24 +1,23 @@
-'use strict';
+"use strict";
 /*global SVGjsAnim, mill */
 
-window.onresize = function() {
+window.onresize = function () {
   mill.positionAndScale();
   mill.resize();
 };
 
-SVGjsAnim.prototype.positionAndScale = function()
-{
+SVGjsAnim.prototype.positionAndScale = function () {
   this.transform = {
-    x: 0
-    , y: 0
-    , scale: 0
-    , width: 0
-    , height: 0
-    , defaultX: 0
-    , defaultY: 0
-    , defaultScale: 0
-    , defaultWidth: 0
-    , defaultHeight: 0
+    x: 0,
+    y: 0,
+    scale: 0,
+    width: 0,
+    height: 0,
+    defaultX: 0,
+    defaultY: 0,
+    defaultScale: 0,
+    defaultWidth: 0,
+    defaultHeight: 0,
   };
 
   // Browser
@@ -31,7 +30,10 @@ SVGjsAnim.prototype.positionAndScale = function()
   this.origSceneH = 1256;
   this.transform.width = this.transform.defaultWidth = this.windowW;
   this.transform.height = this.transform.defaultHeight = this.windowH;
-  var sceneResizePercent = this.calcResizePercent(this.origSceneW, this.transform.width);
+  var sceneResizePercent = this.calcResizePercent(
+    this.origSceneW,
+    this.transform.width
+  );
   this.transform.scale = 1 - sceneResizePercent;
 
   var svgHeight = this.origSceneH * this.transform.scale;
@@ -40,30 +42,35 @@ SVGjsAnim.prototype.positionAndScale = function()
   this.groundStart = this.transform.y + svgHeight - 1;
 };
 
-SVGjsAnim.prototype.x = function(x) {
+SVGjsAnim.prototype.x = function (x) {
   x = x || false;
-  if (x) { this.transform.x = x; }
-  else { return this.transform.x; }
+  if (x) {
+    this.transform.x = x;
+  } else {
+    return this.transform.x;
+  }
 };
 
-SVGjsAnim.prototype.y = function(y) {
+SVGjsAnim.prototype.y = function (y) {
   y = y || false;
-  if (y) { this.transform.y = y; }
-  else { return this.transform.y; }
+  if (y) {
+    this.transform.y = y;
+  } else {
+    return this.transform.y;
+  }
 };
 
-SVGjsAnim.prototype.resetCamera = function() {
+SVGjsAnim.prototype.resetCamera = function () {
   var x = -120 * this.transform.scale;
   this.scene
     .animate(1250)
-    .scale(this.transform.scale + (this.transform.scale * 0.08))
+    .scale(this.transform.scale + this.transform.scale * 0.08)
     //.move(x, this.transform.defaultY);
     .move(x, this.transform.y);
 };
 
-SVGjsAnim.prototype.resize = function() {
-  this.draw
-    .size(this.transform.width, this.transform.height);
+SVGjsAnim.prototype.resize = function () {
+  this.draw.size(this.transform.width, this.transform.height);
   this.scene
     .move(this.transform.x, this.transform.y)
     .size(this.transform.width, this.transform.height)
@@ -73,9 +80,9 @@ SVGjsAnim.prototype.resize = function() {
 /***********
  * Helpers *
  ***********/
-SVGjsAnim.prototype.getWindowHeight = function() {
+SVGjsAnim.prototype.getWindowHeight = function () {
   var viewportHeight;
-  if (document.compatMode === 'BackCompat') {
+  if (document.compatMode === "BackCompat") {
     viewportHeight = document.body.clientHeight;
   } else {
     viewportHeight = document.documentElement.clientHeight;
@@ -83,9 +90,9 @@ SVGjsAnim.prototype.getWindowHeight = function() {
   return viewportHeight;
 };
 
-SVGjsAnim.prototype.getWindowWidth = function() {
+SVGjsAnim.prototype.getWindowWidth = function () {
   var viewportWidth;
-  if (document.compatMode === 'BackCompat') {
+  if (document.compatMode === "BackCompat") {
     viewportWidth = document.body.clientWidth;
   } else {
     viewportWidth = document.documentElement.clientWidth;
@@ -93,22 +100,22 @@ SVGjsAnim.prototype.getWindowWidth = function() {
   return viewportWidth;
 };
 
-SVGjsAnim.prototype.calcScale = function(n)
-{
-  if (n === this.transform.scale) { return n; }
+SVGjsAnim.prototype.calcScale = function (n) {
+  if (n === this.transform.scale) {
+    return n;
+  }
   return n * this.transform.scale;
 };
 
-SVGjsAnim.prototype.calcAspectRatio = function(w, h) {
+SVGjsAnim.prototype.calcAspectRatio = function (w, h) {
   var ratio = w / h;
-  return (Math.abs(ratio - 4 / 3) < Math.abs(ratio - 16 / 9)) ? '4:3' : '16:9';
+  return Math.abs(ratio - 4 / 3) < Math.abs(ratio - 16 / 9) ? "4:3" : "16:9";
 };
 
-SVGjsAnim.prototype.isAspectRatio = function(n) {
-  return (this.aspectRatio === n) ? true : false;
+SVGjsAnim.prototype.isAspectRatio = function (n) {
+  return this.aspectRatio === n ? true : false;
 };
 
-SVGjsAnim.prototype.calcResizePercent = function(n, n2) {
+SVGjsAnim.prototype.calcResizePercent = function (n, n2) {
   return (n - n2) / n;
 };
-
