@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /*global SVG, mill */
 
 /*
@@ -11,7 +11,7 @@
 function SVGjsAnim(id) {
   this.draw = SVG(id).fixSubPixelOffset();
 
-  this.scene = this.draw.group().attr({ id: "scene" });
+  this.scene = this.draw.group().attr({ id: 'scene' });
 
   this.positionAndScale();
   this.resize();
@@ -20,19 +20,19 @@ function SVGjsAnim(id) {
 }
 
 SVGjsAnim.prototype.layers = {};
-SVGjsAnim.prototype.activeVideo = "";
+SVGjsAnim.prototype.activeVideo = '';
 SVGjsAnim.prototype.zoomed = false;
 SVGjsAnim.prototype.stepObjs = [];
 SVGjsAnim.prototype.bullets = {};
 SVGjsAnim.prototype.headings = {};
 SVGjsAnim.prototype.animations = [];
 SVGjsAnim.prototype.steps = [];
-SVGjsAnim.prototype.stepCurrent = "overview";
+SVGjsAnim.prototype.stepCurrent = 'overview';
 
-SVGjsAnim.prototype.init = function () {
+SVGjsAnim.prototype.init = () => {
   var svgjsAnim = mill;
   if (svgjsAnim.preloadedImages) {
-    var loadingImage = document.getElementById("anim-loading");
+    var loadingImage = document.getElementById('anim-loading');
     loadingImage.parentNode.removeChild(loadingImage);
     svgjsAnim.build();
     svgjsAnim.start();
