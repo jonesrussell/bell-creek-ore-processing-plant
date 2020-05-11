@@ -73,10 +73,10 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
-              connect.static(".tmp"),
+              connect.static('.tmp'),
               connect().use(
-                "/bower_components",
-                connect.static("./bower_components")
+                '/bower_components',
+                connect.static('./bower_components')
               ),
               connect.static(config.app),
             ];
@@ -89,11 +89,11 @@ module.exports = function (grunt) {
           port: 9001,
           middleware: function (connect) {
             return [
-              connect.static("test"),
-              connect.static(".tmp"),
+              connect.static('test'),
+              connect.static('.tmp'),
               connect().use(
-                "/bower_components",
-                connect.static("./bower_components")
+                '/bower_components',
+                connect.static('./bower_components')
               ),
               connect.static(config.app),
             ];
@@ -102,7 +102,7 @@ module.exports = function (grunt) {
       },
       dist: {
         options: {
-          base: "<%= config.dist %>",
+          base: '<%= config.dist %>',
           livereload: false,
         },
       },
