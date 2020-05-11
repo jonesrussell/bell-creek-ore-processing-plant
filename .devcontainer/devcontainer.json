@@ -1,0 +1,13 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.117.0/containers/javascript-node-10
+{
+  "name": "Node.js 10",
+  "dockerFile": "Dockerfile",
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": ["dbaeumer.vscode-eslint"],
+  "forwardPorts": [9000],
+  "postCreateCommand": "npm install",
+  "remoteUser": "node"
+}
