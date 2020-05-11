@@ -1,9 +1,5 @@
 {
   "name": "bell-creek-ore-processing-plant",
-  "author": {
-    "name": "Russell Jones",
-    "url": "https://jonesrussell.github.io/blog/"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/jonesrussell/bell-creek-ore-processing-plant.git"
@@ -13,6 +9,7 @@
     "build": "./node_modules/.bin/grunt build",
     "postinstall": "npm run build"
   },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.2",
@@ -42,6 +39,9 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "dependencies": {},
-  "license": "MIT"
+  "license": "MIT",
+  "author": {
+    "name": "Russell Jones",
+    "url": "https://jonesrussell.github.io/blog/"
+  }
 }
