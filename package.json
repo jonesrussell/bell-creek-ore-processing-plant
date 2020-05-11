@@ -2,7 +2,8 @@
   "name": "bell-creek-mill",
   "scripts": {
     "start": "./node_modules/grunt-cli/bin/grunt serve",
-    "postinstall": "./node_modules/grunt-cli/bin/grunt build"
+    "build": "./node_modules/grunt-cli/bin/grunt build",
+    "postinstall": "npm run build"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
