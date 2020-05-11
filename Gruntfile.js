@@ -258,20 +258,6 @@ module.exports = function (grunt) {
       }
     },
 
-    // FTP
-    'ftp-deploy': {
-      build: {
-        auth: {
-          host: 'box.bureaugroup.ca',
-          port: 21,
-          authKey: 'bureau-lsg'
-        },
-        src: 'dist',
-        dest: '/public_html/bell-creek/',
-        exclusions: ['dist/**/.DS_Store', 'dist/**/Thumbs.db']
-      }
-    },
-
     // By default, your `index.html`'s <!-- Usemin block --> will take care
     // of minification. These next options are pre-configured if you do not
     // wish to use the Usemin blocks.
