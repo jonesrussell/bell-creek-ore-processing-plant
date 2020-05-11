@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 /*global SVG, mill */
 
 SVG.Bullets = SVG.invent({
-  create: "g",
+  create: 'g',
   inherit: SVG.G,
   extend: {
     build: function (txt, height) {

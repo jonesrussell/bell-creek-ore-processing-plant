@@ -1,30 +1,30 @@
-"use strict";
+'use strict';
 /*global SVG, SVGjsAnim, classie, mill */
 
 SVG.Heading = SVG.invent({
-  create: "g",
+  create: 'g',
   inherit: SVG.G,
   extend: {
     build: function (headingText, video) {
       this.video = video;
-      this.addClass("heading");
-      this.add(this.doc().image("images/heading.svg", 349, 89));
+      this.addClass('heading');
+      this.add(this.doc().image('images/heading.svg', 349, 89));
       var text = this.doc()
         .text(headingText)
-        .attr({ fill: "#fff" })
-        .font({ family: "Oswald", size: 28 })
+        .attr({ fill: '#fff' })
+        .font({ family: 'Oswald', size: 28 })
         .move(15, 23);
       this.add(text);
 
-      var videoGroup = this.doc().group().addClass("clickable");
+      var videoGroup = this.doc().group().addClass('clickable');
 
-      var icon = this.doc().image("images/video.svg", 24, 17).move(250, 27);
+      var icon = this.doc().image('images/video.svg', 24, 17).move(250, 27);
       videoGroup.add(icon);
 
       var videoTxt = this.doc()
-        .text("VIDEO")
-        .attr({ fill: "#ddd" })
-        .font({ family: "Oswald", size: 18 })
+        .text('VIDEO')
+        .attr({ fill: '#ddd' })
+        .font({ family: 'Oswald', size: 18 })
         .move(285, 27);
       videoGroup.add(videoTxt);
 
@@ -42,18 +42,18 @@ SVG.Heading = SVG.invent({
 
 SVG.extend(SVG.Heading, {
   play: function () {
-    var overlay = document.querySelector(".overlay");
-    var overlayActive = overlay.querySelector(".active");
+    var overlay = document.querySelector('.overlay');
+    var overlayActive = overlay.querySelector('.active');
     if (overlayActive !== null) {
-      classie.remove(overlayActive, "active");
+      classie.remove(overlayActive, 'active');
     }
 
     //var video = document.getElementById(this.data('videoId'));
-    classie.add(this.video.container, "active");
+    classie.add(this.video.container, 'active');
     mill.activeVideo = this.video;
     this.video.play();
 
-    document.getElementById("trigger-overlay").click();
+    document.getElementById('trigger-overlay').click();
     //event.stopPropagation();
     return this;
   },
