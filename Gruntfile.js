@@ -10,11 +10,15 @@
 
 module.exports = function (grunt) {
 
+  let serveStatic = require('serve-static');
+
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
+  grunt.loadNpmTasks('grunt-contrib-watch');
+
   // Configurable paths
-  var config = {
+  const config = {
     app: 'src',
     dist: 'dist'
   };
@@ -26,38 +30,52 @@ module.exports = function (grunt) {
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
-      bower: {
-        files: ["bower.json"],
-        tasks: ["wiredep"],
+      options: {
+        livereload: true,
       },
       js: {
-        files: ["<%= config.app %>/scripts/{,*/}*.js"],
-        tasks: ["jshint"],
+        files: ['<%= config.app %>/scripts/{,*/}*.js'],
+        tasks: ['jshint'],
         options: {
           livereload: true,
         },
       },
-      jstest: {
-        files: ["test/spec/{,*/}*.js"],
-        tasks: ["test:watch"],
-      },
-      gruntfile: {
-        files: ["Gruntfile.js"],
-      },
       styles: {
-        files: ["<%= config.app %>/styles/{,*/}*.css"],
-        tasks: ["newer:copy:styles", "autoprefixer"],
+        files: ['<%= config.app %>/styles/{,*/}*.css'],
+        tasks: ['newer:copy:styles'],
       },
-      livereload: {
-        options: {
-          livereload: "<%= connect.options.livereload %>",
-        },
-        files: [
-          "<%= config.app %>/{,*/}*.html",
-          ".tmp/styles/{,*/}*.css",
-          "<%= config.app %>/images/{,*/}*",
-        ],
-      },
+      //      bower: {
+      //        files: ['bower.json'],
+      //        tasks: ['wiredep'],
+      //      },
+      //      js: {
+      //        files: ['<%= config.app %>/scripts/{,*/}*.js'],
+      //        tasks: ['jshint'],
+      //        options: {
+      //          livereload: true,
+      //        },
+      //      },
+      //      jstest: {
+      //        files: ['test/spec/{,*/}*.js'],
+      //        tasks: ['test:watch'],
+      //      },
+      //      gruntfile: {
+      //        files: ['Gruntfile.js'],
+      //      },
+      //      styles: {
+      //        files: ['<%= config.app %>/styles/{,*/}*.css'],
+      //        tasks: ['newer:copy:styles', 'autoprefixer'],
+      //      },
+      //      livereload: {
+      //        options: {
+      //          livereload: '<%= connect.options.livereload %>',
+      //        },
+      //        files: [
+      //          '<%= config.app %>/{,*/}*.html',
+      //          '.tmp/styles/{,*/}*.css',
+      //          '<%= config.app %>/images/{,*/}*',
+      //        ],
+      //      },
     },
 
     // The actual grunt server settings
@@ -67,18 +85,18 @@ module.exports = function (grunt) {
         open: true,
         livereload: 35729,
         // Change this to '0.0.0.0' to access the server from outside
-        hostname: "0.0.0.0",
+        hostname: '0.0.0.0',
       },
       livereload: {
         options: {
-          middleware: function (connect) {
+          middleware: (connect) => {
             return [
-              connect.static('.tmp'),
+              serveStatic('.tmp'),
               connect().use(
                 '/bower_components',
-                connect.static('./bower_components')
+                serveStatic('./bower_components')
               ),
-              connect.static(config.app),
+              serveStatic(config.app),
             ];
           },
         },
@@ -87,15 +105,16 @@ module.exports = function (grunt) {
         options: {
           open: false,
           port: 9001,
-          middleware: function (connect) {
+          middleware: (connect) => {
+            const serveStatic = require('serve-static');
             return [
-              connect.static('test'),
-              connect.static('.tmp'),
+              serveStatic('test'),
+              serveStatic('.tmp'),
               connect().use(
                 '/bower_components',
-                connect.static('./bower_components')
+                serveStatic('./bower_components')
               ),
-              connect.static(config.app),
+              serveStatic(config.app),
             ];
           },
         },
@@ -114,24 +133,24 @@ module.exports = function (grunt) {
         files: [
           {
             dot: true,
-            src: [".tmp", "<%= config.dist %>/*", "!<%= config.dist %>/.git*"],
+            src: ['.tmp', '<%= config.dist %>/*', '!<%= config.dist %>/.git*'],
           },
         ],
       },
-      server: ".tmp",
+      server: '.tmp',
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
-        jshintrc: ".jshintrc",
-        reporter: require("jshint-stylish"),
+        jshintrc: '.jshintrc',
+        reporter: require('jshint-stylish'),
       },
       all: [
-        "Gruntfile.js",
-        "<%= config.app %>/scripts/{,*/}*.js",
-        "!<%= config.app %>/scripts/vendor/*",
-        "test/spec/{,*/}*.js",
+        'Gruntfile.js',
+        '<%= config.app %>/scripts/{,*/}*.js',
+        '!<%= config.app %>/scripts/vendor/*',
+        'test/spec/{,*/}*.js',
       ],
     },
 
@@ -177,11 +196,11 @@ module.exports = function (grunt) {
       dist: {
         files: {
           src: [
-            "<%= config.dist %>/scripts/{,*/}*.js",
-            "<%= config.dist %>/styles/{,*/}*.css",
-            "<%= config.dist %>/images/{,*/}*.*",
-            "<%= config.dist %>/styles/fonts/{,*/}*.*",
-            "<%= config.dist %>/*.{ico,png}",
+            '<%= config.dist %>/scripts/{,*/}*.js',
+            '<%= config.dist %>/styles/{,*/}*.css',
+            '<%= config.dist %>/images/{,*/}*.*',
+            '<%= config.dist %>/styles/fonts/{,*/}*.*',
+            '<%= config.dist %>/*.{ico,png}',
           ],
         },
       },
@@ -192,32 +211,32 @@ module.exports = function (grunt) {
     // additional tasks can operate on them
     useminPrepare: {
       options: {
-        dest: "<%= config.dist %>",
+        dest: '<%= config.dist %>',
       },
-      html: "<%= config.app %>/index.html",
+      html: '<%= config.app %>/index.html',
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
       options: {
         assetsDirs: [
-          "<%= config.dist %>",
-          "<%= config.dist %>/images",
-          "<%= config.dist %>/styles",
+          '<%= config.dist %>',
+          '<%= config.dist %>/images',
+          '<%= config.dist %>/styles',
         ],
         patterns: {
           // FIXME While usemin won't have full support for revved files we have to put all references manually here
           js: [
             [
               /(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg|ico))/gm,
-              "Update the JS to reference our revved images",
+              'Update the JS to reference our revved images',
             ],
           ],
         },
       },
-      html: ["<%= config.dist %>/{,*/}*.html"],
-      js: ["<%= config.dist %>/scripts/{,*/}*.js"],
-      css: ["<%= config.dist %>/styles/{,*/}*.css"],
+      html: ['<%= config.dist %>/{,*/}*.html'],
+      js: ['<%= config.dist %>/scripts/{,*/}*.js'],
+      css: ['<%= config.dist %>/styles/{,*/}*.css'],
     },
 
     // The following *-min tasks produce minified files in the dist folder
@@ -226,9 +245,9 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= config.app %>/images",
-            src: "{,*/}*.{gif,jpeg,jpg,png,ico}",
-            dest: "<%= config.dist %>/images",
+            cwd: '<%= config.app %>/images',
+            src: '{,*/}*.{gif,jpeg,jpg,png,ico}',
+            dest: '<%= config.dist %>/images',
           },
         ],
       },
@@ -239,9 +258,9 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= config.app %>/images",
-            src: "{,*/}*.svg",
-            dest: "<%= config.dist %>/images",
+            cwd: '<%= config.app %>/images',
+            src: '{,*/}*.svg',
+            dest: '<%= config.dist %>/images',
           },
         ],
       },
@@ -263,9 +282,9 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= config.dist %>",
-            src: "{,*/}*.html",
-            dest: "<%= config.dist %>",
+            cwd: '<%= config.dist %>',
+            src: '{,*/}*.html',
+            dest: '<%= config.dist %>',
           },
         ],
       },
@@ -304,35 +323,35 @@ module.exports = function (grunt) {
           {
             expand: true,
             dot: true,
-            cwd: "<%= config.app %>",
-            dest: "<%= config.dist %>",
+            cwd: '<%= config.app %>',
+            dest: '<%= config.dist %>',
             src: [
-              "*.{ico,png,txt}",
-              "images/{,*/}*.webp",
-              "{,*/}*.html",
-              "styles/fonts/{,*/}*.*",
+              '*.{ico,png,txt}',
+              'images/{,*/}*.webp',
+              '{,*/}*.html',
+              'styles/fonts/{,*/}*.*',
             ],
           },
           {
-            src: "node_modules/apache-server-configs/dist/.htaccess",
-            dest: "<%= config.dist %>/.htaccess",
+            src: 'node_modules/apache-server-configs/dist/.htaccess',
+            dest: '<%= config.dist %>/.htaccess',
           },
         ],
       },
       styles: {
         expand: true,
         dot: true,
-        cwd: "<%= config.app %>/styles",
-        dest: ".tmp/styles/",
-        src: "{,*/}*.css",
+        cwd: '<%= config.app %>/styles',
+        dest: '.tmp/styles/',
+        src: '{,*/}*.css',
       },
     },
 
     // Run some tasks in parallel to speed up build process
     concurrent: {
-      server: ["copy:styles"],
-      test: ["copy:styles"],
-      dist: ["copy:styles", "imagemin", "svgmin"],
+      server: ['copy:styles'],
+      test: ['copy:styles'],
+      dist: ['copy:styles', 'imagemin', 'svgmin'],
     },
   });
 
@@ -353,11 +372,6 @@ module.exports = function (grunt) {
       'connect:livereload',
       'watch'
     ]);
-  });
-
-  grunt.registerTask('server', function (target) {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run([target ? ('serve:' + target) : 'serve']);
   });
 
   grunt.registerTask('test', function (target) {

@@ -30,3 +30,5 @@ USER $USER_UID
 
 RUN mkdir -p /home/${USERNAME}/.vscode-server/extensions \
     && mkdir -p ~/.vscode-server-insiders/extensions
+
+EXPOSE 9000 35729
