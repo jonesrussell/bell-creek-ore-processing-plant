@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>Bell Creek Ore Processing Plant | Lake Shore Gold Corp.</title>
     <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -69,9 +69,9 @@
         "load",
         function () {
           if (classie.has(document.getElementsByTagName("html")[0], "svg")) {
-            mill = new SVGjsAnim("drawing");
-            mill.preload();
-            mill.init();
+            window.mill = new SVGjsAnim("drawing");
+            window.mill.preload();
+            window.mill.init();
           }
         },
         false
@@ -97,14 +97,13 @@
 
     <div class="container">
       <div id="shepherd-connector-1"></div>
-      <div id="drawing">
+      <main id="drawing">
         <img src="images/loading.svg" id="anim-loading" />
-      </div>
+      </main>
       <p style="display: none;">
         <button id="trigger-overlay" type="button">Open Overlay</button>
       </p>
     </div>
-    <!-- /container -->
 
     <div class="overlay overlay-door">
       <button type="button" class="overlay-close">Close</button>

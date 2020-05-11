@@ -1,30 +1,34 @@
-'use strict';
-/*global SVG, SVGjsAnim, classie, mill */
-
+/**
+ * heading.js
+ */
 SVG.Heading = SVG.invent({
   create: 'g',
   inherit: SVG.G,
   extend: {
-    build: function (headingText, video) {
+    build (headingText, video) {
       this.video = video;
       this.addClass('heading');
       this.add(this.doc().image('images/heading.svg', 349, 89));
-      var text = this.doc()
+      const text = this.doc()
         .text(headingText)
         .attr({ fill: '#fff' })
-        .font({ family: 'Oswald', size: 28 })
+        .font({ family: 'Oswald',
+size: 28 })
         .move(15, 23);
       this.add(text);
 
-      var videoGroup = this.doc().group().addClass('clickable');
+      const videoGroup = this.doc().group().addClass('clickable');
 
-      var icon = this.doc().image('images/video.svg', 24, 17).move(250, 27);
+      const icon = this.doc().image('images/video.svg', 24, 17).move(250, 27);
       videoGroup.add(icon);
 
-      var videoTxt = this.doc()
+      const videoTxt = this.doc()
         .text('VIDEO')
         .attr({ fill: '#ddd' })
-        .font({ family: 'Oswald', size: 18 })
+        .font({
+          family: 'Oswald',
+          size: 18
+        })
         .move(285, 27);
       videoGroup.add(videoTxt);
 
@@ -34,14 +38,14 @@ SVG.Heading = SVG.invent({
     },
   },
   construct: {
-    heading: function (headingText, video) {
+    heading (headingText, video) {
       return this.put(new SVG.Heading()).build(headingText, video);
     },
   },
 });
 
 SVG.extend(SVG.Heading, {
-  play: function () {
+  play () {
     var overlay = document.querySelector('.overlay');
     var overlayActive = overlay.querySelector('.active');
     if (overlayActive !== null) {
@@ -50,7 +54,7 @@ SVG.extend(SVG.Heading, {
 
     //var video = document.getElementById(this.data('videoId'));
     classie.add(this.video.container, 'active');
-    mill.activeVideo = this.video;
+    window.mill.activeVideo = this.video;
     this.video.play();
 
     document.getElementById('trigger-overlay').click();
@@ -68,7 +72,10 @@ SVGjsAnim.prototype.hideHeadings = function () {
 };
 
 SVGjsAnim.prototype.toggleHeadings = function (n) {
-  for (var x in this.headings) {
-    this.headings[x].animate(1000).attr({ opacity: n });
+  const myHeadings = this.headings;
+  for (var x in myHeadings) {
+    if (Reflect.apply(myHeadings, x)) {
+      myHeadings[x].animate(1000).attr({ opacity: n });
+    }
   }
 };

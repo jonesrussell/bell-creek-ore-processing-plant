@@ -24,3 +24,19 @@ npm build
 ```bash
 npm serve
 ```
+
+## Gruntfile.js
+
+### Globbing
+
+For performance reasons we're only matching one level down:
+
+```javascript
+"test/spec/{,*/}*.js";
+```
+
+If you want to recursively match all subfolders, use:
+
+```javascript
+"test/spec/**/*.js";
+```

@@ -1,6 +1,6 @@
-"use strict";
-/*global SVGjsAnim */
-
+/**
+ * bullets.js
+ */
 SVGjsAnim.prototype.drawBullet = function (text, y, height, isLast) {
   var bullet = this.draw.group().attr({ class: "bullet" }).move(0, y);
   bullet.add(this.drawCircle(-5, 0));
@@ -28,7 +28,10 @@ SVGjsAnim.prototype.hideBullets = function () {
 };
 
 SVGjsAnim.prototype.toggleBullets = function (n) {
-  for (var x in this.bullets) {
-    this.bullets[x].animate(1000).attr({ opacity: n });
+  const myBullets = this.bullets;
+  for (const x in myBullets) {
+    if (Object.prototype.hasOwnProperty.call(myBullets, x)) {
+      myBullets[x].animate(1000).attr({ opacity: n });
+    }
   }
 };

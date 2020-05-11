@@ -1,9 +1,9 @@
 // Wonderful video overlay lifted from:
 // https://github.com/codrops/FullscreenOverlayStyles
 
-"use strict";
-/*global classie, mill, Modernizr */
-
+/**
+ * overlay.js
+ */
 window.addEventListener("load", function () {
   function toggleOverlay() {
     if (classie.has(overlay, "open")) {
@@ -20,7 +20,7 @@ window.addEventListener("load", function () {
 
         // @TODO move this elsewhere
         //                var activeVideo = document.querySelectorAll('.video-container .active')[0];
-        var activeVideo = mill.activeVideo;
+        const activeVideo = window.mill.activeVideo;
         if (typeof activeVideo !== "undefined") {
           activeVideo.pause();
           //                    activeVideo.currentTime = 0;

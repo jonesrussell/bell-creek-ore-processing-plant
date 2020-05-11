@@ -1,8 +1,6 @@
-"use strict";
-
-/*****************
- * Ore Animation *
- *****************/
+/**
+ * ore-animation.js
+ */
 function OreAnimation(scene, obj, paths) {
   this.loop = false;
   if (typeof arguments[3] !== "undefined" && arguments[3] === true) {
@@ -11,7 +9,6 @@ function OreAnimation(scene, obj, paths) {
 
   this.obj = obj;
   this.paths = paths;
-  //    this.pathsCopy = $.extend(true, [], paths);
   this.pathsCopy = JSON.parse(JSON.stringify(paths));
   scene.add(this.obj);
 
@@ -20,19 +17,18 @@ function OreAnimation(scene, obj, paths) {
 }
 
 OreAnimation.prototype.animate = function () {
-  var path = this.paths.shift();
+const oreAnim = this;
+  let path = oreAnim.paths.shift();
   if (typeof path === "undefined") {
-    if (!this.loop) {
+    if (!oreAnim.loop) {
       return;
     }
-    this.obj.move(this.startX, this.startY);
-    //        this.paths = $.extend(true, [], this.pathsCopy);
-    this.paths = JSON.parse(JSON.stringify(this.pathsCopy));
-    path = this.paths.shift();
+    oreAnim.obj.move(oreAnim.startX, oreAnim.startY);
+    oreAnim.paths = JSON.parse(JSON.stringify(oreAnim.pathsCopy));
+    path = oreAnim.paths.shift();
   }
 
-  var oreAnim = this;
-  this.obj
+  oreAnim.obj
     .animate(path.t, "-", 0)
     .move(path.x, path.y)
     .after(function () {

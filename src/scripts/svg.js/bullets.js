@@ -1,40 +1,44 @@
-'use strict';
-/*global SVG, mill */
-
+/**
+ * bullets.js
+ */
 SVG.Bullets = SVG.invent({
   create: 'g',
   inherit: SVG.G,
   extend: {
-    build: function (txt, height) {
+    build (txt, height) {
       this.bullets = [];
 
       this.attr({
         class: "bullets",
         opacity: 1,
-      }).scale(mill.bulletScale);
+      }).scale(window.mill.bulletScale);
 
-      var amount = txt.length;
-      var heightLast = null;
+      const amount = txt.length;
+      let heightLast = null;
+
       if (amount === 1) {
-        height = heightLast = height / amount;
+        heightLast = height / 1;
+        height /= 1;
       } else {
-        height = height / (amount + 1) + 10;
-        heightLast = height * 2 - 30;
+        height /= amount + 1;
+        height += 10;
+        heightLast = height * 2;
+        heightLast -= 30;
       }
-      var y = 0;
-      for (var i = 0; i < txt.length; i++) {
-        var isLast = i + 1 === amount;
+
+      let y = 0;
+      for (let i = 0; i < txt.length; i++) {
+        const isLast = i + 1 === amount;
         if (isLast) {
           height = heightLast;
         }
         this.add(this.bullet(txt[i], y, height, isLast));
-        y = y + height;
+        y += height;
       }
 
       return this;
     },
-    //        bullet: function(txt, y, height, isLast) {
-    bullet: function (txt, y, height) {
+    bullet (txt, y, height) {
       var bullet = this.doc().group().attr({ class: "bullet" }).move(0, y);
       bullet.add(this.drawCircle(-5, 0));
       bullet.add(this.drawLine(0, 10, 0, height));
@@ -44,19 +48,25 @@ SVG.Bullets = SVG.invent({
 
       return bullet;
     },
-    drawCircle: function (x, y) {
+    drawCircle (x, y) {
       return this.doc()
         .circle(10)
-        .stroke({ width: 3, color: "#939598" })
+        .stroke({
+          width: 3,
+          color: "#939598"
+        })
         .fill("none")
         .move(x, y);
     },
-    drawLine: function (x1, y1, x2, y2) {
+    drawLine (x1, y1, x2, y2) {
       return this.doc()
         .line(x1, y1, x2, y2)
-        .stroke({ width: 3, color: "#939598" });
+        .stroke({
+          width: 3,
+          color: "#939598"
+        });
     },
-    drawText: function (t, x, y) {
+    drawText (t, x, y) {
       return this.doc()
         .text(t)
         .font({
@@ -64,11 +74,11 @@ SVG.Bullets = SVG.invent({
           size: 13,
         })
         .move(x, y);
-    },
+    }
   },
   construct: {
-    bullets: function (txt, height) {
+    bullets (txt, height) {
       return this.put(new SVG.Bullets()).build(txt, height);
-    },
-  },
+    }
+  }
 });

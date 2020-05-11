@@ -1,17 +1,17 @@
-"use strict";
-/*global SVG */
-
+/**
+ * sag-mill.js
+ */
 SVG.SAGMill = SVG.invent({
   create: "g",
   inherit: SVG.G,
   extend: {
-    build: function () {
+    build () {
       this.wheel();
       this.studded();
 
       return this;
     },
-    wheel: function () {
+    wheel () {
       this.spinner = this.doc()
         .line(0, 0, 0, 145)
         .attr({
@@ -24,7 +24,7 @@ SVG.SAGMill = SVG.invent({
       this.add(this.spinner);
       return this;
     },
-    studded: function () {
+    studded () {
       var dots = this.doc().group().move(295, 460);
 
       var dot = this.doc().circle(5);
@@ -36,8 +36,7 @@ SVG.SAGMill = SVG.invent({
       for (var h = 0; h < down; h++) {
         for (var i = 0; i < across; i++) {
           dots.add(dot.clone().move(x, y));
-          /*jshint expr:true */
-          i < across - 1 ? (x += 14) : (x = 0);
+          x += i < across - 1 ? 14 : 0;
         }
         y += 16;
       }
@@ -47,22 +46,22 @@ SVG.SAGMill = SVG.invent({
     },
   },
   construct: {
-    sagMill: function () {
+    sagMill () {
       return this.put(new SVG.SAGMill()).build().go();
     },
   },
 });
 
 SVG.extend(SVG.SAGMill, {
-  go: function () {
+  go () {
     this.spinner.animate(1500, "-", 0).attr({ "stroke-dashoffset": 0 }).loop();
     return this;
   },
-  pause: function () {
+  pause () {
     this.spinner.pause();
     return this;
   },
-  play: function () {
+  play () {
     this.spinner.play();
     return this;
   },
