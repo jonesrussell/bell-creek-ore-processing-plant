@@ -1,12 +1,18 @@
-/**
- * Gruntfile.js
- */
+/* eslint-disable global-require */
+// # Globbing
+// for performance reasons we're only matching one level down:
+// 'test/spec/{,*/}*.js'
+// If you want to recursively match all subfolders, use:
+// 'test/spec/**/*.js'
+
 const serveStatic = require("serve-static");
-const loadGruntTasks = require("load-grunt-tasks");
 
 module.exports = function (grunt) {
+  // Time how long tasks take. Can help when optimizing build times
+  require("time-grunt")(grunt);
+
   // Load grunt tasks automatically
-  loadGruntTasks(grunt);
+  require("load-grunt-tasks")(grunt);
 
   // Configurable paths
   const config = {
@@ -16,49 +22,46 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
+    // Project settings
     config,
-    eslint: {
-      src: ["<%= config.app %>/scripts/{,*/}*.js"],
-    },
+
+    // Watches files for changes and runs tasks based on the changed files
     watch: {
-      // options: {
-      //   livereload: true,
-      // },
       bower: {
         files: ["bower.json"],
-        tasks: ["wiredep"]
+        tasks: ["wiredep"],
       },
       js: {
         files: ["<%= config.app %>/scripts/{,*/}*.js"],
         tasks: ["eslint"],
         options: {
           livereload: true,
-        }
+        },
       },
       jstest: {
         files: ["test/spec/{,*/}*.js"],
-        tasks: ["test:watch"]
+        tasks: ["test:watch"],
       },
       gruntfile: {
-        files: ["Gruntfile.js"]
+        files: ["Gruntfile.js"],
       },
       styles: {
         files: ["<%= config.app %>/styles/{,*/}*.css"],
         tasks: [
-          "newer:copy:styles",
-          "autoprefixer"
-        ]
+"newer:copy:styles",
+"autoprefixer"
+],
       },
       livereload: {
         options: {
-          livereload: "<%= connect.options.livereload %>"
+          livereload: "<%= connect.options.livereload %>",
         },
         files: [
           "<%= config.app %>/{,*/}*.html",
           ".tmp/styles/{,*/}*.css",
-          "<%= config.app %>/images/{,*/}*"
-        ]
-      }
+          "<%= config.app %>/images/{,*/}*",
+        ],
+      },
     },
 
     // The actual grunt server settings
@@ -67,11 +70,12 @@ module.exports = function (grunt) {
         port: 9000,
         open: true,
         livereload: 35729,
+        // Change this to '0.0.0.0' to access the server from outside
         hostname: "0.0.0.0",
       },
       livereload: {
         options: {
-          middleware(connect) {
+          middleware (connect) {
             return [
               serveStatic(".tmp"),
               connect().use(
@@ -87,7 +91,7 @@ module.exports = function (grunt) {
         options: {
           open: false,
           port: 9001,
-          middleware(connect) {
+          middleware (connect) {
             return [
               serveStatic("test"),
               serveStatic(".tmp"),
@@ -115,30 +119,49 @@ module.exports = function (grunt) {
           {
             dot: true,
             src: [
-              ".tmp",
-              "<%= config.dist %>/*",
-              "!<%= config.dist %>/.git*"
-            ],
-          }
-        ]
+".tmp",
+"<%= config.dist %>/*",
+"!<%= config.dist %>/.git*"
+],
+          },
+        ],
       },
       server: ".tmp",
     },
+
+    // Make sure code styles are up to par and there are no obvious mistakes
+    eslint: {
+      // options: {
+      //   jshintrc: ".jshintrc",
+      //   reporter: require("jshint-stylish"),
+      // },
+      all: [
+        "Gruntfile.js",
+        "<%= config.app %>/scripts/{,*/}*.js",
+        "!<%= config.app %>/scripts/vendor/*",
+        "test/spec/{,*/}*.js",
+      ]
+    },
+
+    // Mocha testing framework configuration options
     mocha: {
       all: {
         options: {
           run: true,
-          urls: ["http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html"],
+          urls: ["http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html", ],
         },
       },
     },
+
+    // Add vendor prefixed styles
     autoprefixer: {
       options: {
         browsers: [
-          "> 0.5%",
-          "last 2 versions",
-          "Firefox ESR"
-        ]
+"> 1%",
+"last 2 versions",
+"Firefox ESR",
+"Opera 12.1"
+],
       },
       dist: {
         files: [
@@ -147,9 +170,9 @@ module.exports = function (grunt) {
             cwd: ".tmp/styles/",
             src: "{,*/}*.css",
             dest: ".tmp/styles/",
-          }
-        ]
-      }
+          },
+        ],
+      },
     },
 
     // Automatically inject Bower components into the HTML file
@@ -157,7 +180,7 @@ module.exports = function (grunt) {
       app: {
         ignorePath: /^\/|\.\.\//,
         src: ["<%= config.app %>/index.html"],
-      }
+      },
     },
 
     // Renames files for browser caching purposes
@@ -191,14 +214,12 @@ module.exports = function (grunt) {
         assetsDirs: [
           "<%= config.dist %>",
           "<%= config.dist %>/images",
-          "<%= config.dist %>/styles"
+          "<%= config.dist %>/styles",
         ],
         patterns: {
-          // FIXME While usemin won't have full support for revved files we have
-          // to put all references manually here
+          // FIXME While usemin won't have full support for revved files we have to put all references manually here
           js: [
             [
-              // eslint-disable-next-line prefer-named-capture-group
               /(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg|ico))/gm,
               "Update the JS to reference our revved images",
             ],
@@ -261,6 +282,23 @@ module.exports = function (grunt) {
       },
     },
 
+    // FTP
+    "ftp-deploy": {
+      build: {
+        auth: {
+          host: "box.bureaugroup.ca",
+          port: 21,
+          authKey: "bureau-lsg",
+        },
+        src: "dist",
+        dest: "/public_html/bell-creek/",
+        exclusions: [
+"dist/**/.DS_Store",
+"dist/**/Thumbs.db"
+],
+      },
+    },
+
     // By default, your `index.html`'s <!-- Usemin block --> will take care
     // of minification. These next options are pre-configured if you do not
     // wish to use the Usemin blocks.
@@ -318,16 +356,33 @@ module.exports = function (grunt) {
       },
     },
 
+    // Generates a custom Modernizr build that includes only the tests you
+    // reference in your app
+    modernizr: {
+      dist: {
+        devFile: "bower_components/modernizr/modernizr.js",
+        outputFile: "<%= config.dist %>/scripts/vendor/modernizr.js",
+        files: {
+          src: [
+            "<%= config.dist %>/scripts/{,*/}*.js",
+            "<%= config.dist %>/styles/{,*/}*.css",
+            "!<%= config.dist %>/scripts/vendor/*",
+          ],
+        },
+        uglify: true,
+      },
+    },
+
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: ["copy:styles"],
       test: ["copy:styles"],
       dist: [
-        "copy:styles",
-        "imagemin",
-        "svgmin"
-      ]
-    }
+"copy:styles",
+"imagemin",
+"svgmin"
+],
+    },
   });
 
   grunt.registerTask(
@@ -339,35 +394,42 @@ module.exports = function (grunt) {
       }
       if (target === "dist") {
         return grunt.task.run([
-          "build",
-          "connect:dist:keepalive"
-        ]);
+"build",
+"connect:dist:keepalive"
+]);
       }
 
-      return grunt.task.run([
+      grunt.task.run([
         "clean:server",
         "wiredep",
         "concurrent:server",
         "autoprefixer",
         "connect:livereload",
-        "watch"
+        "watch",
       ]);
     }
   );
 
+  grunt.registerTask("server", function (target) {
+    grunt.log.warn(
+      "The `server` task has been deprecated. Use `grunt serve` to start a server."
+    );
+    grunt.task.run([target ? `serve:${target}` : "serve"]);
+  });
+
   grunt.registerTask("test", function (target) {
     if (target !== "watch") {
-      return grunt.task.run([
-        "clean:server",
-        "concurrent:test",
-        "autoprefixer"
-      ]);
+      grunt.task.run([
+"clean:server",
+"concurrent:test",
+"autoprefixer"
+]);
     }
 
-    return grunt.task.run([
-      "connect:test",
-      "mocha"
-    ]);
+    grunt.task.run([
+"connect:test",
+"mocha"
+]);
   });
 
   grunt.registerTask("build", [
@@ -380,14 +442,15 @@ module.exports = function (grunt) {
     "cssmin",
     "uglify",
     "copy:dist",
+    "modernizr",
     "rev",
     "usemin",
-    "htmlmin"
+    "htmlmin",
   ]);
 
   grunt.registerTask("default", [
-    "eslint",
-    "test",
-    "build"
-  ]);
+"newer:eslint",
+"test",
+"build"
+]);
 };
