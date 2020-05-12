@@ -1,21 +1,22 @@
-
-
+/**
+ * jaw-crusher.js
+ */
 SVG.JawCrusher = SVG.invent({
   create: "g",
   inherit: SVG.G,
   extend: {
     build () {
       this.attr({ id: "eq-jaw-crusher" }).move(
-        mill.jawCrusherX,
-        mill.jawCrusherY
+        window.mill.jawCrusherX,
+        window.mill.jawCrusherY
       );
-      this.jawCrusherLeft = mill.draw
+      this.jawCrusherLeft = window.mill.draw
         .image("images/jaw_crusher/crusher_left.svg", 35, 59)
         .move(0, 0);
-      this.jawCrusherRight = mill.draw
+      this.jawCrusherRight = window.mill.draw
         .image("images/jaw_crusher/crusher_right.svg", 44, 80)
         .move(42, -22);
-      var jawCrusherCircle = mill.draw
+      var jawCrusherCircle = window.mill.draw
         .image("images/jaw_crusher/crusher_circle.svg", 55, 55)
         .move(45, -37);
       this.add(this.jawCrusherLeft)

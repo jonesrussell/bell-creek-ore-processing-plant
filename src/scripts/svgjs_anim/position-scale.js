@@ -89,7 +89,8 @@ SVGjsAnim.prototype.resize = function () {
  * Helpers *
  ***********/
 SVGjsAnim.prototype.getWindowHeight = function () {
-  var viewportHeight;
+  let viewportHeight = null;
+
   if (document.compatMode === "BackCompat") {
     viewportHeight = document.body.clientHeight;
   } else {

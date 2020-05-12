@@ -10,7 +10,9 @@
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly",
     "SVG": "readonly",
-    "SVGjsAnim": "writable"
+    "SVGjsAnim": "writable",
+    "Q": "readonly",
+    "OreAnimation": "writable"
   },
   "parserOptions": {
     "ecmaVersion": 2018

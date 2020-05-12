@@ -1,5 +1,7 @@
-
-
+/* eslint-disable max-params */
+/**
+ * ore.js
+ */
 SVGjsAnim.prototype.setupOreToCrusher = function () {
   var step = this.draw
     .group()
@@ -129,11 +131,16 @@ SVGjsAnim.prototype.setupOreToSAGMill = function () {
   return step;
 };
 
-SVGjsAnim.prototype.buildOre = function (s, x, y) {
-  var ore;
-  if (s === "medium1") {
-    ore = this.draw.image("images/ore/ore_medium_1.svg", 7, 8);
-  } else if (s === "medium2") {
+/**
+ * buildOre
+ *
+ * TODO create map of 'ore size' => 'filename'
+ */
+SVGjsAnim.prototype.buildOre = function (s = "medium1", x = 0, y = 0) {
+  let ore = this.draw.image("images/ore/ore_medium_1.svg", 7, 8);
+  ore.move(x, y);
+
+  if (s === "medium2") {
     ore = this.draw.image("images/ore/ore_medium_2.svg", 7, 8);
   } else if (s === "small1") {
     ore = this.draw.image("images/ore/ore_small_1.svg", 6, 5);
@@ -142,7 +149,7 @@ SVGjsAnim.prototype.buildOre = function (s, x, y) {
   } else if (s === "small3") {
     ore = this.draw.image("images/ore/ore_small_3.svg", 2, 2);
   }
-  ore.move(x, y);
+
   return ore;
 };
 
@@ -153,23 +160,34 @@ SVGjsAnim.prototype.buildOre = function (s, x, y) {
  * loop
  **/
 SVGjsAnim.prototype.oreToCrusherAnim = function (scene, s, x, y, loop) {
-  var paths = [
-    { x: 213,
-y: 0 + y,
-t: "10s" },
-    { x: 412,
-y: -101 + y,
-t: "12s" },
-    { x: 550,
-y: -101 + y,
-t: "4.5s" },
-    { x: 625,
-y: -98 + y,
-t: "3s" },
-    { x: 630,
-y: -39 + y,
-t: "2s" },
+  const paths = [
+    {
+      x: 213,
+      y: 0 + y,
+      t: "10s"
+    },
+    {
+      x: 412,
+      y: -101 + y,
+      t: "12s"
+    },
+    {
+      x: 550,
+      y: -101 + y,
+      t: "4.5s"
+    },
+    {
+      x: 625,
+      y: -98 + y,
+      t: "3s"
+    },
+    {
+      x: 630,
+      y: -39 + y,
+      t: "2s"
+    }
   ];
+
   paths[0].t = 10000 - x * 50;
   return new OreAnimation(scene, this.buildOre(s, x, y), paths, loop);
 };
