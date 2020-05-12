@@ -5,17 +5,17 @@ SVG.StirStick = SVG.invent({
   inherit: SVG.G,
   extend: {
     preload () {
-      mill.imgStirStick = "images/solution.svg";
-      mill.images.push(mill.imgStirStick);
-      mill.preload();
+      window.mill.imgStirStick = "images/solution.svg";
+      window.mill.images.push(window.mill.imgStirStick);
+      window.mill.preload();
       return this;
     },
     build (x, y) {
       this.move(x, y);
-      this.stick = mill.draw.image(mill.imgStirStick, 84, 139);
+      this.stick = window.mill.draw.image(window.mill.imgStirStick, 84, 139);
       this.add(this.stick);
       this.add(
-        mill.draw.line(42, 0, 42, 117).stroke({ width: 6,
+        window.mill.draw.line(42, 0, 42, 117).stroke({ width: 6,
 color: "#000" })
       );
 

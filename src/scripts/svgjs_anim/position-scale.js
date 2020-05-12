@@ -100,7 +100,7 @@ SVGjsAnim.prototype.getWindowHeight = function () {
 };
 
 SVGjsAnim.prototype.getWindowWidth = function () {
-  var viewportWidth;
+  let viewportWidth = 0;
   if (document.compatMode === "BackCompat") {
     viewportWidth = document.body.clientWidth;
   } else {
@@ -117,8 +117,14 @@ SVGjsAnim.prototype.calcScale = function (n) {
 };
 
 SVGjsAnim.prototype.calcAspectRatio = function (w, h) {
-  var ratio = w / h;
-  return Math.abs(ratio - 4 / 3) < Math.abs(ratio - 16 / 9) ? "4:3" : "16:9";
+  const ratio = w / h;
+  const fourThree = 4 / 3;
+  const ratioFourThree = ratio - fourThree;
+  const sixteenNine = 16 / 9;
+  const ratioSixteenNine = ratio - sixteenNine;
+  return Math.abs(ratioFourThree) < Math.abs(ratioSixteenNine)
+    ? "4:3"
+    : "16:9";
 };
 
 SVGjsAnim.prototype.isAspectRatio = function (n) {

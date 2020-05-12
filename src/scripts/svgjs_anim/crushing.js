@@ -1,5 +1,6 @@
-
-
+/**
+ * crushing.js
+ */
 SVGjsAnim.prototype.setupCrushing = function () {
   var scale = 0.85;
   var x = 1200;
@@ -13,13 +14,15 @@ SVGjsAnim.prototype.setupCrushing = function () {
     .move(120, 60);
   this.headings.crusher = this.draw.set().add(heading);
 
-  var step = this.steps.crusher = this.draw
+  this.steps.crusher = this.draw
     .step("crusher")
     .move(x, y)
     .data({ id: "step-crusher" })
     .setScene(this.scene)
     .setHeading(heading)
     .scale(scale);
+
+  const step = this.steps.crusher;
 
   var bulletsGroup = this.draw
     .group()

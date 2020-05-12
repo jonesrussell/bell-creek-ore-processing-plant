@@ -12,7 +12,8 @@
     "SVG": "readonly",
     "SVGjsAnim": "writable",
     "Q": "readonly",
-    "OreAnimation": "writable"
+    "OreAnimation": "writable",
+    "classie": "writable"
   },
   "parserOptions": {
     "ecmaVersion": 2018

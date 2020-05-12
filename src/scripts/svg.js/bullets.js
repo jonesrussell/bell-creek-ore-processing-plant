@@ -58,6 +58,7 @@ SVG.Bullets = SVG.invent({
         .fill("none")
         .move(x, y);
     },
+    // eslint-disable-next-line max-params
     drawLine (x1, y1, x2, y2) {
       return this.doc()
         .line(x1, y1, x2, y2)

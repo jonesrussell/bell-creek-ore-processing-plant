@@ -1,5 +1,6 @@
-
-
+/**
+ * electrowinning.js
+ */
 SVGjsAnim.prototype.setupElectrowinning = function () {
   var scale = 1;
   var x = 1495;

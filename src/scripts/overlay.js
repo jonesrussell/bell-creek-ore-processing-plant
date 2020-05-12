@@ -52,8 +52,8 @@ window.addEventListener("load", function () {
       msTransition: "MSTransitionEnd",
       transition: "transitionend",
     },
-    transEndEventName = transEndEventNames[Modernizr.prefixed("transition")],
-    support = { transitions: Modernizr.csstransitions };
+    transEndEventName = transEndEventNames.transition,
+    support = { transitions: true };
 
   triggerBttn.addEventListener("click", toggleOverlay);
   closeBttn.addEventListener("click", toggleOverlay);

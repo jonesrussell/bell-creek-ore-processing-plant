@@ -188,7 +188,8 @@ SVGjsAnim.prototype.oreToCrusherAnim = function (scene, s, x, y, loop) {
     }
   ];
 
-  paths[0].t = 10000 - x * 50;
+  const lx = x * 50;
+  paths[0].t = 10000 - lx;
   return new OreAnimation(scene, this.buildOre(s, x, y), paths, loop);
 };
 
@@ -200,20 +201,27 @@ SVGjsAnim.prototype.oreToCrusherAnim = function (scene, s, x, y, loop) {
  **/
 SVGjsAnim.prototype.oreToStorageDomeAnim = function (scene, s, x, y, loop) {
   var paths = [
-    { x: 130,
-y: -10 + y,
-t: 3500 },
-    { x: 420,
-y: -170 + y,
-t: 12000 },
+    {
+      x: 130,
+      y: -10 + y,
+      t: 3500
+    },
+    {
+      x: 420,
+      y: -170 + y,
+      t: 12000
+    },
+    {
+      x: 660,
+      y: -170 + y,
+      t: 6000
+    },
     { x: 660,
-y: -170 + y,
-t: 6000 },
-    { x: 660,
-y: -145 + y,
-t: 500 },
+      y: -145 + y,
+      t: 500 }
   ];
-  paths[0].t = 10000 - x * 50;
+  const lx = x * 50;
+  paths[0].t = 10000 - lx;
   return new OreAnimation(scene, this.buildOre(s, x, y), paths, loop);
 };
 
@@ -225,22 +233,35 @@ t: 500 },
  **/
 SVGjsAnim.prototype.oreToSAGMillAnim = function (scene, s, x, y, loop) {
   var paths = [
-    { x: 280,
-y: 0 + y,
-t: 1000 },
-    { x: 460,
-y: -212 + y,
-t: "10s" },
-    { x: 555,
-y: -212 + y,
-t: "2s" },
-    { x: 555,
-y: -150 + y,
-t: "2s" },
-    { x: 597,
-y: -150 + y,
-t: "2s" },
+    {
+      x: 280,
+      y: 0 + y,
+      t: 1000
+    },
+    {
+      x: 460,
+      y: -212 + y,
+      t: "10s"
+    },
+    {
+      x: 555,
+      y: -212 + y,
+      t: "2s"
+    },
+    {
+      x: 555,
+      y: -150 + y,
+      t: "2s"
+    },
+    {
+      x: 597,
+      y: -150 + y,
+      t: "2s"
+    }
   ];
-  paths[0].t = 10000 - x * 50;
+
+  const lx = x * 50;
+  paths[0].t = 10000 - lx;
+
   return new OreAnimation(scene, this.buildOre(s, x, y), paths, loop);
 };

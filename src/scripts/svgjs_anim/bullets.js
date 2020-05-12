@@ -1,3 +1,4 @@
+/* eslint-disable max-params */
 /**
  * bullets.js
  */
@@ -30,6 +31,7 @@ SVGjsAnim.prototype.hideBullets = function () {
 SVGjsAnim.prototype.toggleBullets = function (n) {
   const myBullets = this.bullets;
   for (const x in myBullets) {
+    // eslint-disable-next-line prefer-reflect
     if (Object.prototype.hasOwnProperty.call(myBullets, x)) {
       myBullets[x].animate(1000).attr({ opacity: n });
     }

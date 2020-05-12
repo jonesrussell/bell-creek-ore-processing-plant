@@ -1,5 +1,6 @@
 
 
+// eslint-disable-next-line prefer-reflect
 (function () {
   // hack for zoom icons in IE
   window.addEventListener(
@@ -30,7 +31,7 @@
         var h = options.height;
         this.id = options.id;
         this.zscale = options.scale;
-        this.sceneScale = mill.sceneScale;
+        this.sceneScale = window.mill.sceneScale;
         this.zx = options.zx;
         this.zy = options.zy;
 
@@ -94,7 +95,7 @@
       return this;
     },
     zoomIn () {
-      mill.currentStep = this;
+      window.mill.currentStep = this;
       this.zoomed = true;
       this.stepX = this.zx;
       this.stepY = this.zy;
@@ -106,40 +107,40 @@
       return this;
     },
     zoomOut () {
-      mill.currentStep = 0;
+      window.mill.currentStep = 0;
       this.zoomed = false;
       this.zoomer.removeClass("zoom-out").addClass("zoom-in");
       this.hideVideo();
       this.toggleExtras();
-      mill.resetCamera();
+      window.mill.resetCamera();
       return this;
     },
     toggleExtras () {
       if (this.zoomed) {
         // @TODO put these in functions
-        for (var x in mill.bullets) {
-          if (x !== this.id) {
-            mill.bullets[x].animate(1000).attr({ opacity: 0 });
+        for (var x in window.mill.bullets) {
+          if (x === this.id) {
+            window.mill.bullets[x].animate(1000).attr({ opacity: 1 });
           } else {
-            mill.bullets[x].animate(1000).attr({ opacity: 1 });
+            window.mill.bullets[x].animate(1000).attr({ opacity: 0 });
           }
         }
-        for (var y in mill.headings) {
-          if (y !== this.id) {
-            mill.headings[y].animate(1000).attr({ opacity: 0 });
+        for (var y in window.mill.headings) {
+          if (y === this.id) {
+            window.mill.headings[y].animate(1000).attr({ opacity: 1 });
           } else {
-            mill.headings[y].animate(1000).attr({ opacity: 1 });
+            window.mill.headings[y].animate(1000).attr({ opacity: 0 });
           }
         }
       } else {
-        mill.showBullets();
-        mill.showHeadings();
+        window.mill.showBullets();
+        window.mill.showHeadings();
       }
     },
     stepTo () {
-      var x = mill.calcScale(this.stepX);
-      var y = mill.calcScale(this.stepY);
-      mill.scene.animate(1250).scale(mill.calcScale(this.stepScale)).x(x).y(y);
+      var x = window.mill.calcScale(this.stepX);
+      var y = window.mill.calcScale(this.stepY);
+      window.mill.scene.animate(1250).scale(window.mill.calcScale(this.stepScale)).x(x).y(y);
       return this;
     },
   });
