@@ -6,7 +6,7 @@
   },
   "remoteUser": "node",
   "remote.host": "0.0.0.0",
-  "forwardPorts": [9000, 35729],
+  "forwardPorts": [9000, 9001, 35729],
   "postCreateCommand": "npm install",
   "mounts": [
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",

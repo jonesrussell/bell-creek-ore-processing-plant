@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * svgjs-anim.js
  */
@@ -23,6 +24,7 @@ SVGjsAnim.prototype.steps = [];
 SVGjsAnim.prototype.stepCurrent = 'overview';
 
 SVGjsAnim.prototype.init = function () {
+  console.log('init()');
   const svgjsAnim = window.mill;
   if (svgjsAnim.preloadedImages) {
     const loadingImage = document.getElementById('anim-loading');
