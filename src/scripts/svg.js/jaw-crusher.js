@@ -1,11 +1,10 @@
-"use strict";
-/*global SVG, mill, Q */
+
 
 SVG.JawCrusher = SVG.invent({
   create: "g",
   inherit: SVG.G,
   extend: {
-    build: function () {
+    build () {
       this.attr({ id: "eq-jaw-crusher" }).move(
         mill.jawCrusherX,
         mill.jawCrusherY
@@ -27,14 +26,14 @@ SVG.JawCrusher = SVG.invent({
     },
   },
   construct: {
-    jawCrusher: function () {
+    jawCrusher () {
       return this.put(new SVG.JawCrusher()).build();
     },
   },
 });
 
 SVG.extend(SVG.JawCrusher, {
-  go: function () {
+  go () {
     var self = this;
     this.open(self)
       .then(function () {
@@ -45,21 +44,25 @@ SVG.extend(SVG.JawCrusher, {
       });
     return this;
   },
-  open: function () {
+  open () {
     var defer = Q.defer();
     this.jawCrusherRight
       .animate(250)
-      .transform({ rotation: 0, x: 0, y: 0 })
+      .transform({ rotation: 0,
+x: 0,
+y: 0 })
       .after(function () {
         defer.resolve();
       });
     return defer.promise;
   },
-  close: function () {
+  close () {
     var defer = Q.defer();
     this.jawCrusherRight
       .animate(250)
-      .transform({ rotation: 4, x: -2, y: 2 })
+      .transform({ rotation: 4,
+x: -2,
+y: 2 })
       .after(function () {
         defer.resolve();
       });

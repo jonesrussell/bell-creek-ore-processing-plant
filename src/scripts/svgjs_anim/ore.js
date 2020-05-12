@@ -1,5 +1,4 @@
-"use strict";
-/*global SVGjsAnim, OreAnimation */
+
 
 SVGjsAnim.prototype.setupOreToCrusher = function () {
   var step = this.draw
@@ -155,11 +154,21 @@ SVGjsAnim.prototype.buildOre = function (s, x, y) {
  **/
 SVGjsAnim.prototype.oreToCrusherAnim = function (scene, s, x, y, loop) {
   var paths = [
-    { x: 213, y: 0 + y, t: "10s" },
-    { x: 412, y: -101 + y, t: "12s" },
-    { x: 550, y: -101 + y, t: "4.5s" },
-    { x: 625, y: -98 + y, t: "3s" },
-    { x: 630, y: -39 + y, t: "2s" },
+    { x: 213,
+y: 0 + y,
+t: "10s" },
+    { x: 412,
+y: -101 + y,
+t: "12s" },
+    { x: 550,
+y: -101 + y,
+t: "4.5s" },
+    { x: 625,
+y: -98 + y,
+t: "3s" },
+    { x: 630,
+y: -39 + y,
+t: "2s" },
   ];
   paths[0].t = 10000 - x * 50;
   return new OreAnimation(scene, this.buildOre(s, x, y), paths, loop);
@@ -173,10 +182,18 @@ SVGjsAnim.prototype.oreToCrusherAnim = function (scene, s, x, y, loop) {
  **/
 SVGjsAnim.prototype.oreToStorageDomeAnim = function (scene, s, x, y, loop) {
   var paths = [
-    { x: 130, y: -10 + y, t: 3500 },
-    { x: 420, y: -170 + y, t: 12000 },
-    { x: 660, y: -170 + y, t: 6000 },
-    { x: 660, y: -145 + y, t: 500 },
+    { x: 130,
+y: -10 + y,
+t: 3500 },
+    { x: 420,
+y: -170 + y,
+t: 12000 },
+    { x: 660,
+y: -170 + y,
+t: 6000 },
+    { x: 660,
+y: -145 + y,
+t: 500 },
   ];
   paths[0].t = 10000 - x * 50;
   return new OreAnimation(scene, this.buildOre(s, x, y), paths, loop);
@@ -190,11 +207,21 @@ SVGjsAnim.prototype.oreToStorageDomeAnim = function (scene, s, x, y, loop) {
  **/
 SVGjsAnim.prototype.oreToSAGMillAnim = function (scene, s, x, y, loop) {
   var paths = [
-    { x: 280, y: 0 + y, t: 1000 },
-    { x: 460, y: -212 + y, t: "10s" },
-    { x: 555, y: -212 + y, t: "2s" },
-    { x: 555, y: -150 + y, t: "2s" },
-    { x: 597, y: -150 + y, t: "2s" },
+    { x: 280,
+y: 0 + y,
+t: 1000 },
+    { x: 460,
+y: -212 + y,
+t: "10s" },
+    { x: 555,
+y: -212 + y,
+t: "2s" },
+    { x: 555,
+y: -150 + y,
+t: "2s" },
+    { x: 597,
+y: -150 + y,
+t: "2s" },
   ];
   paths[0].t = 10000 - x * 50;
   return new OreAnimation(scene, this.buildOre(s, x, y), paths, loop);

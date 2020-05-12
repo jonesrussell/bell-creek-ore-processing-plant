@@ -1,13 +1,13 @@
-"use strict";
-/*global SVG */
-
+/**
+ * slurry.js
+ */
 SVG.Slurry = SVG.invent({
   create: "g",
   inherit: SVG.G,
   extend: {
-    build: function (id) {
+    build(id) {
       this.lines = {};
-      this.attr({ id: id })
+      this.attr({ id })
         .buildTableConcentrator()
         .buildThickenerCyclone()
         .buildThickenerStrip()
@@ -17,7 +17,7 @@ SVG.Slurry = SVG.invent({
         .buildEWPan();
       return this;
     },
-    go: function () {
+    go() {
       this.goTableConcentrator()
         .goThickenerCyclone()
         .goThickenerStrip()
@@ -29,7 +29,7 @@ SVG.Slurry = SVG.invent({
     },
   },
   construct: {
-    slurry: function (id) {
+    slurry(id) {
       return this.put(new SVG.Slurry()).build(id);
     },
   },
@@ -37,16 +37,13 @@ SVG.Slurry = SVG.invent({
 
 // Table
 SVG.extend(SVG.Slurry, {
-  buildTableConcentrator: function () {
+  buildTableConcentrator() {
     var id = "table-concentrator";
-    var raw =
-      '<svg xmlns="http://www.w3.org/2000/svg" width="3676" height="1255.939" viewBox="0 0 3676 1255.939"><path id="' +
-      id +
-      '" fill="none" stroke="#BA8E2D" stroke-width="4" stroke-miterlimit="10" d="M1298 707.928v-17.95l16.333-30.544h62V631.67H3676"/></svg>';
+    var raw = `<svg xmlns="http://www.w3.org/2000/svg" width="3676" height="1255.939" viewBox="0 0 3676 1255.939"><path id="${id}" fill="none" stroke="#BA8E2D" stroke-width="4" stroke-miterlimit="10" d="M1298 707.928v-17.95l16.333-30.544h62V631.67H3676"/></svg>`;
     this.lines[id] = this.buildLine(raw, id, 1025);
     return this;
   },
-  goTableConcentrator: function () {
+  goTableConcentrator() {
     this.goLine(this.lines["table-concentrator"], 5000);
     return this;
   },
@@ -54,16 +51,13 @@ SVG.extend(SVG.Slurry, {
 
 // Thickener from Cyclone
 SVG.extend(SVG.Slurry, {
-  buildThickenerCyclone: function () {
+  buildThickenerCyclone() {
     var id = "thickener-cyclone";
-    var raw =
-      '<svg xmlns="http://www.w3.org/2000/svg" width="3676" height="1255.939" viewBox="0 0 3676 1255.939"><path id="' +
-      id +
-      '" fill="none" stroke="#939598" stroke-width="4" stroke-miterlimit="10" d="M3294.133 837.67v-69.797H3676"/></svg>';
+    var raw = `<svg xmlns="http://www.w3.org/2000/svg" width="3676" height="1255.939" viewBox="0 0 3676 1255.939"><path id="${id}" fill="none" stroke="#939598" stroke-width="4" stroke-miterlimit="10" d="M3294.133 837.67v-69.797H3676"/></svg>`;
     this.lines[id] = this.buildLine(raw, id, 1025);
     return this;
   },
-  goThickenerCyclone: function () {
+  goThickenerCyclone() {
     this.goLine(this.lines["thickener-cyclone"], 5000);
     return this;
   },
@@ -71,16 +65,13 @@ SVG.extend(SVG.Slurry, {
 
 // Thickener to Strip
 SVG.extend(SVG.Slurry, {
-  buildThickenerStrip: function () {
+  buildThickenerStrip() {
     var id = "thickener-strip";
-    var raw =
-      '<svg xmlns="http://www.w3.org/2000/svg" width="3676" height="1255.939" viewBox="0 0 3676 1255.939"><path id="' +
-      id +
-      '" fill="none" stroke="#939598" stroke-width="4" stroke-miterlimit="10" d="M1765.667 799.86v-19.41h260.327V995h139.473V846.325h260.2V924h99.097V807.874h40.285V967.93h138.57V807.872H2744V967.93h139.19V807.872H2924V967.93h139.052V807.872h40.833V967.93h190.248v-75.962"/></svg>';
+    var raw = `<svg xmlns="http://www.w3.org/2000/svg" width="3676" height="1255.939" viewBox="0 0 3676 1255.939"><path id="${id}" fill="none" stroke="#939598" stroke-width="4" stroke-miterlimit="10" d="M1765.667 799.86v-19.41h260.327V995h139.473V846.325h260.2V924h99.097V807.874h40.285V967.93h138.57V807.872H2744V967.93h139.19V807.872H2924V967.93h139.052V807.872h40.833V967.93h190.248v-75.962"/></svg>`;
     this.lines[id] = this.buildLine(raw, id, 1025);
     return this;
   },
-  goThickenerStrip: function () {
+  goThickenerStrip() {
     this.goLine(this.lines["thickener-strip"], 5000);
     return this;
   },
@@ -88,16 +79,13 @@ SVG.extend(SVG.Slurry, {
 
 // Barren Tank to Heat Exchanger
 SVG.extend(SVG.Slurry, {
-  buildBarrenHeat: function () {
+  buildBarrenHeat() {
     var id = "barren-heat";
-    var raw =
-      '<svg xmlns="http://www.w3.org/2000/svg" width="3676" height="1255.94" viewBox="0 0 3676 1255.94"><path id="' +
-      id +
-      '" fill="none" stroke="#939598" stroke-width="4" stroke-miterlimit="10" d="M1975.23 995h-70.93V883.8h-18.576"/></svg>';
+    var raw = `<svg xmlns="http://www.w3.org/2000/svg" width="3676" height="1255.94" viewBox="0 0 3676 1255.94"><path id="${id}" fill="none" stroke="#939598" stroke-width="4" stroke-miterlimit="10" d="M1975.23 995h-70.93V883.8h-18.576"/></svg>`;
     this.lines[id] = this.buildLineReverse(raw, id, 1025);
     return this;
   },
-  goBarrenHeat: function () {
+  goBarrenHeat() {
     this.goLineReverse(this.lines["barren-heat"], 5000);
     return this;
   },
@@ -105,16 +93,13 @@ SVG.extend(SVG.Slurry, {
 
 // Heat Exchanger to Strip
 SVG.extend(SVG.Slurry, {
-  buildHeatStrip: function () {
+  buildHeatStrip() {
     var id = "heat-strip";
-    var raw =
-      '<svg xmlns="http://www.w3.org/2000/svg" width="3676" height="1255.939" viewBox="0 0 3676 1255.939"><path id="' +
-      id +
-      '" fill="none" stroke="#939598" stroke-width="4" stroke-miterlimit="10" d="M1755.27 960.376V995h69.723V883.8h18.575"/></svg>';
+    var raw = `<svg xmlns="http://www.w3.org/2000/svg" width="3676" height="1255.939" viewBox="0 0 3676 1255.939"><path id="${id}" fill="none" stroke="#939598" stroke-width="4" stroke-miterlimit="10" d="M1755.27 960.376V995h69.723V883.8h18.575"/></svg>`;
     this.lines[id] = this.buildLine(raw, id, 1025);
     return this;
   },
-  goHeatStrip: function () {
+  goHeatStrip() {
     this.goLine(this.lines["heat-strip"], 5000);
     return this;
   },
@@ -122,16 +107,13 @@ SVG.extend(SVG.Slurry, {
 
 // Strip Column to EW
 SVG.extend(SVG.Slurry, {
-  buildStripEW: function () {
+  buildStripEW() {
     var id = "strip-ew";
-    var raw =
-      '<svg xmlns="http://www.w3.org/2000/svg" width="3676" height="1255.939" viewBox="0 0 3676 1255.939"><path id="' +
-      id +
-      '" fill="none" stroke="#939598" stroke-width="4" stroke-miterlimit="10" d="M1745.68 802.04v-21.59h-82.475V925h-289.223"/></svg>';
+    var raw = `<svg xmlns="http://www.w3.org/2000/svg" width="3676" height="1255.939" viewBox="0 0 3676 1255.939"><path id="${id}" fill="none" stroke="#939598" stroke-width="4" stroke-miterlimit="10" d="M1745.68 802.04v-21.59h-82.475V925h-289.223"/></svg>`;
     this.lines[id] = this.buildLineReverse(raw, id, 1025);
     return this;
   },
-  goStripEW: function () {
+  goStripEW() {
     this.goLineReverse(this.lines["strip-ew"], 5000);
     return this;
   },
@@ -139,16 +121,13 @@ SVG.extend(SVG.Slurry, {
 
 // Strip Column to EW
 SVG.extend(SVG.Slurry, {
-  buildEWPan: function () {
+  buildEWPan() {
     var id = "ew-pan";
-    var raw =
-      '<svg xmlns="http://www.w3.org/2000/svg" width="3676" height="1255.939" viewBox="0 0 3676 1255.939"><path id="' +
-      id +
-      '" fill="none" stroke="#BA8E2D" stroke-width="4" stroke-miterlimit="10" d="M1104.674 925h-31.507v55.107"/></svg>';
+    var raw = `<svg xmlns="http://www.w3.org/2000/svg" width="3676" height="1255.939" viewBox="0 0 3676 1255.939"><path id="${id}" fill="none" stroke="#BA8E2D" stroke-width="4" stroke-miterlimit="10" d="M1104.674 925h-31.507v55.107"/></svg>`;
     this.lines[id] = this.buildLineReverse(raw, id, 1025);
     return this;
   },
-  goEWPan: function () {
+  goEWPan() {
     this.goLineReverse(this.lines["ew-pan"], 5000);
     return this;
   },
@@ -158,13 +137,13 @@ SVG.extend(SVG.Slurry, {
  * Helpers *
  ***********/
 SVG.extend(SVG.Slurry, {
-  getObjFromRaw: function (raw, id) {
+  getObjFromRaw(raw, id) {
     var rawObj = this.doc().svg(raw);
     var obj = rawObj.get(id);
     rawObj.remove();
     return obj;
   },
-  buildLine: function (raw, id, l) {
+  buildLine(raw, id, l) {
     var line = {};
     line.l = l;
     line.obj = this.getObjFromRaw(raw, id);
@@ -175,11 +154,11 @@ SVG.extend(SVG.Slurry, {
     this.add(line.obj);
     return line;
   },
-  goLine: function (line, time) {
+  goLine(line, time) {
     line.obj.animate(time, "-", 0).attr({ "stroke-dashoffset": line.l }).loop();
     return this;
   },
-  buildLineReverse: function (raw, id, l) {
+  buildLineReverse(raw, id, l) {
     var line = {};
     line.l = l;
     line.obj = this.getObjFromRaw(raw, id);
@@ -190,7 +169,7 @@ SVG.extend(SVG.Slurry, {
     this.add(line.obj);
     return line;
   },
-  goLineReverse: function (line, time) {
+  goLineReverse(line, time) {
     line.obj
       .animate(time, "-", 0)
       .attr({ "stroke-dashoffset": -line.l })

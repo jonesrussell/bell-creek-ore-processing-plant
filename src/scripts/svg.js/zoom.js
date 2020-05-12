@@ -1,5 +1,4 @@
-"use strict";
-/*global SVG, mill */
+
 
 (function () {
   // hack for zoom icons in IE
@@ -8,7 +7,7 @@
     function () {
       var ua = window.navigator.userAgent;
       var ie =
-        ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1 ? true : false;
+        Boolean(ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1);
       if (ie) {
         var css = document.createElement("style");
         css.type = "text/css";
@@ -26,7 +25,7 @@
     create: "g",
     inherit: SVG.G,
     extend: {
-      build: function (options) {
+      build (options) {
         var w = options.width;
         var h = options.height;
         this.id = options.id;
@@ -50,21 +49,21 @@
               self.zoomIn();
             }
           })
-          .data({ id: "zoom-" + this.id })
+          .data({ id: `zoom-${this.id}` })
           .addClass("zoom-in");
         this.add(this.zoomer);
         return this;
       },
     },
     construct: {
-      zoom: function (options) {
+      zoom (options) {
         return this.put(new SVG.Zoom()).build(options);
       },
     },
   });
 
   SVG.extend(SVG.Zoom, {
-    video: function (x, y) {
+    video (x, y) {
       var self = this;
       this.videoRect = this.doc()
         .rect()
@@ -86,15 +85,15 @@
       this.add(this.videoRect);
       return this;
     },
-    showVideo: function () {
+    showVideo () {
       this.videoRect.show();
       return this;
     },
-    hideVideo: function () {
+    hideVideo () {
       this.videoRect.hide();
       return this;
     },
-    zoomIn: function () {
+    zoomIn () {
       mill.currentStep = this;
       this.zoomed = true;
       this.stepX = this.zx;
@@ -106,7 +105,7 @@
       this.stepTo();
       return this;
     },
-    zoomOut: function () {
+    zoomOut () {
       mill.currentStep = 0;
       this.zoomed = false;
       this.zoomer.removeClass("zoom-out").addClass("zoom-in");
@@ -115,7 +114,7 @@
       mill.resetCamera();
       return this;
     },
-    toggleExtras: function () {
+    toggleExtras () {
       if (this.zoomed) {
         // @TODO put these in functions
         for (var x in mill.bullets) {
@@ -137,7 +136,7 @@
         mill.showHeadings();
       }
     },
-    stepTo: function () {
+    stepTo () {
       var x = mill.calcScale(this.stepX);
       var y = mill.calcScale(this.stepY);
       mill.scene.animate(1250).scale(mill.calcScale(this.stepScale)).x(x).y(y);

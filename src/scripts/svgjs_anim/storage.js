@@ -1,6 +1,6 @@
-"use strict";
-/*global SVGjsAnim */
-
+/**
+ * storage.js
+ */
 SVGjsAnim.prototype.setupStorage = function () {
   // Scene
   var scale = 1;

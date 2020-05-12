@@ -4,9 +4,9 @@
   src: local("Oswald"),
     url("fonts/oswald/Oswald-Regular.otf") format("opentype");
 }
+
 @font-face {
   font-family: "Oswald-Bold";
-  /*                font-weight: bold;*/
   src: url("fonts/oswald/Oswald-Bold.eot");
   src: local("Oswald-Bold"),
     url("fonts/oswald/Oswald-Bold.otf") format("opentype");
@@ -102,9 +102,6 @@ nav img {
   margin-top: 15px;
 }
 
-/****
- *  *
- ****/
 #drawing {
   overflow: hidden;
   /*    background-color: #b0e1eb;*/

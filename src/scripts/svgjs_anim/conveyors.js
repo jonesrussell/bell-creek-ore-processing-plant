@@ -1,5 +1,4 @@
-"use strict";
-/*global SVGjsAnim, SVG */
+
 
 SVGjsAnim.prototype.setupConveyors = function () {
   var conveyors = this.draw

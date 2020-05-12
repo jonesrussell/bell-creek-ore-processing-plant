@@ -1,5 +1,4 @@
-"use strict";
-/*global SVGjsAnim */
+
 
 SVGjsAnim.prototype.setupElectrowinning = function () {
   var scale = 1;
@@ -46,7 +45,10 @@ SVGjsAnim.prototype.setupElectrowinning = function () {
   bulletsGroup.add(
     this.draw
       .bullets(
-        ["HEAT EXCHANGER", "HIGH TEMPERATURE SOLUTION\nPUMPED TO STRIP COLUMN"],
+        [
+"HEAT EXCHANGER",
+"HIGH TEMPERATURE SOLUTION\nPUMPED TO STRIP COLUMN"
+],
         150
       )
       .move(434, 80)
@@ -54,7 +56,10 @@ SVGjsAnim.prototype.setupElectrowinning = function () {
 
   bulletsGroup.add(
     this.draw
-      .bullets(["BARREN\nSTRIPPING\nSOLUTION", "PUMPED TO\nSTRIP\nCOLUMN"], 135)
+      .bullets([
+"BARREN\nSTRIPPING\nSOLUTION",
+"PUMPED TO\nSTRIP\nCOLUMN"
+], 135)
       .move(525, 200)
   );
 

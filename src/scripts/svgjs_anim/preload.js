@@ -1,6 +1,6 @@
-"use strict";
-/*global SVGjsAnim, mill */
-
+/**
+ * preload.js
+ */
 SVGjsAnim.prototype.images = [
   "images/circuit-ore-equipment.svg",
   "images/circuit-ore.svg",
@@ -43,9 +43,10 @@ SVGjsAnim.prototype.images = [
 SVGjsAnim.prototype.preloadedImages = false;
 
 SVGjsAnim.prototype.preloadFinish = function () {
-  mill.howManyLoaded++;
-  if (mill.howManyImages === mill.howManyLoaded) {
-    mill.preloadedImages = true;
+  const m = window.mill;
+  m.howManyLoaded += 1;
+  if (m.howManyImages === m.howManyLoaded) {
+    m.preloadedImages = true;
   }
 };
 

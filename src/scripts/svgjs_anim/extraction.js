@@ -1,5 +1,4 @@
-"use strict";
-/*global SVGjsAnim */
+
 
 SVGjsAnim.prototype.setupExtraction = function () {
   var scale = 1;
@@ -26,14 +25,18 @@ SVGjsAnim.prototype.setupExtraction = function () {
 
   var bulletsGroup = this.draw
     .group()
-    .attr({ id: "bullets-extraction", opacity: 0 })
+    .attr({ id: "bullets-extraction",
+opacity: 0 })
     .scale(0.85)
     .move(24, 50);
 
   bulletsGroup.add(
     this.draw
       .bullets(
-        ["6 TANKS USED FOR\nCARBON IN PULP\nPROCESS", "96% GOLD RECOVERY"],
+        [
+"6 TANKS USED FOR\nCARBON IN PULP\nPROCESS",
+"96% GOLD RECOVERY"
+],
         150
       )
       .move(78, 105)
@@ -42,7 +45,10 @@ SVGjsAnim.prototype.setupExtraction = function () {
   bulletsGroup.add(
     this.draw
       .bullets(
-        ["3 TANKS ADD\nCLEAN LOADED CARBON", "CARBON ADSORBS\nDISSOLVED GOLD"],
+        [
+"3 TANKS ADD\nCLEAN LOADED CARBON",
+"CARBON ADSORBS\nDISSOLVED GOLD"
+],
         140
       )
       .move(258, 115)
@@ -51,7 +57,10 @@ SVGjsAnim.prototype.setupExtraction = function () {
   bulletsGroup.add(
     this.draw
       .bullets(
-        ["2 LEACHING TANKS", "SODIUM CYANIDE ADDED\nTO DISOLVE GOLD"],
+        [
+"2 LEACHING TANKS",
+"SODIUM CYANIDE ADDED\nTO DISOLVE GOLD"
+],
         150
       )
       .move(438, 105)
@@ -60,7 +69,10 @@ SVGjsAnim.prototype.setupExtraction = function () {
   bulletsGroup.add(
     this.draw
       .bullets(
-        ["3 TANKS ADD\nOXYGEN TO SLURRY", "LIME ADDED TO\nMAINTAIN ~11pH"],
+        [
+"3 TANKS ADD\nOXYGEN TO SLURRY",
+"LIME ADDED TO\nMAINTAIN ~11pH"
+],
         150
       )
       .move(617, 105)

@@ -1,9 +1,9 @@
-"use strict";
-/*global SVGjsAnim, mill */
-
+/**
+ * position-scale.js
+ */
 window.onresize = function () {
-  mill.positionAndScale();
-  mill.resize();
+  window.mill.positionAndScale();
+  window.mill.resize();
 };
 
 SVGjsAnim.prototype.positionAndScale = function () {
@@ -28,17 +28,20 @@ SVGjsAnim.prototype.positionAndScale = function () {
   // Scene
   this.origSceneW = 3676;
   this.origSceneH = 1256;
-  this.transform.width = this.transform.defaultWidth = this.windowW;
-  this.transform.height = this.transform.defaultHeight = this.windowH;
-  var sceneResizePercent = this.calcResizePercent(
+  this.transform.width = this.windowW;
+  this.transform.defaultWidth = this.windowW;
+  this.transform.height = this.windowH;
+  this.transform.defaultHeight = this.windowH;
+  const sceneResizePercent = this.calcResizePercent(
     this.origSceneW,
     this.transform.width
   );
   this.transform.scale = 1 - sceneResizePercent;
 
-  var svgHeight = this.origSceneH * this.transform.scale;
-  var remainingHeight = this.transform.height - svgHeight;
-  this.transform.y = this.transform.defaultY = (remainingHeight / 3) * 1.5;
+  const svgHeight = this.origSceneH * this.transform.scale;
+  const remainingHeight = this.transform.height - svgHeight;
+  this.transform.y = remainingHeight / 3 * 1.5;
+  this.transform.defaultY = remainingHeight / 3 * 1.5;
   this.groundStart = this.transform.y + svgHeight - 1;
 };
 
@@ -46,26 +49,31 @@ SVGjsAnim.prototype.x = function (x) {
   x = x || false;
   if (x) {
     this.transform.x = x;
-  } else {
-    return this.transform.x;
   }
+  return this.transform.x;
 };
 
 SVGjsAnim.prototype.y = function (y) {
   y = y || false;
   if (y) {
     this.transform.y = y;
-  } else {
-    return this.transform.y;
   }
+  return this.transform.y;
 };
 
+/**
+ * resetCamera
+ *
+ * WTF fix this
+ */
 SVGjsAnim.prototype.resetCamera = function () {
-  var x = -120 * this.transform.scale;
+  const scale = this.transform.scale;
+  const x = -120 * scale;
+  let newScale = scale * 0.08;
+  newScale = scale + newScale;
   this.scene
     .animate(1250)
-    .scale(this.transform.scale + this.transform.scale * 0.08)
-    //.move(x, this.transform.defaultY);
+    .scale(newScale)
     .move(x, this.transform.y);
 };
 
@@ -113,7 +121,7 @@ SVGjsAnim.prototype.calcAspectRatio = function (w, h) {
 };
 
 SVGjsAnim.prototype.isAspectRatio = function (n) {
-  return this.aspectRatio === n ? true : false;
+  return this.aspectRatio === n;
 };
 
 SVGjsAnim.prototype.calcResizePercent = function (n, n2) {

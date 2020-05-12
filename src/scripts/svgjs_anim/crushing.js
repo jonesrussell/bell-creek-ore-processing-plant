@@ -1,5 +1,4 @@
-"use strict";
-/*global SVGjsAnim */
+
 
 SVGjsAnim.prototype.setupCrushing = function () {
   var scale = 0.85;
@@ -14,13 +13,13 @@ SVGjsAnim.prototype.setupCrushing = function () {
     .move(120, 60);
   this.headings.crusher = this.draw.set().add(heading);
 
-  var step = (this.steps.crusher = this.draw
+  var step = this.steps.crusher = this.draw
     .step("crusher")
     .move(x, y)
     .data({ id: "step-crusher" })
     .setScene(this.scene)
     .setHeading(heading)
-    .scale(scale));
+    .scale(scale);
 
   var bulletsGroup = this.draw
     .group()

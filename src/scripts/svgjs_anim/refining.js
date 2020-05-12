@@ -1,6 +1,6 @@
-"use strict";
-/*global SVGjsAnim */
-
+/**
+ * refining.js
+ */
 SVGjsAnim.prototype.setupRefining = function () {
   var scale = 1.3;
   var x = 0;
@@ -23,20 +23,23 @@ SVGjsAnim.prototype.setupRefining = function () {
     .move(headingX, headingY);
   this.headings.refinery = this.draw.set().add(heading);
 
-  var step = (this.steps.refinery = this.draw
+  const step = this.draw
     .step("refinery")
     .move(x, y)
     .data({ id: "step-refinery" })
     .setScene(this.scene)
     .setHeading(heading)
-    .scale(scale));
+    .scale(scale);
 
-  var bulletsGroup = (this.bullets.refinery = this.draw
+  this.steps.refinery = step;
+
+  const bulletsGroup = this.draw
     .group()
     .attr({ id: "bullets-refinery" })
     .move(155, 117)
     .attr({ opacity: 0 })
-    .scale(1));
+    .scale(1);
+
   step.content(bulletsGroup);
 
   bulletsGroup.add(
@@ -76,6 +79,9 @@ SVGjsAnim.prototype.setupRefining = function () {
       .move(880, -15)
   );
 
+  // TODO is this used?
+  this.bullets.refinery = bulletsGroup;
+
   this.smeltedX = 427;
   this.smeltedY = 450;
   step.content(
@@ -91,7 +97,8 @@ SVGjsAnim.prototype.setupRefining = function () {
   var rect = this.draw
     .rect(82, 22)
     .move(829, 580)
-    .stroke({ color: "#ff0000", width: 1 });
+    .stroke({ color: "#ff0000",
+width: 1 });
   goldPan.clipWith(rect);
   rect.animate(4000).move(829, 559).loop();
   step.content(goldPan);
@@ -104,7 +111,8 @@ SVGjsAnim.prototype.setupRefining = function () {
   var rect2 = this.draw
     .rect(82, 22)
     .move(gptX, gptY + 21)
-    .stroke({ color: "#ff0000", width: 1 });
+    .stroke({ color: "#ff0000",
+width: 1 });
   goldPanTable.clipWith(rect2);
   rect2.animate(3000, "-", 2000).move(gptX, gptY).loop();
   step.content(goldPanTable);
@@ -150,7 +158,7 @@ SVGjsAnim.prototype.setupRefining = function () {
     .video(439, 5);
   step.setZoom(zoom);
 
-  step._content.scale(0.79);
-  step._content.move(138, -87);
+  step.myContent.scale(0.79);
+  step.myContent.move(138, -87);
   return step;
 };

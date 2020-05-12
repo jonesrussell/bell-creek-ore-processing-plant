@@ -1,6 +1,6 @@
-"use strict";
-/*global SVGjsAnim */
-
+/**
+ * receiving.js
+ */
 SVGjsAnim.prototype.setupReceiving = function () {
   var scale = 1.1;
   var x = 150;
@@ -16,13 +16,15 @@ SVGjsAnim.prototype.setupReceiving = function () {
     .move(355, 50);
   this.headings.receiving = this.draw.set().add(heading);
 
-  var step = (this.steps.receiving = this.draw
+  const step = this.draw
     .step("receiving")
     .move(x, y)
     .data({ id: "step-receiving" })
     .setScene(this.scene)
     .setHeading(heading)
-    .scale(scale));
+    .scale(scale);
+
+  this.steps.receiving = step;
 
   // Dump Truck
   var truckScale = 0.8;
@@ -53,12 +55,14 @@ SVGjsAnim.prototype.setupReceiving = function () {
   step.content(orePileRockBreaker);
 
   // Bullets
-  var bulletsGroup = (this.bullets.receiving = this.draw
+  const bulletsGroup = this.draw
     .group()
     .attr({ id: "bullets-receiving" })
     .move(680, 120)
     .attr({ opacity: 0 })
-    .scale(0.75));
+    .scale(0.75);
+
+  this.bullets.receiving = bulletsGroup;
 
   var bullets = [
     "TWO SIDED DUMP\nWITH 80 TONNE\nPOCKET CAPACITY",
@@ -74,7 +78,8 @@ SVGjsAnim.prototype.setupReceiving = function () {
   step.content(
     this.draw
       .line(249.1, 300, 249.1, 378)
-      .stroke({ width: 12, color: "#0089cf" })
+      .stroke({ width: 12,
+color: "#0089cf" })
       .move(551, 253)
   );
 
@@ -98,6 +103,6 @@ SVGjsAnim.prototype.setupReceiving = function () {
   step.setZoom(zoom);
 
   //@TODO create moveContent()
-  step._content.move(119.5, -20);
+  step.myContent.move(119.5, -20);
   return step;
 };

@@ -1,32 +1,34 @@
-"use strict";
-/*global SVGjsAnim, SVG */
-
+/**
+ * grinding.js
+ */
 SVGjsAnim.prototype.setupGrinding = function () {
-  var scale = 0.8;
-  var x = 2120;
-  var y = 0;
-  var w = 1000;
-  var h = 600;
+  const scale = 0.8;
+  const x = 2120;
+  const y = 0;
+  const w = 1000;
+  const h = 600;
 
   // Heading
   this.wistiaObjs.grinding = this.wistiaEmbed("c8zdqadrm5");
-  var heading = this.draw
+  const heading = this.draw
     .heading("GRINDING", this.wistiaObjs.grinding)
     .move(-50, 60);
   this.headings["sag-mill"] = this.draw.set().add(heading);
 
-  var step = (this.steps["sag-mill"] = this.draw
+  const step = this.draw
     .step("sag-mill")
     .scale(scale)
     .move(x, y)
     .data({ id: "step-sag-mill" })
     .setScene(this.scene)
-    .setHeading(heading));
+    .setHeading(heading);
+
+  this.steps["sag-mill"] = step;
 
   step.content(this.draw.sagMill());
 
   // Bullets
-  var bulletsGroup = this.draw
+  const bulletsGroup = this.draw
     .group()
     .attr({ id: "bullets-mill" })
     .move(120, 120)
@@ -94,13 +96,15 @@ SVGjsAnim.prototype.setupGrinding = function () {
   );
 
   // Zoom-in
-  var stepToScale = 3.9,
-    stepToX = -7550,
-    stepToY = 50;
+  const stepToScale = 3.9;
+  const stepToX = -7550;
+  let stepToY = 50;
+
   if (this.isAspectRatio("4:3")) {
     stepToY = 240;
   }
-  var zoom = this.draw
+
+  const zoom = this.draw
     .zoom({
       width: w,
       height: h,
@@ -112,7 +116,7 @@ SVGjsAnim.prototype.setupGrinding = function () {
     .video(200, 75);
   step.setZoom(zoom);
 
-  step._content.move(12, -30);
+  step.myContent.move(12, -30);
   return step;
 };
 

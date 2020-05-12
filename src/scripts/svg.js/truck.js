@@ -1,11 +1,10 @@
-"use strict";
-/*global SVG, Q */
+
 
 SVG.Truck = SVG.invent({
   create: "g",
   inherit: SVG.G,
   extend: {
-    build: function (x, y) {
+    build (x, y) {
       this.startX = x;
       this.startY = y;
       this.move(x, y);
@@ -41,21 +40,21 @@ SVG.Truck = SVG.invent({
 
       return this;
     },
-    setDumpAt: function (x, y) {
+    setDumpAt (x, y) {
       this.dumpAtX = x;
       this.dumpAtY = y;
       return this;
     },
   },
   construct: {
-    truck: function (x, y) {
+    truck (x, y) {
       return this.put(new SVG.Truck()).build(x, y);
     },
   },
 });
 
 SVG.extend(SVG.Truck, {
-  go: function () {
+  go () {
     this.showOre();
     var self = this;
     this.travel(self)
@@ -76,7 +75,7 @@ SVG.extend(SVG.Truck, {
       });
     return this;
   },
-  travel: function () {
+  travel () {
     var defer = Q.defer();
 
     this.truckTire1.animate(this.driveDuration).rotate(600);
@@ -90,7 +89,7 @@ SVG.extend(SVG.Truck, {
 
     return defer.promise;
   },
-  up: function () {
+  up () {
     var defer = Q.defer();
     this.truckBox
       .animate(1000)
@@ -104,11 +103,11 @@ SVG.extend(SVG.Truck, {
       });
     return defer.promise;
   },
-  dump: function () {
+  dump () {
     this.oreClipDump();
     return this.orePileDump();
   },
-  down: function () {
+  down () {
     this.orePileReset();
     var defer = Q.defer();
 
@@ -125,7 +124,7 @@ SVG.extend(SVG.Truck, {
 
     return defer.promise;
   },
-  leave: function () {
+  leave () {
     var defer = Q.defer();
 
     this.truckTire1.animate(this.driveDuration).rotate(-600);
@@ -138,22 +137,24 @@ SVG.extend(SVG.Truck, {
 
     return defer.promise;
   },
-  showOre: function () {
-    this.oreClip.transform({ x: 60, y: -27.5 });
+  showOre () {
+    this.oreClip.transform({ x: 60,
+y: -27.5 });
     return this;
   },
-  oreClipDump: function () {
-    this.oreClip.animate(2000).transform({ x: -150, y: -60 });
+  oreClipDump () {
+    this.oreClip.animate(2000).transform({ x: -150,
+y: -60 });
     return this;
   },
-  orePileReset: function () {
+  orePileReset () {
     this.orePile.transform({
       rotation: 0,
       x: 0,
       y: 0,
     });
   },
-  orePileDump: function () {
+  orePileDump () {
     var defer = Q.defer();
     this.orePile
       .animate(1000)

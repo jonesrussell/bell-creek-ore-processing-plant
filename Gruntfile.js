@@ -18,7 +18,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     config,
     eslint: {
-      src: ["<%= config.app %>/scripts/{,*/}*.js"],
+      src: ["<%= config.app %>/scripts/{,*/}*.js"]
     },
     watch: {
       options: {
@@ -26,39 +26,39 @@ module.exports = function (grunt) {
       },
       bower: {
         files: ["bower.json"],
-        tasks: ["wiredep"],
+        tasks: ["wiredep"]
       },
       js: {
         files: ["<%= config.app %>/scripts/{,*/}*.js"],
         tasks: ["eslint"],
         options: {
           livereload: true,
-        },
+        }
       },
       jstest: {
         files: ["test/spec/{,*/}*.js"],
-        tasks: ["test:watch"],
+        tasks: ["test:watch"]
       },
       gruntfile: {
-        files: ["Gruntfile.js"],
+        files: ["Gruntfile.js"]
       },
       styles: {
         files: ["<%= config.app %>/styles/{,*/}*.css"],
         tasks: [
-"newer:copy:styles",
-"autoprefixer"
-],
+          "newer:copy:styles",
+          "autoprefixer"
+        ]
       },
       livereload: {
         options: {
-          livereload: "<%= connect.options.livereload %>",
+          livereload: "<%= connect.options.livereload %>"
         },
         files: [
           "<%= config.app %>/{,*/}*.html",
           ".tmp/styles/{,*/}*.css",
-          "<%= config.app %>/images/{,*/}*",
-        ],
-      },
+          "<%= config.app %>/images/{,*/}*"
+        ]
+      }
     },
 
     // The actual grunt server settings
@@ -79,8 +79,8 @@ module.exports = function (grunt) {
               serveStatic("./bower_components")
             ),
             serveStatic(config.app),
-          ],
-        },
+          ]
+        }
       },
       test: {
         options: {
@@ -94,15 +94,15 @@ module.exports = function (grunt) {
               serveStatic("./bower_components")
             ),
             serveStatic(config.app),
-          ],
-        },
+          ]
+        }
       },
       dist: {
         options: {
           base: "<%= config.dist %>",
           livereload: false,
-        },
-      },
+        }
+      }
     },
 
     // Empties folders to start fresh
@@ -115,19 +115,19 @@ module.exports = function (grunt) {
               ".tmp",
               "<%= config.dist %>/*",
               "!<%= config.dist %>/.git*"
-            ]
+            ],
           }
         ]
       },
-      server: ".tmp",
+      server: ".tmp"
     },
     mocha: {
       all: {
         options: {
           run: true,
-          urls: ["http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html"],
-        },
-      },
+          urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html'],
+        }
+      }
     },
     autoprefixer: {
       options: {
@@ -143,7 +143,7 @@ module.exports = function (grunt) {
             expand: true,
             cwd: ".tmp/styles/",
             src: "{,*/}*.css",
-            dest: ".tmp/styles/",
+            dest: ".tmp/styles/"
           }
         ]
       }
@@ -153,8 +153,8 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         ignorePath: /^\/|\.\.\//u,
-        src: ["<%= config.app %>/index.html"],
-      },
+        src: ["<%= config.app %>/index.html"]
+      }
     },
 
     // Renames files for browser caching purposes
@@ -167,9 +167,9 @@ module.exports = function (grunt) {
             "<%= config.dist %>/images/{,*/}*.*",
             "<%= config.dist %>/styles/fonts/{,*/}*.*",
             "<%= config.dist %>/*.{ico,png}",
-          ],
-        },
-      },
+          ]
+        }
+      }
     },
 
     // Reads HTML for usemin blocks to enable smart builds that automatically
@@ -179,7 +179,7 @@ module.exports = function (grunt) {
       options: {
         dest: "<%= config.dist %>",
       },
-      html: "<%= config.app %>/index.html",
+      html: "<%= config.app %>/index.html"
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
@@ -188,7 +188,7 @@ module.exports = function (grunt) {
         assetsDirs: [
           "<%= config.dist %>",
           "<%= config.dist %>/images",
-          "<%= config.dist %>/styles",
+          "<%= config.dist %>/styles"
         ],
         patterns: {
           // FIXME While usemin won't have full support for revved files we have
@@ -197,13 +197,13 @@ module.exports = function (grunt) {
             [
               /(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg|ico))/gmu,
               "Update the JS to reference our revved images",
-            ],
-          ],
-        },
+            ]
+          ]
+        }
       },
       html: ["<%= config.dist %>/{,*/}*.html"],
       js: ["<%= config.dist %>/scripts/{,*/}*.js"],
-      css: ["<%= config.dist %>/styles/{,*/}*.css"],
+      css: ["<%= config.dist %>/styles/{,*/}*.css"]
     },
 
     // The following *-min tasks produce minified files in the dist folder
@@ -361,9 +361,9 @@ module.exports = function (grunt) {
     }
 
     return grunt.task.run([
-"connect:test",
-"mocha"
-]);
+      "connect:test",
+      "mocha"
+    ]);
   });
 
   grunt.registerTask("build", [
@@ -378,12 +378,12 @@ module.exports = function (grunt) {
     "copy:dist",
     "rev",
     "usemin",
-    "htmlmin",
+    "htmlmin"
   ]);
 
   grunt.registerTask("default", [
-"eslint",
-"test",
-"build"
-]);
+    "eslint",
+    "test",
+    "build"
+  ]);
 };

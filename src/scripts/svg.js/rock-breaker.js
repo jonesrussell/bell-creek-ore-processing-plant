@@ -1,11 +1,10 @@
-"use strict";
-/*global SVG, Q */
+
 
 SVG.RockBreaker = SVG.invent({
   create: "g",
   inherit: SVG.G,
   extend: {
-    build: function (params) {
+    build (params) {
       this.attr({ id: "eq-rock-breaker" })
         .move(params.x, params.y)
         .scale(params.scale);
@@ -26,50 +25,62 @@ SVG.RockBreaker = SVG.invent({
     },
   },
   construct: {
-    rockBreaker: function (params) {
+    rockBreaker (params) {
       return this.put(new SVG.RockBreaker()).build(params);
     },
   },
 });
 
 SVG.extend(SVG.RockBreaker, {
-  up: function () {
+  up () {
     var defer = Q.defer();
     this.rbArm
       .animate(500)
-      .transform({ rotation: 5, x: 1, y: -5 })
+      .transform({ rotation: 5,
+x: 1,
+y: -5 })
       .after(function () {
         defer.resolve();
       });
     this.rbBit
       .animate(500)
-      .transform({ rotation: 5, x: -5, y: -10 })
+      .transform({ rotation: 5,
+x: -5,
+y: -10 })
       .after(function () {});
     return defer.promise;
   },
-  down: function () {
+  down () {
     var defer = Q.defer();
-    this.rbArm.animate(250).transform({ rotation: -10, x: -1, y: 5 });
+    this.rbArm.animate(250).transform({ rotation: -10,
+x: -1,
+y: 5 });
     this.rbBit
       .animate(250)
-      .transform({ rotation: -10, x: 5, y: 10 })
+      .transform({ rotation: -10,
+x: 5,
+y: 10 })
       .after(function () {
         defer.resolve();
       });
     return defer.promise;
   },
-  reset: function () {
+  reset () {
     var defer = Q.defer();
-    this.rbArm.animate(500).transform({ rotation: 0, x: 0, y: 0 });
+    this.rbArm.animate(500).transform({ rotation: 0,
+x: 0,
+y: 0 });
     this.rbBit
       .animate(500)
-      .transform({ rotation: 0, x: 0, y: 0 })
+      .transform({ rotation: 0,
+x: 0,
+y: 0 })
       .after(function () {
         defer.resolve("good");
       });
     return defer.promise;
   },
-  go: function () {
+  go () {
     var self = this;
     this.up(self)
       .then(function () {

@@ -1,11 +1,11 @@
-"use strict";
-/*global SVG */
-
+/**
+ * heat.js
+ */
 SVG.Heat = SVG.invent({
   create: "g",
   inherit: SVG.G,
   extend: {
-    build: function (x, y) {
+    build (x, y) {
       this.heat = this.doc()
         .image("images/refinery/heat.svg", 65, 56)
         .move(x, y + 80);
@@ -16,7 +16,7 @@ SVG.Heat = SVG.invent({
     },
   },
   construct: {
-    heat: function (x, y) {
+    heat (x, y) {
       return this.put(new SVG.Heat()).build(x, y).heat;
     },
   },
