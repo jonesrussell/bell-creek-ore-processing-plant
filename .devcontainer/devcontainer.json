@@ -1,11 +1,18 @@
-// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.117.0/containers/javascript-node-10
 {
-  "name": "Node.js 10",
+  "name": "Bell Creek Ore Processing Plant",
   "dockerFile": "Dockerfile",
   "settings": {
     "terminal.integrated.shell.linux": "/bin/zsh"
   },
+  "remoteUser": "node",
+  "remote.host": "0.0.0.0",
+  "forwardPorts": [9000, 35729],
+  "postCreateCommand": "npm install",
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+    "source=ext,target=/home/node/.vscode-server/extensions,type=volume",
+    "source=ext-insiders,target=/home/node/.vscode-server-insiders/extensions,type=volume"
+  ],
   "extensions": [
     "adamwalzer.scss-lint",
     "britesnow.vscode-toggle-quotes",
@@ -45,8 +52,5 @@
     "waderyan.nodejs-extension-pack",
     "wayou.vscode-todo-highlight",
     "wix.vscode-import-cost"
-  ],
-  "forwardPorts": [9000, 35729],
-  "postCreateCommand": "npm install",
-  "remoteUser": "node"
+  ]
 }
