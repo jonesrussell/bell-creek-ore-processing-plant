@@ -2,6 +2,7 @@
 /* eslint-disable prefer-named-capture-group */
 /* eslint-disable require-unicode-regexp */
 /* eslint-disable global-require */
+
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -48,11 +49,8 @@ module.exports = function (grunt) {
         files: ["Gruntfile.js"],
       },
       styles: {
-        files: ["<%= config.app %>/styles/{,*/}*.css"],
-        tasks: [
-          "newer:copy:styles",
-          "autoprefixer"
-        ]
+        files: ["<%= config.app %>/css/{,*/}*.css"],
+        tasks: ["newer:copy:styles", "autoprefixer"],
       },
       livereload: {
         options: {
@@ -60,7 +58,7 @@ module.exports = function (grunt) {
         },
         files: [
           "<%= config.app %>/{,*/}*.html",
-          ".tmp/styles/{,*/}*.css",
+          ".tmp/css/{,*/}*.css",
           "<%= config.app %>/images/{,*/}*",
         ],
       },
@@ -119,13 +117,9 @@ module.exports = function (grunt) {
         files: [
           {
             dot: true,
-            src: [
-              ".tmp",
-              "<%= config.dist %>/*",
-              "!<%= config.dist %>/.git*"
-            ]
-          }
-        ]
+            src: [".tmp", "<%= config.dist %>/*", "!<%= config.dist %>/.git*"],
+          },
+        ],
       },
       server: ".tmp",
     },
@@ -168,19 +162,15 @@ module.exports = function (grunt) {
     // Add vendor prefixed styles
     autoprefixer: {
       options: {
-        browsers: [
-          "> 1%",
-          "last 2 versions",
-          "Firefox ESR"
-        ]
+        browsers: ["> 1%", "last 2 versions", "Firefox ESR"],
       },
       dist: {
         files: [
           {
             expand: true,
-            cwd: ".tmp/styles/",
+            cwd: ".tmp/css/",
             src: "{,*/}*.css",
-            dest: ".tmp/styles/",
+            dest: ".tmp/css/",
           },
         ],
       },
@@ -200,9 +190,9 @@ module.exports = function (grunt) {
         files: {
           src: [
             "<%= config.dist %>/scripts/{,*/}*.js",
-            "<%= config.dist %>/styles/{,*/}*.css",
+            "<%= config.dist %>/css/{,*/}*.css",
             "<%= config.dist %>/images/{,*/}*.*",
-            "<%= config.dist %>/styles/fonts/{,*/}*.*",
+            "<%= config.dist %>/fonts/{,*/}*.*",
             "<%= config.dist %>/*.{ico,png}",
           ],
         },
@@ -293,23 +283,6 @@ module.exports = function (grunt) {
       },
     },
 
-    // FTP
-    // "ftp-deploy": {
-    //   build: {
-    //     auth: {
-    //       host: "box.bureaugroup.ca",
-    //       port: 21,
-    //       authKey: "bureau-lsg",
-    //     },
-    //     src: "dist",
-    //     dest: "/public_html/bell-creek/",
-    //     exclusions: [
-    //       "dist/**/.DS_Store",
-    //       "dist/**/Thumbs.db"
-    //     ]
-    //   }
-    // },
-
     // By default, your `index.html`'s <!-- Usemin block --> will take care
     // of minification. These next options are pre-configured if you do not
     // wish to use the Usemin blocks.
@@ -388,11 +361,21 @@ module.exports = function (grunt) {
     concurrent: {
       server: ["copy:styles"],
       test: ["copy:styles"],
-      dist: [
-        "copy:styles",
-        "imagemin",
-        "svgmin"
-      ]
+      dist: ["copy:styles", "imagemin", "svgmin"],
+    },
+
+    "dart-sass": {
+      target: {
+        files: [
+          {
+            expand: true,
+            cwd: "src/scss/",
+            src: ["*.scss"],
+            dest: "dist/css",
+            ext: ".css"
+          }
+        ]
+      }
     }
   });
 
