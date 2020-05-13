@@ -18,12 +18,11 @@ window.addEventListener("load", function () {
         }
         classie.remove(overlay, "close");
 
-        // @TODO move this elsewhere
-        //                var activeVideo = document.querySelectorAll('.video-container .active')[0];
+        // TODO move this elsewhere
         const activeVideo = window.mill.activeVideo;
         if (typeof activeVideo !== "undefined") {
           activeVideo.pause();
-          //                    activeVideo.currentTime = 0;
+          // activeVideo.currentTime = 0;
         }
 
         //    var videos = document.getElementsByTagName('video');
@@ -42,18 +41,19 @@ window.addEventListener("load", function () {
     }
   }
 
-  var triggerBttn = document.getElementById("trigger-overlay"),
-    overlay = document.querySelector("div.overlay"),
-    closeBttn = overlay.querySelector("button.overlay-close"),
-    transEndEventNames = {
-      WebkitTransition: "webkitTransitionEnd",
-      MozTransition: "transitionend",
-      OTransition: "oTransitionEnd",
-      msTransition: "MSTransitionEnd",
-      transition: "transitionend",
-    },
-    transEndEventName = transEndEventNames.transition,
-    support = { transitions: true };
+  const triggerBttn = document.querySelector(".trigger-overlay");
+  const overlay = document.querySelector("div.overlay");
+  const closeBttn = overlay.querySelector("button.overlay-close");
+
+  const transEndEventNames = {
+    WebkitTransition: "webkitTransitionEnd",
+    MozTransition: "transitionend",
+    OTransition: "oTransitionEnd",
+    msTransition: "MSTransitionEnd",
+    transition: "transitionend",
+  };
+  const transEndEventName = transEndEventNames.transition;
+  const support = { transitions: true };
 
   triggerBttn.addEventListener("click", toggleOverlay);
   closeBttn.addEventListener("click", toggleOverlay);

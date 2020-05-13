@@ -31,21 +31,21 @@ module.exports = function (grunt) {
     watch: {
       bower: {
         files: ["bower.json"],
-        tasks: ["wiredep"]
+        tasks: ["wiredep"],
       },
       js: {
         files: ["<%= config.app %>/scripts/{,*/}*.js"],
         tasks: ["eslint"],
         options: {
-          livereload: true
-        }
+          livereload: true,
+        },
       },
       jstest: {
         files: ["test/spec/{,*/}*.js"],
-        tasks: ["test:watch"]
+        tasks: ["test:watch"],
       },
       gruntfile: {
-        files: ["Gruntfile.js"]
+        files: ["Gruntfile.js"],
       },
       styles: {
         files: ["<%= config.app %>/styles/{,*/}*.css"],
@@ -56,14 +56,14 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          livereload: "<%= connect.options.livereload %>"
+          livereload: "<%= connect.options.livereload %>",
         },
         files: [
           "<%= config.app %>/{,*/}*.html",
           ".tmp/styles/{,*/}*.css",
-          "<%= config.app %>/images/{,*/}*"
-        ]
-      }
+          "<%= config.app %>/images/{,*/}*",
+        ],
+      },
     },
 
     // The actual grunt server settings
@@ -72,7 +72,7 @@ module.exports = function (grunt) {
         port: grunt.option("port") || 9000,
         open: true,
         livereload: 35729,
-        hostname: "0.0.0.0"
+        hostname: "0.0.0.0",
       },
       livereload: {
         options: {
@@ -83,10 +83,10 @@ module.exports = function (grunt) {
                 "/bower_components",
                 serveStatic("./bower_components")
               ),
-              serveStatic(config.app)
+              serveStatic(config.app),
             ];
-          }
-        }
+          },
+        },
       },
       test: {
         options: {
@@ -100,17 +100,17 @@ module.exports = function (grunt) {
                 "/bower_components",
                 serveStatic("./bower_components")
               ),
-              serveStatic(config.app)
+              serveStatic(config.app),
             ];
-          }
-        }
+          },
+        },
       },
       dist: {
         options: {
           base: "<%= config.dist %>",
-          livereload: false
-        }
-      }
+          livereload: false,
+        },
+      },
     },
 
     // Empties folders to start fresh
@@ -127,7 +127,7 @@ module.exports = function (grunt) {
           }
         ]
       },
-      server: ".tmp"
+      server: ".tmp",
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
@@ -140,18 +140,29 @@ module.exports = function (grunt) {
         "Gruntfile.js",
         "<%= config.app %>/scripts/{,*/}*.js",
         // "!<%= config.app %>/scripts/vendor/*",
-        "test/spec/{,*/}*.js"
-      ]
+        "test/spec/{,*/}*.js",
+      ],
     },
 
     // Mocha testing framework configuration options
+    // mocha: {
+    //   all: {
+    //     options: {
+    //       run: true,
+    //       urls: [
+    //         "http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html",
+    //       ],
+    //     },
+    //   },
+    // },
+
     mocha: {
       all: {
-        options: {
-          run: true,
-          urls: ["http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html"]
-        }
-      }
+        src: ["tests/testrunner.html"],
+      },
+      options: {
+        run: true,
+      },
     },
 
     // Add vendor prefixed styles
@@ -169,18 +180,18 @@ module.exports = function (grunt) {
             expand: true,
             cwd: ".tmp/styles/",
             src: "{,*/}*.css",
-            dest: ".tmp/styles/"
-          }
-        ]
-      }
+            dest: ".tmp/styles/",
+          },
+        ],
+      },
     },
 
     // Automatically inject Bower components into the HTML file
     wiredep: {
       app: {
         ignorePath: /^\/|\.\.\//,
-        src: ["<%= config.app %>/index.html"]
-      }
+        src: ["<%= config.app %>/index.html"],
+      },
     },
 
     // Renames files for browser caching purposes
@@ -192,10 +203,10 @@ module.exports = function (grunt) {
             "<%= config.dist %>/styles/{,*/}*.css",
             "<%= config.dist %>/images/{,*/}*.*",
             "<%= config.dist %>/styles/fonts/{,*/}*.*",
-            "<%= config.dist %>/*.{ico,png}"
-          ]
-        }
-      }
+            "<%= config.dist %>/*.{ico,png}",
+          ],
+        },
+      },
     },
 
     // Reads HTML for usemin blocks to enable smart builds that automatically
@@ -203,9 +214,9 @@ module.exports = function (grunt) {
     // additional tasks can operate on them
     useminPrepare: {
       options: {
-        dest: "<%= config.dist %>"
+        dest: "<%= config.dist %>",
       },
-      html: "<%= config.app %>/index.html"
+      html: "<%= config.app %>/index.html",
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
@@ -214,21 +225,21 @@ module.exports = function (grunt) {
         assetsDirs: [
           "<%= config.dist %>",
           "<%= config.dist %>/images",
-          "<%= config.dist %>/styles"
+          "<%= config.dist %>/styles",
         ],
         patterns: {
           // FIXME While usemin won't have full support for revved files we have to put all references manually here
           js: [
             [
               /(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg|ico))/gm,
-              "Update the JS to reference our revved images"
-            ]
-          ]
-        }
+              "Update the JS to reference our revved images",
+            ],
+          ],
+        },
       },
       html: ["<%= config.dist %>/{,*/}*.html"],
       js: ["<%= config.dist %>/scripts/{,*/}*.js"],
-      css: ["<%= config.dist %>/styles/{,*/}*.css"]
+      css: ["<%= config.dist %>/styles/{,*/}*.css"],
     },
 
     // The following *-min tasks produce minified files in the dist folder
@@ -239,10 +250,10 @@ module.exports = function (grunt) {
             expand: true,
             cwd: "<%= config.app %>/images",
             src: "{,*/}*.{gif,jpeg,jpg,png,ico}",
-            dest: "<%= config.dist %>/images"
-          }
-        ]
-      }
+            dest: "<%= config.dist %>/images",
+          },
+        ],
+      },
     },
 
     svgmin: {
@@ -252,10 +263,10 @@ module.exports = function (grunt) {
             expand: true,
             cwd: "<%= config.app %>/images",
             src: "{,*/}*.svg",
-            dest: "<%= config.dist %>/images"
-          }
-        ]
-      }
+            dest: "<%= config.dist %>/images",
+          },
+        ],
+      },
     },
 
     htmlmin: {
@@ -277,9 +288,9 @@ module.exports = function (grunt) {
             cwd: "<%= config.dist %>",
             src: "{,*/}*.html",
             dest: "<%= config.dist %>",
-          }
-        ]
-      }
+          },
+        ],
+      },
     },
 
     // FTP
@@ -338,14 +349,14 @@ module.exports = function (grunt) {
               "*.{ico,png,txt}",
               "images/{,*/}*.webp",
               "{,*/}*.html",
-              "styles/fonts/{,*/}*.*"
-            ]
+              "styles/fonts/{,*/}*.*",
+            ],
           },
           {
             src: "node_modules/apache-server-configs/dist/.htaccess",
-            dest: "<%= config.dist %>/.htaccess"
-          }
-        ]
+            dest: "<%= config.dist %>/.htaccess",
+          },
+        ],
       },
       styles: {
         expand: true,
@@ -353,7 +364,7 @@ module.exports = function (grunt) {
         cwd: "<%= config.app %>/styles",
         dest: ".tmp/styles/",
         src: "{,*/}*.css",
-      }
+      },
     },
 
     // Generates a custom Modernizr build that includes only the tests you
@@ -450,6 +461,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask("default", [
     "newer:eslint",
+    "mocha",
     "test",
     "build"
   ]);

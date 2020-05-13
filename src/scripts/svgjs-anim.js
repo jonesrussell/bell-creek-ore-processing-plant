@@ -27,7 +27,7 @@ SVGjsAnim.prototype.init = function () {
   console.log('init()');
   const svgjsAnim = window.mill;
   if (svgjsAnim.preloadedImages) {
-    const loadingImage = document.getElementById('anim-loading');
+    const loadingImage = document.querySelector('.anim-loading');
     loadingImage.parentNode.removeChild(loadingImage);
     svgjsAnim.build();
     svgjsAnim.start();

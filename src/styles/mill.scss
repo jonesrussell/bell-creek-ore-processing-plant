@@ -1,0 +1,200 @@
+@font-face {
+  font-family: "Oswald";
+  src: url("fonts/oswald/Oswald-Regular.eot");
+  src: local("Oswald"),
+    url("fonts/oswald/Oswald-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Oswald-Bold";
+  src: url("fonts/oswald/Oswald-Bold.eot");
+  src: local("Oswald-Bold"),
+    url("fonts/oswald/Oswald-Bold.otf") format("opentype");
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: #b1e1ed;
+}
+
+.page {
+  position: fixed;
+  font-family: Arial;
+  color: #000;
+  text-transform: uppercase;
+  margin: 0 auto;
+  min-height: 100px;
+
+  > * {
+    float: left;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  h1 {
+    margin: 0;
+    margin-top: 5px;
+    padding: 0;
+    padding-left: 15px;
+
+    a {
+      font-size: 0.7em;
+      color: #000;
+    }
+  }
+
+  h2 {
+    float: left;
+    margin: 0;
+    margin-top: 12px;
+    margin-left: 15px;
+    padding: 4px 6px;
+    font-size: 0.7em;
+    border: 3px solid #000;
+  }
+}
+
+.logo {
+  margin-top: 10px;
+  margin-left: 10px;
+  float: left;
+  width: 30px;
+  height: auto;
+}
+
+#shepherd-connector-1 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
+.container {
+  clear: both;
+}
+
+nav {
+  .back,
+  .forward {
+    background-color: #000;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 45%;
+    cursor: pointer;
+  }
+
+  .back {
+    left: 10px;
+  }
+
+  .forward {
+    right: 10px;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+  }
+}
+
+#drawing {
+  overflow: hidden;
+}
+
+.anim-loading {
+  margin: 100px auto;
+  display: block;
+}
+
+.video-container video {
+  height: 100%;
+  width: auto;
+}
+
+.zoom-in {
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+.zoom-out {
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
+}
+
+.action {
+  cursor: pointer;
+}
+
+.video-group {
+  cursor: pointer;
+}
+
+.no-svg-message {
+  color: white;
+  display: none;
+  padding: 25px;
+}
+
+.no-svg .no-svg-message {
+  display: block;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .page {
+    margin-top: 12px;
+
+    h1 {
+      margin-top: 3px;
+      padding-left: 10px;
+
+      a {
+        line-height: 0.1em;
+        font-size: 0.5em;
+      }
+    }
+
+    h2 {
+      font-size: 0.5em;
+      margin-top: 10px;
+      border-width: 3px;
+      margin-left: 20px;
+    }
+  }
+
+  .logo {
+    width: 30px;
+    margin-top: 10px;
+    margin-left: 15px;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+  .page {
+    h1 {
+      margin-top: 10px;
+
+      a {
+        line-height: 0.4em;
+        font-size: 0.5em;
+      }
+    }
+
+    h2 {
+      font-size: 0.5em;
+      margin-top: 5px;
+      border-width: 3px;
+    }
+  }
+
+  .logo {
+    width: 20px;
+    margin-top: 10px;
+  }
+}

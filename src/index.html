@@ -18,7 +18,6 @@
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/svg.js/dist/svg.js"></script>
-    <script src="bower_components/modernizr/modernizr.js"></script>
     <script src="bower_components/classie/classie.js"></script>
     <script src="bower_components/q/q.js"></script>
     <script src="bower_components/svg.parser.js/svg.parser.js"></script>
@@ -78,8 +77,9 @@
       );
     </script>
   </head>
+
   <body>
-    <div id="no-svg">
+    <div class="no-svg-message">
       Uh oh, your browser does not support modern technologies. Visit
       <a href="https://whatbrowser.org/" target="_blank"
         >https://whatbrowser.org/</a
@@ -88,22 +88,24 @@
     </div>
 
     <header class="page">
-      <img id="logo" src="images/logo.png" />
+      <img class="logo" src="images/logo.png" />
       <h1>
         <a href="https://lsgold.com" target="_blank">Lake Shore Gold Corp.</a>
       </h1>
       <h2>Bell Creek Ore Processing Plant</h2>
     </header>
 
-    <div class="container">
+    <main class="container">
       <div id="shepherd-connector-1"></div>
-      <main id="drawing">
+
+      <section id="drawing">
         <img src="images/loading.svg" id="anim-loading" />
-      </main>
+      </section>
+
       <p style="display: none;">
-        <button id="trigger-overlay" type="button">Open Overlay</button>
+        <button class="trigger-overlay" type="button">Open Overlay</button>
       </p>
-    </div>
+    </main>
 
     <div class="overlay overlay-door">
       <button type="button" class="overlay-close">Close</button>

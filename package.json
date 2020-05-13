@@ -12,6 +12,8 @@
   "dependencies": {},
   "devDependencies": {
     "apache-server-configs": "^4.0.0",
+    "chai": "^4.2.0",
+    "dart-sass": "^1.25.0",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.2",
     "grunt": "^1.1.0",
@@ -36,6 +38,7 @@
     "grunt-wiredep": "^3.0.1",
     "gruntify-eslint": "^5.0.0",
     "load-grunt-tasks": "^5.1.0",
+    "mocha": "^7.1.2",
     "serve-static": "^1.14.1",
     "time-grunt": "^2.0.0"
   },
