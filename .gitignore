@@ -21,4 +21,5 @@ yarn.lock
 tmp
 .tmp
 *.swp
+*~
 
