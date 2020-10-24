@@ -16,11 +16,10 @@ module.exports = {
     "plugins": [
         "@typescript-eslint"
     ],
-    // TODO: Review eslint globals
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly",
-        "SVG": "readonly",
+        "SVG": "writable",
         "SVGjsAnim": "writable",
         "Q": "readonly",
         "OreAnimation": "writable",
