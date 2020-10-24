@@ -6,6 +6,7 @@ test/bower_components/
 # production
 /dist
 build
+/build_ts
 
 .ftppass
 app/videos/**
