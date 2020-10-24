@@ -1,145 +1,74 @@
 <!DOCTYPE html>
 <html class="no-js">
-  <head>
-    <meta charset="utf-8" />
-    <title>Bell Creek Ore Processing Plant | Lake Shore Gold Corp.</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/mill.css" />
-    <link rel="stylesheet" href="styles/overlay.css" />
-    <!-- endbuild -->
-    <!-- build:js(.) scripts/vendor.ts -->
-    <!-- bower:js -->
-    <script src="bower_components/svg.ts/dist/svg.ts"></script>
-    <script src="bower_components/modernizr/modernizr.ts"></script>
-    <script src="bower_components/classie/classie.ts"></script>
-    <script src="bower_components/q/q.ts"></script>
-    <script src="bower_components/svg.parser.ts/svg.parser.ts"></script>
-    <script src="bower_components/svg.import.ts/svg.import.ts"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-    <script
-      charset="ISO-8859-1"
-      src="//fast.wistia.com/assets/external/E-v1.js"
-      async
-    ></script>
 
-    <!-- build:js scripts/animation.ts -->
-    <script src="scripts/svgjs-anim.ts"></script>
-    <script src="scripts/overlay.ts"></script>
-    <script src="scripts/ore-animation.ts"></script>
-    <script src="scripts/svg.ts/bullets.ts"></script>
-    <script src="scripts/svg.ts/layer.ts"></script>
-    <script src="scripts/svg.ts/step.ts"></script>
-    <script src="scripts/svg.ts/heading.ts"></script>
-    <script src="scripts/svg.ts/slurry.ts"></script>
-    <script src="scripts/svg.ts/grinding-slurry.ts"></script>
-    <script src="scripts/svg.ts/truck.ts"></script>
-    <script src="scripts/svg.ts/tree.ts"></script>
-    <script src="scripts/svg.ts/sag-mill.ts"></script>
-    <script src="scripts/svg.ts/rock-breaker.ts"></script>
-    <script src="scripts/svg.ts/jaw-crusher.ts"></script>
-    <script src="scripts/svg.ts/stir-stick.ts"></script>
-    <script src="scripts/svg.ts/zoom.ts"></script>
-    <script src="scripts/svg.ts/heat.ts"></script>
-    <script src="scripts/svgjs_anim/position-scale.ts"></script>
-    <script src="scripts/svgjs_anim/preload.ts"></script>
-    <script src="scripts/svgjs_anim/conveyors.ts"></script>
-    <script src="scripts/svgjs_anim/ore.ts"></script>
-    <script src="scripts/svgjs_anim/bullets.ts"></script>
-    <script src="scripts/svgjs_anim/receiving.ts"></script>
-    <script src="scripts/svgjs_anim/crushing.ts"></script>
-    <script src="scripts/svgjs_anim/storage.ts"></script>
-    <script src="scripts/svgjs_anim/grinding.ts"></script>
-    <script src="scripts/svgjs_anim/extraction.ts"></script>
-    <script src="scripts/svgjs_anim/electrowinning.ts"></script>
-    <script src="scripts/svgjs_anim/refining.ts"></script>
-    <script src="scripts/svgjs_anim/wistia.ts"></script>
-    <!-- endbuild -->
+<head>
+  <meta charset="utf-8" />
+  <title>Bell Creek Ore Processing Plant | Lake Shore Gold Corp.</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <script src="bower_components/svg.ts/dist/svg.js"></script>
+  <script src="bower_components/modernizr/modernizr.js"></script>
+  <script src="bower_components/classie/classie.js"></script>
+  <script src="bower_components/q/q.js"></script>
+  <script src="bower_components/svg.parser.ts/svg.parser.js"></script>
+  <script src="bower_components/svg.import.ts/svg.import.js"></script>
+  <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script>
+  <script src="/js/bundle.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    window.addEventListener(
+      "load",
+      function () {
+        if (classie.has(document.getElementsByTagName("html")[0], "svg")) {
+          window.mill = new SVGjsAnim("drawing");
+          window.mill.preload();
+          window.mill.init();
+        }
+      },
+      false
+    );
+  </script>
+</head>
 
-    <script type="text/javascript">
-      window.addEventListener(
-        "load",
-        function () {
-          if (classie.has(document.getElementsByTagName("html")[0], "svg")) {
-            window.mill = new SVGjsAnim("drawing");
-            window.mill.preload();
-            window.mill.init();
-          }
-        },
-        false
-      );
-    </script>
-  </head>
+<body>
+  <div class="no-svg-message">
+    Uh oh, your browser does not support modern technologies. Visit
+    <a href="https://whatbrowser.org/" target="_blank">https://whatbrowser.org/</a>
+    to learn more.
+  </div>
 
-  <body>
-    <div class="no-svg-message">
-      Uh oh, your browser does not support modern technologies. Visit
-      <a href="https://whatbrowser.org/" target="_blank"
-        >https://whatbrowser.org/</a
-      >
-      to learn more.
+  <header class="page">
+    <img class="logo" src="images/logo.png" />
+    <h1>
+      <a href="https://lsgold.com" target="_blank">Lake Shore Gold Corp.</a>
+    </h1>
+    <h2>Bell Creek Ore Processing Plant</h2>
+  </header>
+
+  <main class="container">
+    <div id="shepherd-connector-1"></div>
+
+    <section id="drawing">
+      <img src="images/loading.svg" id="anim-loading" />
+    </section>
+
+    <p style="display: none;">
+      <button class="trigger-overlay" type="button">Open Overlay</button>
+    </p>
+  </main>
+
+  <div class="overlay overlay-door">
+    <button type="button" class="overlay-close">Close</button>
+    <div class="video-container">
+      <div id="wistia_wy0jb1fb5d" class="wistia_embed video video-receiving"></div>
+      <div id="wistia_3nnwthrq6m" class="wistia_embed video video-crushing"></div>
+      <div id="wistia_snve0g1j7h" class="wistia_embed video video-storage"></div>
+      <div id="wistia_c8zdqadrm5" class="wistia_embed video video-grinding"></div>
+      <div id="wistia_aktom82zan" class="wistia_embed video video-extraction"></div>
+      <div id="wistia_zlgqw4faj4" class="wistia_embed video video-electrowinning"></div>
+      <div id="wistia_ovdskmla9a" class="wistia_embed video video-refining"></div>
     </div>
+  </div>
+</body>
 
-    <header class="page">
-      <img class="logo" src="images/logo.png" />
-      <h1>
-        <a href="https://lsgold.com" target="_blank">Lake Shore Gold Corp.</a>
-      </h1>
-      <h2>Bell Creek Ore Processing Plant</h2>
-    </header>
-
-    <main class="container">
-      <div id="shepherd-connector-1"></div>
-
-      <section id="drawing">
-        <img src="images/loading.svg" id="anim-loading" />
-      </section>
-
-      <p style="display: none;">
-        <button class="trigger-overlay" type="button">Open Overlay</button>
-      </p>
-    </main>
-
-    <div class="overlay overlay-door">
-      <button type="button" class="overlay-close">Close</button>
-      <div class="video-container">
-        <div
-          id="wistia_wy0jb1fb5d"
-          class="wistia_embed video video-receiving"
-        ></div>
-        <div
-          id="wistia_3nnwthrq6m"
-          class="wistia_embed video video-crushing"
-        ></div>
-        <div
-          id="wistia_snve0g1j7h"
-          class="wistia_embed video video-storage"
-        ></div>
-        <div
-          id="wistia_c8zdqadrm5"
-          class="wistia_embed video video-grinding"
-        ></div>
-        <div
-          id="wistia_aktom82zan"
-          class="wistia_embed video video-extraction"
-        ></div>
-        <div
-          id="wistia_zlgqw4faj4"
-          class="wistia_embed video video-electrowinning"
-        ></div>
-        <div
-          id="wistia_ovdskmla9a"
-          class="wistia_embed video video-refining"
-        ></div>
-      </div>
-    </div>
-  </body>
 </html>
