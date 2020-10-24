@@ -1,11 +1,23 @@
+# dependencies
 node_modules
-.npm-debug.log
-tmp
 
-/dist
-.tmp
 test/bower_components/
+
+# production
+/dist
+build
 
 .ftppass
 app/videos/**
+
+# misc
+.DS_Store
+npm-debug.log
+.npm-debug.log
+yarn-error.log
+yarn.lock
+.yarnclean
+tmp
+.tmp
 *.swp
+
