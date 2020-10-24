@@ -11,7 +11,7 @@
 
 const serveStatic = require("serve-static");
 
-module.exports = function (grunt) {
+module.exports = (grunt) => {
   // Time how long tasks take. Can help when optimizing build times
   require("time-grunt")(grunt);
 

@@ -9,7 +9,9 @@
     "build": "./node_modules/.bin/grunt build",
     "postinstall": "npm run build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "modernizr": "^3.11.3"
+  },
   "devDependencies": {
     "apache-server-configs": "^4.0.0",
     "chai": "^4.2.0",
