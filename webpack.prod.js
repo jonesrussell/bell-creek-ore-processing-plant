@@ -1,13 +1,10 @@
 const { merge } = require('webpack-merge');
-
 const common = require('./webpack.common.js');
 
-
 module.exports = merge(common, {
-
     mode: 'production',
-
 });
+
 /*
 const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
