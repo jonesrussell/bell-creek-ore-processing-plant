@@ -61,12 +61,14 @@ const modernConfig = {
             {
                 test: /\.(js|ts)$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        envName: 'modern' // Points to env.modern in babel.config.js
-                    }
-                }
+                use: [
+                    'cache-loader',
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            envName: 'modern' // Points to env.modern in babel.config.js
+                        }
+                    }]
             },
             {
                 test: /\.s?css/i,
@@ -126,12 +128,15 @@ const legacyConfig = {
             {
                 test: /\.(js|ts)$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        envName: 'legacy' // Points to env.legacy in babel.config.js
+                use: [
+                    'cache-loader',
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            envName: 'legacy' // Points to env.legacy in babel.config.js
+                        }
                     }
-                }
+                ]
             }
         ]
     },

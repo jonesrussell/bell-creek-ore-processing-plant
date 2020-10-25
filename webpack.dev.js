@@ -43,12 +43,14 @@ module.exports = {
             {
                 test: /\.(js|ts)$/,
                 include: path.resolve(__dirname, 'src'),
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        envName: 'modern' // Points to env.modern in babel.config.js
-                    }
-                }
+                use: [
+                    'cache-loader',
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            envName: 'modern' // Points to env.modern in babel.config.js
+                        }
+                    }]
             },
             {
                 test: /\.s?css$/i,
