@@ -1,5 +1,5 @@
 const path = require('path');
-
+const ESLintPlugin = require('eslint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = require('./config');
@@ -15,7 +15,7 @@ module.exports = {
         filename: 'js/[name].js',
     },
     optimization: {
-        noEmitOnErrors: true
+        emitOnErrors: true
     },
     resolve: {
         extensions: ['.ts', '.js'],
@@ -30,19 +30,11 @@ module.exports = {
                 ...getAssets(config.assets)
             ]
         }),
-        ...MultipleModernHtmlWebpackPlugin(config.entries)
+        ...MultipleModernHtmlWebpackPlugin(config.entries),
+        new ESLintPlugin({})
     ],
     module: {
         rules: [
-            {
-                test: /\.(js|ts)$/,
-                include: path.resolve(__dirname, 'src'),
-                enforce: 'pre',
-                loader: 'eslint-loader',
-                options: {
-                    emitWarning: true,
-                },
-            },
             {
                 test: /\.(js|ts)$/,
                 enforce: 'pre',
@@ -65,6 +57,10 @@ module.exports = {
                     'css-loader?sourceMap=true',
                     'sass-loader'
                 ]
+            },
+            {
+                test: /\.ico$/,
+                loader: 'file-loader'
             }
         ]
     },

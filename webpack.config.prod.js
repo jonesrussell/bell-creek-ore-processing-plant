@@ -1,5 +1,5 @@
 const path = require('path');
-
+const ESLintPlugin = require('eslint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
@@ -33,7 +33,7 @@ const modernConfig = {
         chunkFilename: `js/${MODERN_FILENAME}.js`
     },
     optimization: {
-        noEmitOnErrors: true,
+        emitOnErrors: true,
         splitChunks: {
             chunks: 'all'
         }
@@ -101,7 +101,7 @@ const legacyConfig = {
         chunkFilename: `js/${LEGACY_FILENAME}.js`
     },
     optimization: {
-        noEmitOnErrors: true,
+        emitOnErrors: true,
         splitChunks: {
             chunks: 'all'
         }

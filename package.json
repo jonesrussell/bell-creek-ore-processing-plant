@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=10.13.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -20,7 +20,7 @@
     "start": "",
     "clean": "rm -rf dist",
     "build:prod": "webpack --config webpack.config.prod.js --output-public-path './' --mode=production",
-    "build:dev": "webpack --config webpack.config.dev.js --output-public-path './' --mode=development --watch",
+    "build:dev": "webpack --config webpack.config.dev.js --output-public-path './' --mode=development",
     "start:dev": "webpack-dev-server --config webpack.config.dev.js --output-public-path '/' --color --mode=development --open"
   },
   "devDependencies": {

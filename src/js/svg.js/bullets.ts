@@ -69,7 +69,7 @@ SVG.Bullets = SVG.invent({
       return this.doc()
         .text(t)
         .font({
-          family: $font - family,
+          family: "Oswald",
           size: 13,
         })
         .move(x, y);

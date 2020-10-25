@@ -7,7 +7,9 @@ const webpackCompiler = async (webpackConfig) => {
 
     return new Promise((resolve, reject) => {
 
-        const compiler = webpack(webpackConfig);
+        const compiler = webpack(webpackConfig, () => {
+            console.log('foo');
+        });
 
         compiler.run((err, stats) => {
             if (err) {
