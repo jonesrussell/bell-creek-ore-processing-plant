@@ -1,18 +1,6 @@
 $forward-bg-color: #000;
 
-@font-face {
-  font-family: "Oswald";
-  src: url("fonts/oswald/Oswald-Regular.eot");
-  src: local("Oswald"),
-    url("fonts/oswald/Oswald-Regular.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Oswald-Bold";
-  src: url("fonts/oswald/Oswald-Bold.eot");
-  src: local("Oswald-Bold"),
-    url("fonts/oswald/Oswald-Bold.otf") format("opentype");
-}
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
 body {
   font-family: Arial, sans-serif;
@@ -121,12 +109,10 @@ nav {
 }
 
 .zoom-in {
-  cursor: -webkit-zoom-in;
   cursor: zoom-in;
 }
 
 .zoom-out {
-  cursor: -webkit-zoom-out;
   cursor: zoom-out;
 }
 

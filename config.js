@@ -2,29 +2,29 @@
  * Site configuration
  */
 const config = {
-    buildDir: 'build',
+    buildDir: 'dist',
     /**
      * Entry points as in src folder
      */
     entries: [
-        { name: 'home', template: './index.html', module: './index.ts', style: './index.scss', path: '/site-starter' },
-        { name: 'about', template: './about/index.html', module: './about/index.ts', style: './about/index.scss', path: '/site-starter/about' },
+        { name: 'home', template: './index.html', module: './js/svgjs-anim.ts', style: './scss/app.scss', path: '/' }
     ],
     /**
      *  Files or directories to copy from src to the build directory
      */
     assets: [
-        'assets',
-        '404.html'
+        'images',
+        'fonts',
+        'robots.txt'
     ],
     /**
      * Production base href
      */
-    baseHref: 'https://robisim74.github.io/site-starter/',
+    baseHref: 'https://bell-creek.techjones.tk',
     /**
      * For sitemap URLs
      */
-    hostname: 'https://robisim74.github.io'
+    hostname: 'https://bell-creek.techjones.tk'
 };
 
 

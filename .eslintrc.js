@@ -19,13 +19,12 @@ module.exports = {
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly",
-        "SVG": "writable",
+        "SVG": "readonly",
         "SVGjsAnim": "writable",
         "Q": "readonly",
         "OreAnimation": "writable",
         "classie": "writable"
     },
-    // TODO: Review eslint rules
     "rules": {
         "accessor-pairs": "error",
         "array-bracket-newline": "error",

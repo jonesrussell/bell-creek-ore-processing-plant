@@ -2,10 +2,10 @@
  * bullets.js
  */
 SVG.Bullets = SVG.invent({
-  create: 'g',
+  create: "g",
   inherit: SVG.G,
   extend: {
-    build (txt, height) {
+    build(txt, height) {
       this.bullets = [];
 
       this.attr({
@@ -38,7 +38,7 @@ SVG.Bullets = SVG.invent({
 
       return this;
     },
-    bullet (txt, y, height) {
+    bullet(txt, y, height) {
       var bullet = this.doc().group().attr({ class: "bullet" }).move(0, y);
       bullet.add(this.drawCircle(-5, 0));
       bullet.add(this.drawLine(0, 10, 0, height));
@@ -48,38 +48,36 @@ SVG.Bullets = SVG.invent({
 
       return bullet;
     },
-    drawCircle (x, y) {
+    drawCircle(x, y) {
       return this.doc()
         .circle(10)
         .stroke({
           width: 3,
-          color: "#939598"
+          color: "#939598",
         })
         .fill("none")
         .move(x, y);
     },
     // eslint-disable-next-line max-params
-    drawLine (x1, y1, x2, y2) {
-      return this.doc()
-        .line(x1, y1, x2, y2)
-        .stroke({
-          width: 3,
-          color: "#939598"
-        });
+    drawLine(x1, y1, x2, y2) {
+      return this.doc().line(x1, y1, x2, y2).stroke({
+        width: 3,
+        color: "#939598",
+      });
     },
-    drawText (t, x, y) {
+    drawText(t, x, y) {
       return this.doc()
         .text(t)
         .font({
-          family: "Oswald",
+          family: $font - family,
           size: 13,
         })
         .move(x, y);
-    }
+    },
   },
   construct: {
-    bullets (txt, height) {
+    bullets(txt, height) {
       return this.put(new SVG.Bullets()).build(txt, height);
-    }
-  }
+    },
+  },
 });
