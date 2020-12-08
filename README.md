@@ -9,16 +9,34 @@ An animation of svg's with the lightweight [svg.js](https://github.com/wout/svg.
 
 ### Install dependencies
 
+```bash
 npm install
-
-### Serve
-
-grunt serve
+```
 
 ### Build
 
-grunt build
+```bash
+npm build
+```
 
-## @TODO
+### Serve
 
-Evaluate [server-configs-nginx](https://github.com/h5bp/server-configs-nginx) instead of [apache-server-configs](https://github.com/h5bp/server-configs-apache)
+```bash
+npm serve
+```
+
+## Gruntfile.js
+
+### Globbing
+
+For performance reasons we're only matching one level down:
+
+```javascript
+'test/spec/{,*/}*.js'
+```
+
+If you want to recursively match all subfolders, use:
+
+```javascript
+'test/spec/**/*.js'
+```

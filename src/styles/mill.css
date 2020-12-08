@@ -1,0 +1,191 @@
+@font-face {
+  font-family: "Oswald";
+  src: url("fonts/oswald/Oswald-Regular.eot");
+  src: local("Oswald"),
+    url("fonts/oswald/Oswald-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Oswald-Bold";
+  src: url("fonts/oswald/Oswald-Bold.eot");
+  src: local("Oswald-Bold"),
+    url("fonts/oswald/Oswald-Bold.otf") format("opentype");
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: #b1e1ed;
+}
+
+header.page {
+  position: fixed;
+  font-family: Arial;
+  color: #000;
+  text-transform: uppercase;
+  margin: 0 auto;
+  min-height: 100px;
+}
+
+header.page h1 {
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  padding-left: 15px;
+}
+
+header.page h1 a {
+  font-size: 0.7em;
+  color: #000;
+}
+
+header.page a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header.page > * {
+  float: left;
+}
+
+#logo {
+  margin-top: 10px;
+  margin-left: 10px;
+  float: left;
+  width: 30px;
+  height: auto;
+}
+
+header.page h2 {
+  float: left;
+  margin: 0;
+  margin-top: 12px;
+  margin-left: 15px;
+  padding: 4px 6px;
+  font-size: 0.7em;
+  border: 3px solid #000;
+}
+
+#shepherd-connector-1 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
+.container {
+  clear: both;
+}
+
+nav .back,
+nav .forward {
+  background-color: #000;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 45%;
+  cursor: pointer;
+}
+
+nav .back {
+  left: 10px;
+}
+
+nav .forward {
+  right: 10px;
+}
+
+nav img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+#drawing {
+  overflow: hidden;
+  /*    background-color: #b0e1eb;*/
+}
+
+#anim-loading {
+  margin: 100px auto;
+  display: block;
+}
+
+.video-container video {
+  height: 100%;
+  width: auto;
+}
+
+.zoom-in {
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+.zoom-out {
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
+}
+
+.action {
+  cursor: pointer;
+}
+
+.video-group {
+  cursor: pointer;
+}
+
+#no-svg {
+  color: white;
+  display: none;
+  padding: 25px;
+}
+html.no-svg #no-svg {
+  display: block;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  header.page {
+    margin-top: 12px;
+  }
+  header.page h1 {
+    margin-top: 3px;
+    padding-left: 10px;
+  }
+  header.page h1 a {
+    line-height: 0.1em;
+    font-size: 0.5em;
+  }
+  header.page h2 {
+    font-size: 0.5em;
+    margin-top: 10px;
+    border-width: 3px;
+    margin-left: 20px;
+  }
+
+  #logo {
+    width: 30px;
+    margin-top: 10px;
+    margin-left: 15px;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+  header.page h1 {
+    margin-top: 10px;
+  }
+  header.page h1 a {
+    line-height: 0.4em;
+    font-size: 0.5em;
+  }
+  header.page h2 {
+    font-size: 0.5em;
+    margin-top: 5px;
+    border-width: 3px;
+  }
+
+  #logo {
+    width: 20px;
+    margin-top: 10px;
+  }
+}
