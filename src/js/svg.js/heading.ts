@@ -5,15 +5,17 @@ SVG.Heading = SVG.invent({
   create: 'g',
   inherit: SVG.G,
   extend: {
-    build (headingText, video) {
+    build(headingText, video) {
       this.video = video;
       this.addClass('heading');
       this.add(this.doc().image('images/heading.svg', 349, 89));
       const text = this.doc()
         .text(headingText)
         .attr({ fill: '#fff' })
-        .font({ family: 'Oswald',
-size: 28 })
+        .font({
+          family: 'Oswald',
+          size: 28
+        })
         .move(15, 23);
       this.add(text);
 
@@ -38,26 +40,23 @@ size: 28 })
     },
   },
   construct: {
-    heading (headingText, video) {
+    heading(headingText, video) {
       return this.put(new SVG.Heading()).build(headingText, video);
     },
   },
 });
 
 SVG.extend(SVG.Heading, {
-  play () {
+  play() {
     var overlay = document.querySelector('.overlay');
-    var overlayActive = overlay.querySelector('.active');
-    if (overlayActive !== null) {
-      classie.remove(overlayActive, 'active');
-    }
+    var overlayActive = overlay?.querySelector('.active');
+    overlayActive?.classList.remove('active');
 
-    //var video = document.getElementById(this.data('videoId'));
-    classie.add(this.video.container, 'active');
+    this.video.container.classList.add('active');
     window.mill.activeVideo = this.video;
     this.video.play();
 
-    document.getElementById('trigger-overlay').click();
+    document.getElementById('trigger-overlay')?.click();
     //event.stopPropagation();
     return this;
   },

@@ -1,11 +1,12 @@
-/* eslint-disable no-console */
 /**
  * svgjs-anim.js
  */
-function SVGjsAnim(id) {
+require('overlay.ts');
+
+const SVGjsAnim = function (id: any) {
   this.draw = SVG(id).fixSubPixelOffset();
 
-  this.scene = this.draw.group().attr({ id: 'scene' });
+  this.scene = this.draw.group().attr({ id: "scene" });
 
   this.positionAndScale();
   this.resize();
@@ -14,21 +15,21 @@ function SVGjsAnim(id) {
 }
 
 SVGjsAnim.prototype.layers = {};
-SVGjsAnim.prototype.activeVideo = '';
+SVGjsAnim.prototype.activeVideo = "";
 SVGjsAnim.prototype.zoomed = false;
 SVGjsAnim.prototype.stepObjs = [];
 SVGjsAnim.prototype.bullets = {};
 SVGjsAnim.prototype.headings = {};
 SVGjsAnim.prototype.animations = [];
 SVGjsAnim.prototype.steps = [];
-SVGjsAnim.prototype.stepCurrent = 'overview';
+SVGjsAnim.prototype.stepCurrent = "overview";
 
 SVGjsAnim.prototype.init = function () {
-  console.log('init()');
+  console.log("init()");
   const svgjsAnim = window.mill;
-  if (svgjsAnim.preloadedImages) {
-    const loadingImage = document.getElementById('anim-loading');
-    loadingImage.parentNode.removeChild(loadingImage);
+  if (svgjsAnim?.preloadedImages) {
+    const loadingImage = document.getElementById("anim-loading");
+    loadingImage?.parentNode?.removeChild(loadingImage);
     svgjsAnim.build();
     svgjsAnim.start();
   } else {
@@ -43,9 +44,9 @@ SVGjsAnim.prototype.build = function () {
   this.setupLayers();
 
   // Ore Circuit
-  const grindingSlurry = this.draw.grindingSlurry('grinding-slurry').go();
+  const grindingSlurry = this.draw.grindingSlurry("grinding-slurry").go();
   const circuitOre = this.draw
-    .image('images/circuit-ore-equipment.svg')
+    .image("images/circuit-ore-equipment.svg")
     .size(this.origSceneW, this.origSceneH);
   const conveyors = this.setupConveyors();
   const receiving = this.setupReceiving();
@@ -65,12 +66,7 @@ SVGjsAnim.prototype.build = function () {
   // middle
   const t0004 = this.draw.tree(1000, 400, 1.5);
 
-  const trees = this.draw
-    .group()
-    .add(tree)
-    .add(t0002)
-    .add(t0003)
-    .add(t0004);
+  const trees = this.draw.group().add(tree).add(t0002).add(t0003).add(t0004);
 
   this.layers.circuitOre
     .addToInner(grindingSlurry)
@@ -87,9 +83,9 @@ SVGjsAnim.prototype.build = function () {
     .addToInner(oreToGrinding);
 
   // Slurry Circuit
-  const slurry = this.draw.slurry('slurrry').go();
+  const slurry = this.draw.slurry("slurrry").go();
   const circuitSlurry = this.draw
-    .image('images/circuit-slurry-equipment.svg')
+    .image("images/circuit-slurry-equipment.svg")
     .size(this.origSceneW, this.origSceneH);
   const refining = this.setupRefining();
   const electrowinning = this.setupElectrowinning();
@@ -108,29 +104,29 @@ SVGjsAnim.prototype.setupLayers = function () {
   const h = this.origSceneH;
 
   const cloudsBack = this.draw
-    .image('images/clouds.svg', w, h)
+    .image("images/clouds.svg", w, h)
     .transform({ scaleX: -1 });
-  const treescape = this.draw.image('images/treescape.svg', w, h);
-  const cloudsOnce = this.draw.image('images/clouds.svg', w, h);
-  const clouds = this.draw.image('images/clouds.svg', w, h);
-  const circuitOre = this.draw.image('images/circuit-ore.svg', w, h);
-  const circuitSlurry = this.draw.image('images/circuit-slurry.svg', w, h);
+  const treescape = this.draw.image("images/treescape.svg", w, h);
+  const cloudsOnce = this.draw.image("images/clouds.svg", w, h);
+  const clouds = this.draw.image("images/clouds.svg", w, h);
+  const circuitOre = this.draw.image("images/circuit-ore.svg", w, h);
+  const circuitSlurry = this.draw.image("images/circuit-slurry.svg", w, h);
 
   this.layers.cloudsBack = this.draw
-    .layer({ 'clouds-back': cloudsBack }, w, h)
+    .layer({ "clouds-back": cloudsBack }, w, h)
     .move(-w, 0);
   this.layers.cloudsBackClone = this.draw
-    .layer({ 'clouds-back-clone': cloudsBack.clone() }, w, h)
+    .layer({ "clouds-back-clone": cloudsBack.clone() }, w, h)
     .move(-w * 2, 0);
   this.layers.treescape = this.draw.layer({ treescape }, w, h);
-  this.layers.cloudsOnce = this.draw.layer({ 'clouds-once': cloudsOnce }, w, h);
+  this.layers.cloudsOnce = this.draw.layer({ "clouds-once": cloudsOnce }, w, h);
   this.layers.clouds = this.draw.layer({ clouds }, w, h).move(-w, 0);
   this.layers.cloudsClone = this.draw
-    .layer({ 'clouds-clone': clouds.clone() }, w, h)
+    .layer({ "clouds-clone": clouds.clone() }, w, h)
     .move(-w * 2, 0);
 
   // Circuit Ore
-  this.layers.circuitOre = this.draw.layer({ 'circuit-ore': circuitOre }, w, h);
+  this.layers.circuitOre = this.draw.layer({ "circuit-ore": circuitOre }, w, h);
 
   // Circuit Slurry
   const groundExtension = this.draw
@@ -138,19 +134,19 @@ SVGjsAnim.prototype.setupLayers = function () {
     .move(0, 1060)
     .add(
       this.draw.rect(this.origSceneW, 4000).attr({
-        fill: '#4e6a47',
-        id: 'ground',
-      }),
+        fill: "#4e6a47",
+        id: "ground",
+      })
     );
 
   this.layers.circuitSlurry = this.draw
     .layer(
       {
-        'circuit-slurry-ground': groundExtension,
-        'circuit-slurry': circuitSlurry,
+        "circuit-slurry-ground": groundExtension,
+        "circuit-slurry": circuitSlurry,
       },
       w,
-      h + 4000,
+      h + 4000
     )
     .move(0, 585)
     .moveInner(0, -485);
@@ -182,19 +178,19 @@ SVGjsAnim.prototype.start = function () {
   }
 };
 
-SVGjsAnim.prototype.scale = function (n) {
+SVGjsAnim.prototype.scale = function (n: boolean) {
   n = n || false;
-  return n ? this.scene.scale(n) : this.scene.attr('scale');
+  return n ? this.scene.scale(n) : this.scene.attr("scale");
 };
 
-SVGjsAnim.prototype.move = function (x, y) {
+SVGjsAnim.prototype.move = function (x: any, y: any) {
   this.scene.move(x, y);
 };
 
-SVGjsAnim.prototype.x = function (x) {
+SVGjsAnim.prototype.x = function (x: any) {
   this.scene.x(x);
 };
 
-SVGjsAnim.prototype.y = function (y) {
+SVGjsAnim.prototype.y = function (y: any) {
   this.scene.y(y);
 };

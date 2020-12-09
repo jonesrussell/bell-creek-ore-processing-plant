@@ -17,4 +17,37 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
+    module: {
+        rules: [
+            {
+                test: /\.(js|ts)$/,
+                enforce: 'pre',
+                use: ['source-map-loader'],
+            },
+            {
+                test: /\.(js|ts)$/,
+                include: path.resolve(__dirname, 'src'),
+                use: [
+                    'cache-loader',
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            envName: 'modern' // Points to env.modern in babel.config.js
+                        }
+                    }]
+            },
+            {
+                test: /\.s?css$/i,
+                use: [
+                    'style-loader',
+                    'css-loader?sourceMap=true',
+                    'sass-loader'
+                ]
+            },
+            {
+                test: /\.ico$/,
+                loader: 'file-loader'
+            }
+        ]
+    }
 };

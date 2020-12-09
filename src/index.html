@@ -9,7 +9,6 @@
   <link rel="shortcut icon" href="${require('./favicon.ico')}">
   <script src="bower_components/svg.ts/dist/svg.js"></script>
   <script src="bower_components/modernizr/modernizr.js"></script>
-  <script src="bower_components/classie/classie.js"></script>
   <script src="bower_components/q/q.js"></script>
   <script src="bower_components/svg.parser.ts/svg.parser.js"></script>
   <script src="bower_components/svg.import.ts/svg.import.js"></script>
@@ -19,7 +18,7 @@
     window.addEventListener(
       "load",
       function () {
-        if (classie.has(document.getElementsByTagName("html")[0], "svg")) {
+        if (document.getElementsByTagName("html")[0]?.classList.contains("svg")) {
           window.mill = new SVGjsAnim("drawing");
           window.mill.preload();
           window.mill.init();
