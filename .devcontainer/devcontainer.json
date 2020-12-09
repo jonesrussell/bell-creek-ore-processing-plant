@@ -1,5 +1,5 @@
 {
-  "name": "pnpm testing",
+  "name": "svg.js Animation",
   "dockerFile": "Dockerfile",
   "settings": {
     "terminal.integrated.shell.linux": "/bin/zsh"
