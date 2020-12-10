@@ -1,8 +1,9 @@
 {
   "name": "bell-creek-mill",
   "scripts": {
+    "build": "./node_modules/grunt-cli/bin/grunt build",
     "start": "./node_modules/grunt-cli/bin/grunt serve",
-    "postinstall": "./node_modules/grunt-cli/bin/grunt build"
+    "postinstall": "npm run build"
   },
   "devDependencies": {
     "apache-server-configs": "^2.7.1",
