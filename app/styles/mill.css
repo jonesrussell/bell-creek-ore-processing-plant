@@ -1,18 +1,18 @@
 @font-face {
     font-family: 'Oswald';
-    src: url('fonts/oswald/Oswald-Regular.eot'); 
-    src: 
+    src: url('fonts/oswald/Oswald-Regular.eot');
+    src:
         local('Oswald'),
-        url('fonts/oswald/Oswald-Regular.otf') 
+        url('fonts/oswald/Oswald-Regular.otf')
         format('opentype');
 }
 @font-face {
     font-family: 'Oswald-Bold';
 /*                font-weight: bold;*/
-    src: url('fonts/oswald/Oswald-Bold.eot'); 
-    src: 
+    src: url('fonts/oswald/Oswald-Bold.eot');
+    src:
         local('Oswald-Bold'),
-        url('fonts/oswald/Oswald-Bold.otf') 
+        url('fonts/oswald/Oswald-Bold.otf')
         format('opentype');
 }
 
@@ -84,7 +84,7 @@ nav .forward {
     background-color: #000;
     border-radius: 50%;
     width: 50px;
-    height: 50px; 
+    height: 50px;
     position: absolute;
     top: 45%;
     cursor: pointer;
@@ -148,10 +148,10 @@ html.no-svg #no-svg {
     display: block;
 }
 
-@media only screen 
-    and (min-device-width : 768px) 
+@media only screen
+    and (min-device-width : 768px)
     and (max-device-width : 1024px)
-{ 
+{
     header.page {
         margin-top: 12px;
     }
@@ -177,8 +177,8 @@ html.no-svg #no-svg {
     }
 }
 
-@media only screen 
-and (min-device-width : 375px) 
+@media only screen
+and (min-device-width : 375px)
 and (max-device-width : 667px) {
     header.page h1 {
         margin-top: 10px;
@@ -189,10 +189,20 @@ and (max-device-width : 667px) {
     }
     header.page h2 {
         font-size: 0.5em;
-        margin-top: 5px;
+        margin-top: 9px;
         border-width: 3px;
     }
 
     #logo { width: 20px; margin-top: 10px; }
 }
 
+
+  header.page h1 {
+    display: none;
+  }
+
+@media (min-width: 768px) {
+  header.page h1 {
+    display: inline-block;
+  }
+}
