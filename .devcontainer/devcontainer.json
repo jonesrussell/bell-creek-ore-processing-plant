@@ -1,0 +1,67 @@
+{
+  "name": "Bell Creek Ore Processing Plant",
+  "build": {
+    "dockerfile": "Dockerfile",
+    // Update 'VARIANT' to pick a Node version: 10, 12, 14
+    "args": {
+      "VARIANT": "10"
+    }
+  },
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/zsh"
+  },
+  "remoteUser": "node",
+  "forwardPorts": [
+    9000
+  ],
+  "postCreateCommand": "npm install",
+  "runArgs": [
+    "--init"
+  ],
+  "mounts": [
+    "source=ext,target=/home/node/.vscode-server/extensions,type=volume",
+    "source=ext-insiders,target=/home/node/.vscode-server-insiders/extensions,type=volume",
+    "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
+  ],
+  "overrideCommand": false,
+  "extensions": [
+    "adamwalzer.scss-lint",
+    "britesnow.vscode-toggle-quotes",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "cmstead.jsrefactor",
+    "coenraads.bracket-pair-colorizer-2",
+    "cssho.vscode-svgviewer",
+    "dbaeumer.vscode-eslint",
+    "dmitrydorofeev.empty-indent",
+    "donjayamanne.git-extension-pack",
+    "dotjoshjohnson.xml",
+    "editorconfig.editorconfig",
+    "eg2.vscode-npm-script",
+    "esbenp.prettier-vscode",
+    "formulahendry.auto-rename-tag",
+    "formulahendry.code-runner",
+    "gruntfuggly.todo-tree",
+    "howardzuo.vscode-npm-dependency",
+    "imbhargav5.npm-ui",
+    "jock.svg",
+    "lacroixdavid1.vscode-format-context-menu",
+    "ldez.ignore-files",
+    "mgmcdermott.vscode-language-babel",
+    "mrmlnc.vscode-postcss-sorting",
+    "mrmlnc.vscode-scss",
+    "numso.prettier-standard-vscode",
+    "oderwat.indent-rainbow",
+    "pnp.polacode",
+    "pranaygp.vscode-css-peek",
+    "rafamel.subtle-brackets",
+    "redvanworkshop.explorer-exclude-vscode-extension",
+    "shan.code-settings-sync",
+    "tombonnike.vscode-status-bar-format-toggle",
+    "usernamehw.errorlens",
+    "waderyan.gitblame",
+    "waderyan.nodejs-extension-pack",
+    "wayou.vscode-todo-highlight",
+    "wix.vscode-import-cost"
+  ]
+}
