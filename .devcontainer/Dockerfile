@@ -54,9 +54,9 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
-#USER node
-#RUN mkdir /home/node/.kube
-#USER root
+USER node
+RUN mkdir /home/node/.kube
+USER root
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
