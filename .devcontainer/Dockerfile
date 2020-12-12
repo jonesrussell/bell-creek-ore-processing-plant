@@ -4,6 +4,24 @@
 ARG VARIANT="14-buster"
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 
+LABEL name="Node 10"
+LABEL version="1.0.0"
+
+ARG INSTALL_ZSH="true"
+ARG USERNAME=node
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+ARG UPGRADE_PACKAGES="true"
+ARG INSTALL_OH_MYS="true"
+ARG NVM_DIR=/usr/local/share/nvm
+ARG ENABLE_NONROOT_DOCKER="true"
+ARG SOURCE_SOCKET=/var/run/docker-host.sock
+ARG TARGET_SOCKET=/var/run/docker.sock
+ARG NODE_VERSION=v14.15.0
+ARG UPDATE_RC="true"
+# Docker Compose version
+ARG COMPOSE_VERSION=1.24.0
+
 COPY library-scripts/*.sh /tmp/library-scripts/
 
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -20,14 +38,14 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && npm install -g tslint eslint typescript \
   #
   # [Optional] Update a non-root user to UID/GID if needed.
-  && if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
-  groupmod --gid $USER_GID $USERNAME \
-  && usermod --uid $USER_UID --gid $USER_GID $USERNAME \
-  && chown -R $USER_UID:$USER_GID /home/$USERNAME; \
-  fi \
+  #&& if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
+  #groupmod --gid $USER_GID $USERNAME \
+  #&& usermod --uid $USER_UID --gid $USER_GID $USERNAME \
+  #&& chown -R $USER_UID:$USER_GID /home/$USERNAME; \
+  #fi \
   # [Optional] Add add sudo support for non-root user
-  && echo node ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
-  && chmod 0440 /etc/sudoers.d/$USERNAME \
+  #&& echo node ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+  #&& chmod 0440 /etc/sudoers.d/$USERNAME \
   #
   # Clean up
   && apt-get autoremove -y \
@@ -38,9 +56,9 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
-USER node
-RUN mkdir /home/node/.kube
-USER root
+#USER node
+#RUN mkdir /home/node/.kube
+#USER root
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
