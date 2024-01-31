@@ -9,8 +9,7 @@ SVGjsAnim.prototype.setupCrushing = function()
     var w = 500;
     var h = 540;
 
-    this.wistiaObjs.crushing = this.wistiaEmbed('3nnwthrq6m');
-    var heading = this.draw.heading('CRUSHING', this.wistiaObjs.crushing)
+    var heading = this.draw.heading('CRUSHING', 'video-crushing')
         .move(120, 60);
     this.headings.crusher = this.draw.set().add(heading);
 

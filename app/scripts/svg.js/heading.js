@@ -5,8 +5,9 @@ SVG.Heading = SVG.invent({
     create: 'g',
     inherit: SVG.G,
     extend: {
-        build: function(headingText, video) {
-            this.video = video;
+        build: function(headingText, videoId) {
+            console.log('heading', headingText, 'videoId', videoId);
+            this.videoId = videoId;
             this.addClass('heading');
             this.add(this.doc().image('images/heading.svg', 349, 89));
             var text = this.doc().text(headingText)
@@ -34,24 +35,27 @@ SVG.Heading = SVG.invent({
         }
     },
     construct: {
-        heading: function(headingText, video) {
-            return this.put(new SVG.Heading).build(headingText, video);
+        heading: function(headingText, videoId) {
+            return this.put(new SVG.Heading).build(headingText, videoId);
         }
     }
 });
 
 SVG.extend(SVG.Heading, {
-     play: function() {
+    play: function() {
+        console.log('heading play', videoId)
+        var videoElement = document.getElementById(videoId);
+     
         var overlay = document.querySelector('.overlay');
         var overlayActive = overlay.querySelector('.active');
         if (overlayActive !== null) {
             classie.remove(overlayActive, 'active');
         }
 
-        //var video = document.getElementById(this.data('videoId'));
+        var video = document.getElementById(this.data('videoId'));
         classie.add(this.video.container, 'active');
         mill.activeVideo = this.video;
-        this.video.play();
+        // this.video.play();
 
         document.getElementById('trigger-overlay').click();
         //event.stopPropagation();

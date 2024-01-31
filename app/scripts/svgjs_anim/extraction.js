@@ -9,8 +9,7 @@ SVGjsAnim.prototype.setupExtraction = function()
     var w = 800;
     var h = 650;
 
-    this.wistiaObjs.extraction = this.wistiaEmbed('aktom82zan');
-    var heading = this.draw.heading('EXTRACTION', this.wistiaObjs.extraction)
+    var heading = this.draw.heading('EXTRACTION', 'video-extraction')
         .move(200, 25);
     this.headings.extraction = this.draw.set().add(heading);
 

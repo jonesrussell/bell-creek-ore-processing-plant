@@ -9,10 +9,8 @@ SVGjsAnim.prototype.setupReceiving = function()
     var w = 950;
     var h = 450;
 
-    this.wistiaObjs.receiving = this.wistiaEmbed('wy0jb1fb5d');
-
     // Heading
-    var heading = this.draw.heading('RECEIVING', this.wistiaObjs.receiving)
+    var heading = this.draw.heading('RECEIVING', 'video-receiving')
         .move(355, 50);
     this.headings.receiving = this.draw.set().add(heading);
 

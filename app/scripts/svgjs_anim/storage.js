@@ -10,15 +10,14 @@ SVGjsAnim.prototype.setupStorage = function()
     var storageW = 470;
     var storageH = 530;
 
-    this.wistiaObjs.storage = this.wistiaEmbed('snve0g1j7h');
-    // Heading
-    var heading = this.draw.heading('STORAGE', this.wistiaObjs.storage)
+    var heading = this.draw
+        .heading('STORAGE', 'video-storagexxxyyy')
         .move(70, 120);
+
     this.headings['ore-storage-dome'] = this.draw.set().add(heading);
 
     var step = this.draw.step('ore-storage-dome')
         .move(x, y)
-        .data({ id: 'step-ore-storage-dome' })
         .setScene(this.scene)
         .setHeading(heading)
         .scale(scale);
@@ -50,9 +49,11 @@ SVGjsAnim.prototype.setupStorage = function()
     var stepToScale = 4.2
       , stepToX = -6160
       , stepToY = -250;
+
     if (this.isAspectRatio('4:3')) {
       stepToY = 30;
     }
+
      var zoom = this.draw.zoom({
       width: storageW
       , height: storageH
@@ -60,8 +61,8 @@ SVGjsAnim.prototype.setupStorage = function()
       , scale: stepToScale
       , zx: stepToX
       , zy: stepToY
-    })
-    .video(320, 130);
+    }).video(320, 130);
+
     step.setZoom(zoom);
 
     return step;

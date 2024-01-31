@@ -9,8 +9,7 @@ SVGjsAnim.prototype.setupElectrowinning = function()
     var w = 880;
     var h = 820;
 
-    this.wistiaObjs.electrowinning = this.wistiaEmbed('zlgqw4faj4');
-    var heading = this.draw.heading('ELECTROWINNING', this.wistiaObjs.electrowinning)
+    var heading = this.draw.heading('ELECTROWINNING', 'video-electrowinning')
         .move(510, -30);
     this.headings.electrowinning = this.draw.set().add(heading);
 

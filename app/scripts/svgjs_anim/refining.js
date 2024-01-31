@@ -16,11 +16,11 @@ SVGjsAnim.prototype.setupRefining = function()
     this.carbonX = 1866;
     this.carbonY = 900;
 
-    this.wistiaObjs.refining = this.wistiaEmbed('ovdskmla9a');
     var headingX = 200;
     var headingY = -20;
-    var heading = this.draw.heading('REFINING', this.wistiaObjs.refining)
-        .move(headingX, headingY);
+
+    var heading = this.draw.heading('REFINING', 'video-refining')
+            .move(headingX, headingY);
     this.headings.refinery = this.draw.set().add(heading);
 
     var step = this.steps.refinery = this.draw.step('refinery')

@@ -10,8 +10,7 @@ SVGjsAnim.prototype.setupGrinding = function()
     var h = 600;
 
     // Heading
-    this.wistiaObjs.grinding = this.wistiaEmbed('c8zdqadrm5');
-    var heading = this.draw.heading('GRINDING', this.wistiaObjs.grinding)
+    var heading = this.draw.heading('GRINDING', 'heading-grinding')
         .move(-50, 60);
     this.headings['sag-mill'] = this.draw.set().add(heading);
 
