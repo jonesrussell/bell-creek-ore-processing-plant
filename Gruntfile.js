@@ -1,12 +1,4 @@
-// Generated on 2015-01-20 using
-// generator-webapp 0.5.1
 'use strict';
-
-// # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
-// If you want to recursively match all subfolders, use:
-// 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
 
@@ -41,10 +33,6 @@ module.exports = function (grunt) {
           livereload: true
         }
       },
-      jstest: {
-        files: ['test/spec/{,*/}*.js'],
-        tasks: ['test:watch']
-      },
       gruntfile: {
         files: ['Gruntfile.js']
       },
@@ -75,29 +63,9 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          middleware: function(connect) {
-            return [
-              connect.static('.tmp'),
-              connect().use('/bower_components', connect.static('./bower_components')),
-              connect.static(config.app)
-            ];
-          }
+          base: 'app' // replace 'app' with the directory you want to serve
         }
-      },
-      test: {
-        options: {
-          open: false,
-          port: 9001,
-          middleware: function(connect) {
-            return [
-              connect.static('test'),
-              connect.static('.tmp'),
-              connect().use('/bower_components', connect.static('./bower_components')),
-              connect.static(config.app)
-            ];
-          }
-        }
-      },
+      },  
       dist: {
         options: {
           base: '<%= config.dist %>',
@@ -119,30 +87,6 @@ module.exports = function (grunt) {
         }]
       },
       server: '.tmp'
-    },
-
-    // Make sure code styles are up to par and there are no obvious mistakes
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
-      },
-      all: [
-        'Gruntfile.js',
-        '<%= config.app %>/scripts/{,*/}*.js',
-        '!<%= config.app %>/scripts/vendor/*',
-        'test/spec/{,*/}*.js'
-      ]
-    },
-
-    // Mocha testing framework configuration options
-    mocha: {
-      all: {
-        options: {
-          run: true,
-          urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html']
-        }
-      }
     },
 
     // Add vendor prefixed styles
@@ -257,47 +201,6 @@ module.exports = function (grunt) {
         }]
       }
     },
-
-    // FTP
-    'ftp-deploy': {
-      build: {
-        auth: {
-          host: 'box.bureaugroup.ca',
-          port: 21,
-          authKey: 'bureau-lsg'
-        },
-        src: 'dist',
-        dest: '/public_html/bell-creek/',
-        exclusions: ['dist/**/.DS_Store', 'dist/**/Thumbs.db']
-      }
-    },
-
-    // By default, your `index.html`'s <!-- Usemin block --> will take care
-    // of minification. These next options are pre-configured if you do not
-    // wish to use the Usemin blocks.
-    // cssmin: {
-    //   dist: {
-    //     files: {
-    //       '<%= config.dist %>/styles/main.css': [
-    //         '.tmp/styles/{,*/}*.css',
-    //         '<%= config.app %>/styles/{,*/}*.css'
-    //       ]
-    //     }
-    //   }
-    // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= config.dist %>/scripts/scripts.js': [
-    //         '<%= config.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
-    // concat: {
-    //   dist: {}
-    // },
-
     // Copies remaining files to places other tasks can use
     copy: {
       dist: {
@@ -326,8 +229,7 @@ module.exports = function (grunt) {
       }
     },
 
-    // Generates a custom Modernizr build that includes only the tests you
-    // reference in your app
+    // Generates a custom Modernizr build
     modernizr: {
       dist: {
         devFile: 'bower_components/modernizr/modernizr.js',
@@ -346,9 +248,6 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: [
-        'copy:styles'
-      ],
-      test: [
         'copy:styles'
       ],
       dist: [
@@ -378,26 +277,6 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('server', function (target) {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run([target ? ('serve:' + target) : 'serve']);
-  });
-
-  grunt.registerTask('test', function (target) {
-    if (target !== 'watch') {
-      grunt.task.run([
-        'clean:server',
-        'concurrent:test',
-        'autoprefixer'
-      ]);
-    }
-
-    grunt.task.run([
-      'connect:test',
-      'mocha'
-    ]);
-  });
-
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
@@ -415,8 +294,6 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'newer:jshint',
-    'test',
     'build'
   ]);
 };

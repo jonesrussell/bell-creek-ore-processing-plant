@@ -10,7 +10,8 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "phind.phind"
+        "phind.phind",
+        "ms-azuretools.vscode-docker"
       ]
     }
   }

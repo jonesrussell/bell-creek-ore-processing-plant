@@ -8,4 +8,4 @@ FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
 # [Optional] Uncomment if you want to install more global node modules
-RUN /bin/bash -c "source ${NVM_DIR}/nvm.sh && nvm install v10.20.1"
+RUN /bin/bash -c "source ${NVM_DIR}/nvm.sh && nvm install v12 && nvm install v10.20.1"
